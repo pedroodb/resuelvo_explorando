@@ -17,8 +17,6 @@ class WelcomeScreen extends Component {
     }
   }
 
-  const actualizarContenido = 4
-
   render() {
     const { title, description } = this.state
     return (
