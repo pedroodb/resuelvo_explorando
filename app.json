@@ -22,6 +22,15 @@
     ],
     "ios": {
       "supportsTablet": true
+    },
+    "android": {
+      "permissions": [
+        "CAMERA",
+        "MANAGE_DOCUMENTS",
+        "READ_EXTERNAL_STORAGE",
+        "VIBRATE",
+        "WRITE_EXTERNAL_STORAGE"
+      ]
     }
   }
 }

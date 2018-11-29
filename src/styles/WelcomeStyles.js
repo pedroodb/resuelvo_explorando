@@ -7,7 +7,7 @@ const welcomeStyles = StyleSheet.create({
       backgroundColor: '#fff',
       alignItems: 'center',
       justifyContent: 'center',
-    },
+    }
   });
 
 export default welcomeStyles
