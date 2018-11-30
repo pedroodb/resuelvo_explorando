@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 import { Image, View, Button } from 'react-native'
-import { welcomeViewStyle } from '../styles/WelcomeStyles'
-import hasReadWritePermission from '../helpers/permissionAskers'
-import { Title, Description } from './components/welcomeComponents'
+import { welcomeViewStyle } from '../../styles/WelcomeStyles'
+import hasReadWritePermission from '../../helpers/permissionAskers'
+import { Title, Description } from '../components/welcomeComponents'
 import { NavigationEvents } from 'react-navigation';
 
 //Pantalla de bienvenida y carga de JSON
@@ -19,6 +19,17 @@ class WelcomeScreen extends Component {
     //Bindeo al this para referenciar al componente WelcomeScreen desde handle focus event
     this.handleFocusEvent = this.handleFocusEvent.bind(this)
   }
+  
+  static navigationOptions = ({ navigation }) => {
+    return {
+      headerRight: (
+        <Button
+          onPress={() => navigation.navigate('ConfigurationModal')}
+          title="Cargar"
+        />
+      ),
+    };
+  };
 
   //Actualizar contenido cuando se vuelve a la pantalla
   async handleFocusEvent() {
@@ -62,7 +73,7 @@ class WelcomeScreen extends Component {
           onWillFocus={this.handleFocusEvent}
         />
         <Title title={title}/>
-        <Image source={require('../../assets/images/resuelvo_explorando_logo.png')}/>
+        <Image source={require('../../../assets/images/resuelvo_explorando_logo.png')}/>
         <Description description={description}/>
         <Button
           onPress={() => this.props.navigation.push('Main')}
