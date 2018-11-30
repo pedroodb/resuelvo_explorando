@@ -10,4 +10,5 @@ const welcomeStyles = StyleSheet.create({
     }
   });
 
+export const welcomeViewStyle = welcomeStyles.welcomeView
 export default welcomeStyles

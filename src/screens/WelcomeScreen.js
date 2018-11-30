@@ -1,10 +1,10 @@
 import React, {Component} from 'react'
 import { Image, View, Button } from 'react-native'
-import welcomeStyles from '../styles/WelcomeStyles'
+import { welcomeViewStyle } from '../styles/WelcomeStyles'
 import hasReadWritePermission from '../helpers/permissionAskers'
-import welcomeComponents from './components/welcomeComponents'
+import { Title, Description } from './components/welcomeComponents'
 import { NavigationEvents } from 'react-navigation';
-  
+
 //Pantalla de bienvenida y carga de JSON
 class WelcomeScreen extends Component {
 
@@ -12,63 +12,60 @@ class WelcomeScreen extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      title:'Bienvenido a resuelvo explorando',
-      description:'Carga una actividad para comenzar!',
+      title: 'Bienvenido a resuelvo explorando',
+      description: 'Carga una actividad para comenzar!',
+    }
+
+    //Bindeo al this para referenciar al componente WelcomeScreen desde handle focus event
+    this.handleFocusEvent = this.handleFocusEvent.bind(this)
+  }
+
+  //Actualizar contenido cuando se vuelve a la pantalla
+  async handleFocusEvent() {
+    exists = await this.existsConfigFile()
+    if(exists){
+      config = await this.readConfigFile()
+      this.setState(() => ({title: config, description: config}))
+    }
+  }
+
+  async existsConfigFile() {
+    return (await Expo.FileSystem.getInfoAsync(`${Expo.FileSystem.documentDirectory}configuracion`)).exists
+  }
+  
+  async writeFileAsync() {
+    readWritePermission = await hasReadWritePermission()
+    if (hasReadWritePermission()) {
+      Expo.FileSystem.writeAsStringAsync(`${Expo.FileSystem.documentDirectory}configuracion`, 'hole')
+    }
+  }
+  
+  async readConfigFile() {
+    readWritePermission = await hasReadWritePermission()
+    if (readWritePermission) {
+      return (await Expo.FileSystem.readAsStringAsync(`${Expo.FileSystem.documentDirectory}configuracion`))
     }
   }
 
   render() {
+
     const { title, description } = this.state
+    
     return (
-      <View style={welcomeStyles.welcomeView}>
+      <View style={welcomeViewStyle}>
         <NavigationEvents
           //Me subscrivo al evento 'onWillFocus' para actualizar el contenido luego de seleccionar una configuracion
-          onWillFocus={payload => console.log(payload)}
+          onWillFocus={this.handleFocusEvent}
         />
-        <welcomeComponents.Title title={title}/>
+        <Title title={title}/>
         <Image source={require('../../assets/images/resuelvo_explorando_logo.png')}/>
-        <welcomeComponents.Description description={description}/>
+        <Description description={description}/>
         <Button
           onPress={() => this.props.navigation.push('Main')}
           title='Comenzar'
         />
-        <Button
-          onPress={() => writeFileAsync()}
-          title='Crear archivo'
-        />
-        <Button
-          onPress={() => readFileAsync()}
-          title='Mostrar archivo'
-        />
-        <Button
-          onPress={() => this.setState(() => ({title:'otro', description:'otra'}))}
-          title='cambiar'
-        />
     </View>
     )
-  }
-}
-
-function actualizarContenido() {
-    if(existsConfigFile()) {
-      config = readFileAsync()
-
-    }
-}
-
-async function existsConfigFile() {
-  return (await Expo.FileSystem.getInfoAsync(`${Expo.FileSystem.documentDirectory}configuracion`)).exists
-}
-
-async function writeFileAsync() {
-  if (hasReadWritePermission()) {
-    Expo.FileSystem.writeAsStringAsync(`${Expo.FileSystem.documentDirectory}1`, 'hole')
-  }
-}
-
-async function readFileAsync() {
-  if (hasReadWritePermission()) {
-    return (await Expo.FileSystem.readAsStringAsync(`${Expo.FileSystem.documentDirectory}configuracion`))
   }
 }
 
