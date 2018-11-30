@@ -29,23 +29,27 @@ class WelcomeScreen extends Component {
     }
   }
 
+  //Devuelve una promesa con un booleano correspondiente a si existe el archivo de configuracion correspondiente
   async existsConfigFile() {
     return (await Expo.FileSystem.getInfoAsync(`${Expo.FileSystem.documentDirectory}configuracion`)).exists
   }
   
-  async writeFileAsync() {
-    readWritePermission = await hasReadWritePermission()
-    if (hasReadWritePermission()) {
-      Expo.FileSystem.writeAsStringAsync(`${Expo.FileSystem.documentDirectory}configuracion`, 'hole')
-    }
-  }
-  
+  //Devuelve una promesa con el contenido del archivo de configuracion
   async readConfigFile() {
     readWritePermission = await hasReadWritePermission()
     if (readWritePermission) {
       return (await Expo.FileSystem.readAsStringAsync(`${Expo.FileSystem.documentDirectory}configuracion`))
     }
   }
+  
+  /*
+  async writeFileAsync() {
+    readWritePermission = await hasReadWritePermission()
+    if (readWritePermission) {
+      Expo.FileSystem.writeAsStringAsync(`${Expo.FileSystem.documentDirectory}configuracion`, 'hole')
+    }
+  }
+  */
 
   render() {
 
