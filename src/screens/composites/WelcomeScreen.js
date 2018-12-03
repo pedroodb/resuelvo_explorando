@@ -18,6 +18,8 @@ class WelcomeScreen extends Component {
 
     //Bindeo al this para referenciar al componente WelcomeScreen desde handle focus event
     this.handleFocusEvent = this.handleFocusEvent.bind(this)
+
+    this.generateConfigFolder()
   }
   
   static navigationOptions = ({ navigation }) => {
@@ -39,22 +41,34 @@ class WelcomeScreen extends Component {
     }
   }
 
+  //Genera carpeta para guardar las configuraciones
+  async generateConfigFolder() {
+    if (await hasReadWritePermission()) {
+      configFolderInfo = (await Expo.FileSystem.getInfoAsync(`${Expo.FileSystem.documentDirectory}configurations`))
+      if (!(configFolderInfo.exists && configFolderInfo.isDirectory)) {
+        Expo.FileSystem.makeDirectoryAsync(`${Expo.FileSystem.documentDirectory}configurations`)
+      }
+    }
+  }
+
   //Devuelve una promesa con un booleano correspondiente a si existe el archivo de configuracion correspondiente
   async existsConfigFile() {
-    return (await Expo.FileSystem.getInfoAsync(`${Expo.FileSystem.documentDirectory}configuracion`)).exists
+    if (await hasReadWritePermission()) {
+      return (await Expo.FileSystem.getInfoAsync(`${Expo.FileSystem.documentDirectory}configuration`)).exists
+    }
   }
   
   //Devuelve una promesa con el contenido del archivo de configuracion
   async readConfigFile() {
     if (await hasReadWritePermission()) {
-      return (await Expo.FileSystem.readAsStringAsync(`${Expo.FileSystem.documentDirectory}configuracion`))
+      return (await Expo.FileSystem.readAsStringAsync(`${Expo.FileSystem.documentDirectory}configuration`))
     }
   }
   
   //Funcion de prueba, ELIMINAR
   async writeFileAsync() {
     if (await hasReadWritePermission()) {
-      Expo.FileSystem.writeAsStringAsync(`${Expo.FileSystem.documentDirectory}ah re`, 'ah reeee')
+      Expo.FileSystem.writeAsStringAsync(`${Expo.FileSystem.documentDirectory}configurations/emmm`, 'emmm')
     }
   }
 

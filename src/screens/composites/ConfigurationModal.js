@@ -13,21 +13,21 @@ class ModalScreen extends React.Component {
 
   componentDidMount() {
     this.getConfigurations().then(
-      (configurations) => this.setState(() => ({files: configurations.filter((config) => config.key != 'configuracion')}))
+      (configurations) => this.setState(() => ({files: configurations}))
     )
   }
 
   //Devuelve arreglo de objetos con los nombres de archivos de configuracion
   async getConfigurations() {
     if(await hasReadWritePermission()) {
-      return (await Expo.FileSystem.readDirectoryAsync(Expo.FileSystem.documentDirectory)).map((elem) => ({key:elem}))
+      return (await Expo.FileSystem.readDirectoryAsync(`${Expo.FileSystem.documentDirectory}configurations`)).map((elem) => ({key:elem}))
     }
   }
 
   //Carga el archivo de configuracion con la configuracion seleccionada
   async setConfiguracion(configName) {
     if(await hasReadWritePermission()) {
-      Expo.FileSystem.copyAsync({from:`${Expo.FileSystem.documentDirectory}${configName}`, to:`${Expo.FileSystem.documentDirectory}configuracion`})
+      Expo.FileSystem.copyAsync({from:`${Expo.FileSystem.documentDirectory}configurations/${configName}`, to:`${Expo.FileSystem.documentDirectory}configuration`})
     }
   }
 
