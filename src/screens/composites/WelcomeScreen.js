@@ -54,7 +54,7 @@ class WelcomeScreen extends Component {
   //Funcion de prueba, ELIMINAR
   async writeFileAsync() {
     if (await hasReadWritePermission()) {
-      Expo.FileSystem.writeAsStringAsync(`${Expo.FileSystem.documentDirectory}configuracion`, 'holis')
+      Expo.FileSystem.writeAsStringAsync(`${Expo.FileSystem.documentDirectory}ah re`, 'ah reeee')
     }
   }
 
