@@ -33,8 +33,7 @@ class WelcomeScreen extends Component {
 
   //Actualizar contenido cuando se vuelve a la pantalla
   async handleFocusEvent() {
-    exists = await this.existsConfigFile()
-    if(exists){
+    if(await this.existsConfigFile()){
       config = await this.readConfigFile()
       this.setState(() => ({title: config, description: config}))
     }
@@ -47,15 +46,14 @@ class WelcomeScreen extends Component {
   
   //Devuelve una promesa con el contenido del archivo de configuracion
   async readConfigFile() {
-    readWritePermission = await hasReadWritePermission()
-    if (readWritePermission) {
+    if (await hasReadWritePermission()) {
       return (await Expo.FileSystem.readAsStringAsync(`${Expo.FileSystem.documentDirectory}configuracion`))
     }
   }
   
+  //Funcion de prueba, ELIMINAR
   async writeFileAsync() {
-    readWritePermission = await hasReadWritePermission()
-    if (readWritePermission) {
+    if (await hasReadWritePermission()) {
       Expo.FileSystem.writeAsStringAsync(`${Expo.FileSystem.documentDirectory}configuracion`, 'holis')
     }
   }

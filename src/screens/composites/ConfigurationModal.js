@@ -18,8 +18,7 @@ class ModalScreen extends React.Component {
   }
 
   async getConfigurations() {
-    readWritePermission = await hasReadWritePermission()
-    if(readWritePermission) {
+    if(await hasReadWritePermission()) {
       return (await Expo.FileSystem.readDirectoryAsync(Expo.FileSystem.documentDirectory)).map((elem) => ({key:elem}))
     }
   }
