@@ -86,7 +86,7 @@ class WelcomeScreen extends Component {
         <Image source={require('../../../assets/images/resuelvo_explorando_logo.png')}/>
         <Description description={description}/>
         <Button
-          onPress={() => this.props.navigation.push('Main')}
+          onPress={() => this.props.navigation.navigate('Main')}
           title='Comenzar'
         />
         <Button
