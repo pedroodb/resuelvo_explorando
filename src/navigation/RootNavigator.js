@@ -2,7 +2,7 @@ import { createStackNavigator } from 'react-navigation'
 import { ConfigurationModal } from '../screens/composites'
 import MainNavigator from './MainNavigator'
 
-//Navegador entre pantalla inicial y pantalla principal
+//Navegador raiz del que cuelga la pantalla de bienvenida y el selector de actividad
 const RootNavigator = createStackNavigator(
   {
     Welcome: {
