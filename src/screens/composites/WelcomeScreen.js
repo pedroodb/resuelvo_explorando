@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { Image, View, Button } from 'react-native'
-import { welcomeViewStyle } from '../../styles/WelcomeStyles'
+import { welcomeViewStyle } from './styles/WelcomeStyles'
 import hasReadWritePermission from '../../helpers/permissionAskers'
 import { Title, Description } from '../components/welcomeComponents'
 import { NavigationEvents } from 'react-navigation';

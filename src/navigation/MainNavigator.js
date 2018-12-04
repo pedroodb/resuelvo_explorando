@@ -1,5 +1,6 @@
 import { createStackNavigator } from 'react-navigation'
-import { WelcomeScreen, MainScreen} from '../screens/composites'
+import { WelcomeScreen } from '../screens/composites'
+import MainScreenNavigator from './MainScreenNavigator'
 
 //Navegador entre pantalla inicial y pantalla principal
 const MainNavigator = createStackNavigator(
@@ -8,7 +9,7 @@ const MainNavigator = createStackNavigator(
       screen: WelcomeScreen,
     },
     Main: {
-      screen: MainScreen,
+      screen: MainScreenNavigator,
       navigationOptions: () => ({
         headerLeft: null,
       }),
