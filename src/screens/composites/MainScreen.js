@@ -31,7 +31,7 @@ class MainScreen extends Component {
           keyExtractor={(item, index) => index}
         />
         <Button
-          onPress={() => this.props.navigation.navigate('Main')}
+          onPress={() => this.props.navigation.navigate('Task')}
           title="Leer tarea"
           color="#34495E"
         />
