@@ -1,1 +1,9 @@
-{}
+{
+  "expoServerPort": 19000,
+  "expoServerNgrokUrl": "https://sm-8nw.pedroodb.resuelvo-explorando.exp.direct",
+  "packagerNgrokUrl": "https://packager.sm-8nw.pedroodb.resuelvo-explorando.exp.direct",
+  "ngrokPid": 16761,
+  "devToolsPort": 19002,
+  "packagerPort": 19003,
+  "packagerPid": 16699
+}
