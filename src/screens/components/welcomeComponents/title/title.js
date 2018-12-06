@@ -5,7 +5,7 @@ import titleStyle from './titleStyle'
 class Title extends Component {
   render() {
     return (
-      <Text style={titleStyle.title}>
+      <Text style={titleStyle.titleWS}>
         {this.props.title}
       </Text>
     )

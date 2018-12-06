@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native'
 
 const titleStyle = StyleSheet.create({
     //Estilo del titulo de bienvenida
-    title: {
+    titleWS: {
       textAlign: 'center',
       fontSize: 36,
     }

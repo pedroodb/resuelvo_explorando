@@ -5,7 +5,7 @@ import descriptionStyle from './descriptionStyle'
 class Description extends Component {
   render() {
     return (
-      <Text style={descriptionStyle.description}>
+      <Text style={descriptionStyle.descriptionWS}>
         {this.props.description}
       </Text>
     )
