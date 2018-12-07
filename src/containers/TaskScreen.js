@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import { Text, View, Image, Button, ScrollView, StyleSheet} from 'react-native'
-import { createStackNavigator, createAppContainer } from 'react-navigation';
 
 //Pantalla de vista de tarea
 class TaskScreen extends Component {

@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import { Image, View, Button } from 'react-native'
 import { welcomeViewStyle } from './styles/WelcomeStyles'
-import hasReadWritePermission from '../../helpers/permissionAskers'
+import hasReadWritePermission from '../helpers/permissionAskers'
 import { Title, Description } from '../components/welcomeComponents'
 import { NavigationEvents } from 'react-navigation';
 
@@ -83,7 +83,7 @@ class WelcomeScreen extends Component {
           onWillFocus={this.handleFocusEvent}
         />
         <Title title={title}/>
-        <Image source={require('../../../assets/images/resuelvo_explorando_logo.png')}/>
+        <Image source={require('../assets/resuelvo_explorando_logo.png')}/>
         <Description description={description}/>
         <Button
           onPress={() => this.props.navigation.navigate('Main')}

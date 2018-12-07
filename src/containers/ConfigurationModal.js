@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button, View, Text, FlatList } from 'react-native'
-import hasReadWritePermission from '../../helpers/permissionAskers'
+import hasReadWritePermission from '../helpers/permissionAskers'
 
 class ModalScreen extends React.Component {
 
