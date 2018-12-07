@@ -83,7 +83,7 @@ class WelcomeScreen extends Component {
           onWillFocus={this.handleFocusEvent}
         />
         <Title title={title}/>
-        <Image source={require('../../../assets/images/resuelvo_explorando_logo.png')}/>
+        <Image source={require('../../assets/resuelvo_explorando_logo.png')}/>
         <Description description={description}/>
         <Button
           onPress={() => this.props.navigation.navigate('Main')}
