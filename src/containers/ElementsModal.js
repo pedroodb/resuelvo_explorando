@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import { Text, View, SectionList } from 'react-native'
 import elementsStyles from './styles/ElementsStyles'
 
-//Pantalla de vista de tarea
+//Pantalla de vista de bolsa de elementos
 class ElementsModal extends Component {
   
   render() {

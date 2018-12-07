@@ -64,13 +64,6 @@ class WelcomeScreen extends Component {
       return (await Expo.FileSystem.readAsStringAsync(`${Expo.FileSystem.documentDirectory}configuration`))
     }
   }
-  
-  //Funcion de prueba, ELIMINAR
-  async writeFileAsync() {
-    if (await hasReadWritePermission()) {
-      Expo.FileSystem.writeAsStringAsync(`${Expo.FileSystem.documentDirectory}configurations/emmm`, 'emmm')
-    }
-  }
 
   render() {
 
@@ -88,10 +81,6 @@ class WelcomeScreen extends Component {
         <Button
           onPress={() => this.props.navigation.navigate('Main')}
           title='Comenzar'
-        />
-        <Button
-          onPress={() => this.writeFileAsync()}
-          title='Crear config'
         />
     </View>
     )
