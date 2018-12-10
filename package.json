@@ -16,6 +16,7 @@
     "react-navigation": "^3.0.5"
   },
   "devDependencies": {
-    "babel-preset-expo": "^5.0.0"
+    "babel-preset-expo": "^5.0.0",
+    "react-autocomplete-cli": "0.0.3"
   }
 }

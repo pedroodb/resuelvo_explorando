@@ -1,23 +1,21 @@
 import React, {Component} from 'react'
-import { Text, View, Image, Button, ScrollView, StyleSheet} from 'react-native'
+import { Text, View, Image, Button,ScrollView, StyleSheet} from 'react-native'
+import {DefaultButton, DefaultButtonTaskBar} from '../components/generalComponents'
 
 //Pantalla de vista de tarea
 class TaskScreen extends Component {
 
   static navigationOptions = {
     headerRight: (
-      <Button
-        style={{marginRight:10}}
+      <DefaultButtonTaskBar
         onPress={() => alert('This is a button!')}
         title="Ayuda"
-        color="#2E9AFE"
       />
     ),
     headerLeft: (
-      <Button
+      <DefaultButtonTaskBar
         onPress={() => alert('This is a button!')}
         title="Bolsa"
-        color="#2E9AFE"
       />
     ),
   };
@@ -42,14 +40,15 @@ class TaskScreen extends Component {
           </View>
           <View style={{alignItems: 'center', flex:2}} >
             <View style={{alignItems: 'center', flex:1}}>
-              <Button
+              <DefaultButton
               onPress={() => this.props.navigation.push('Main')}
               title="Recolectar Elemento"
               />
             </View>
             <View style={{alignItems: 'center', flex:1}}>
-              <Button
+              <DefaultButton
                 title="Dejar Elemento"
+                onPress={() => this.props.navigation.push('Main')}
               />
             </View>
             </View>
@@ -58,16 +57,5 @@ class TaskScreen extends Component {
     }
   }
 
-  const styles = StyleSheet.create({
-  container: {
-   flex: 1,
-   paddingTop: 22
-  },
-  item: {
-    padding: 10,
-    fontSize: 10,
-    height: 44,
-  },
-})
 
 export default TaskScreen

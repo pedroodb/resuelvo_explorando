@@ -12,7 +12,7 @@ const mainStyles = StyleSheet.create({
       alignItems: 'center',
       justifyContent: 'center',
     },
-    BotonLeerTarea: {
+    botonLeerTarea: {
       color: "#fff",
       margin: 2
     },
