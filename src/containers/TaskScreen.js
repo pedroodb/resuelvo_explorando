@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
-import { Text, View, Image, Button,ScrollView, StyleSheet} from 'react-native'
+import { Text, View, Image, Button,SectionList, StyleSheet} from 'react-native'
 import {DefaultButton, DefaultButtonTaskBar} from '../components/generalComponents'
+import mainStyles from './styles/GeneralStyles'
+
 
 //Pantalla de vista de tarea
 class TaskScreen extends Component {
@@ -9,20 +11,17 @@ class TaskScreen extends Component {
     headerRight: (
       <DefaultButtonTaskBar
         onPress={() => alert('This is a button!')}
-        title="Ayuda"
-      />
-    ),
-    headerLeft: (
-      <DefaultButtonTaskBar
-        onPress={() => alert('This is a button!')}
-        title="Bolsa"
+        title="AYUDA"
       />
     ),
   };
 
     render() {
+      // para recibir parametros de otra pantalla
+    const { navigation } = this.props;
+    const cars = navigation.getParam('itemId',3);
       return (
-        <View style={{ flex:1, backgroundColor:'lightblue'}}>
+        <View style={{ flex:1}}>
           <View style={{flex:2}}>
             <Text
              style={{fontSize:20, textAlign:'center'}}>
@@ -30,13 +29,15 @@ class TaskScreen extends Component {
             </Text>
           </View>
           <View style={{alignItems: 'center', flex:3,}}>
-            <ScrollView>
-              <Text style={{fontSize:90}}>Queso</Text>
-              <Text style={{fontSize:50}}>Pan</Text>
-              <Text style={{fontSize:50}}>Torta</Text>
-              <Text style={{fontSize:90}}>Leche</Text>
-              <Text style={{fontSize:50}}>Algo más</Text>
-            </ScrollView>
+          <SectionList
+            sections={[
+              {title: 'Tareas realizadas', data: cars},
+              {title: 'Tareas aún sin realizar', data: []},
+            ]}
+            renderItem={({item}) => <Text style={mainStyles.item} onPress={() => this.props.navigation.navigate('taskSelected')}>{item}</Text>}
+            renderSectionHeader={({section}) => <Text style={mainStyles.sectionHeader}>{section.title}</Text>}
+            keyExtractor={(item, index) => index}
+          />
           </View>
           <View style={{alignItems: 'center', flex:2}} >
             <View style={{alignItems: 'center', flex:1}}>
