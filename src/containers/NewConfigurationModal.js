@@ -8,24 +8,28 @@ class NewConfigurationModal extends Component {
   constructor(props){
     super(props)
     this.state = {
-      title: '',
-      description: '',
+      configuration:{
+        title: '',
+        description: '',
+      },
     }
   }
 
+  //Guarda el archivo de configuracion en la carpeta configurations
   async saveConfiguration() {
     if (await hasReadWritePermission()) {
-      Expo.FileSystem.writeAsStringAsync(`${Expo.FileSystem.documentDirectory}configurations/${this.state.title}`, this.state.toString())
+      Expo.FileSystem.writeAsStringAsync(`${Expo.FileSystem.documentDirectory}configurations/${this.state.configuration.title}`, JSON.stringify(this.state.configuration)).then(
+        this.props.navigation.goBack()
+      )
     }
   }
 
+  //Obtiene la configuracion y la utiliza como estado del componente
   setConfiguration(code){
-    fetch(code).then(
+    fetch(`https://${code}`).then(
       (result) => result.json().then(
-        (configuration) => this.setState(() => configuration)
+        (configuration) => this.setState((prevState) => {prevState.configuration = configuration; return prevState})
       )
-    ).catch(
-      (error) => console.log(error)      
     )
   }
 
@@ -37,10 +41,10 @@ class NewConfigurationModal extends Component {
         <TextInput onChangeText={(text) => this.setState((prevState) => {prevState.code = text; return prevState})}/>
         <Button
           onPress={() => this.setConfiguration(this.state.code)}
-          title="Cargar codigo"
+          title="Cargar"
         />
-        <Text>{this.state.title}</Text>
-        <Text>{this.state.description}</Text>
+        <Text>{this.state.configuration.title}</Text>
+        <Text>{this.state.configuration.description}</Text>
         <Button
           onPress={() => this.saveConfiguration()}
           title="Descargar"

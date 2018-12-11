@@ -3,7 +3,7 @@ import { Image, View, Button } from 'react-native'
 import { welcomeViewStyle } from './styles/WelcomeStyles'
 import hasReadWritePermission from '../helpers/permissionAskers'
 import { Title, Description } from '../components/welcomeComponents'
-import { NavigationEvents } from 'react-navigation';
+import { NavigationEvents } from 'react-navigation'
 
 //Pantalla de bienvenida y carga de JSON
 class WelcomeScreen extends Component {
@@ -16,12 +16,13 @@ class WelcomeScreen extends Component {
       description: 'Carga una actividad para comenzar!',
     }
 
-    //Bindeo al this para referenciar al componente WelcomeScreen desde handle focus event
+    //Bindeo al this para referenciar al componente WelcomeScreen desde handleFocusEvent
     this.handleFocusEvent = this.handleFocusEvent.bind(this)
 
     this.generateConfigFolder()
   }
   
+  //Agrega al header la opcion de cargar una nueva configuracion
   static navigationOptions = ({ navigation }) => {
     return {
       headerRight: (
@@ -37,7 +38,8 @@ class WelcomeScreen extends Component {
   async handleFocusEvent() {
     if(await this.existsConfigFile()){
       config = await this.readConfigFile()
-      this.setState(() => ({title: config, description: config}))
+      config = JSON.parse(config)
+      this.setState(() => ({title: config.title, description: config.description}))
     }
   }
 
@@ -72,7 +74,7 @@ class WelcomeScreen extends Component {
     return (
       <View style={welcomeViewStyle}>
         <NavigationEvents
-          //Me subscrivo al evento 'onWillFocus' para actualizar el contenido luego de seleccionar una configuracion
+          //Me suscribo al evento 'onWillFocus' para actualizar el contenido luego de seleccionar una configuracion
           onWillFocus={this.handleFocusEvent}
         />
         <Title title={title}/>

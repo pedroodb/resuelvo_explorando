@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button, View, Text, FlatList } from 'react-native'
+import { NavigationEvents } from 'react-navigation'
 import hasReadWritePermission from '../helpers/permissionAskers'
 
 class ModalScreen extends React.Component {
@@ -9,9 +10,18 @@ class ModalScreen extends React.Component {
     this.state = {
       files: [],
     }
+
+    //Bindeo al this para referenciar al componente desde handleFocusEvent
+    this.handleFocusEvent = this.handleFocusEvent.bind(this)
   }
 
-  componentDidMount() {
+  //Actualizo la lista cada vez que se hace foco (util para cuando vuelvo de cargar configuracion nueva)
+  handleFocusEvent() {
+    this.updateConfigList()
+  }
+
+  //Actualiza el estado con los archivos de configuracion disponibles
+  async updateConfigList() {
     this.getConfigurations().then(
       (configurations) => this.setState(() => ({files: configurations}))
     )
@@ -34,6 +44,10 @@ class ModalScreen extends React.Component {
   render() {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <NavigationEvents
+          //Me suscribo al evento 'onWillFocus' para actualizar el contenido luego de seleccionar una configuracion
+          onWillFocus={this.handleFocusEvent}
+        />
         <Text style={{ fontSize: 30 }}>Elige una configuración entre las disponibles:</Text>
         <FlatList
           data={this.state.files}
