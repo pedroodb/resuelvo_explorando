@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { Image, View } from 'react-native'
+import { Image, View, Alert } from 'react-native'
 import { welcomeViewStyle } from './styles/WelcomeStyles'
 import hasReadWritePermission from '../helpers/permissionAskers'
 import { Title, Description } from '../components/welcomeComponents'
@@ -15,6 +15,7 @@ class WelcomeScreen extends Component {
     this.state = {
       title: 'Bienvenido a resuelvo explorando',
       description: 'Carga una actividad para comenzar!',
+      ready: false,
     }
 
     //Bindeo al this para referenciar al componente WelcomeScreen desde handleFocusEvent
@@ -38,9 +39,15 @@ class WelcomeScreen extends Component {
   //Actualizar contenido cuando se vuelve a la pantalla
   async handleFocusEvent() {
     if(await this.existsConfigFile()){
-      config = await this.readConfigFile()
-      config = JSON.parse(config)
-      this.setState(() => ({title: config.title, description: config.description}))
+      try {
+        config = JSON.parse(await this.readConfigFile())
+        this.setState(() => ({title: config.title, description: config.description, ready: true}))
+      } catch (error) {
+        Alert.alert(
+          'Error de actividad',
+          'El archivo de configuracion de la actividad seleccionada se encuentra corrupto o no tiene el formato correcto.'
+        )
+      }
     }
   }
 
@@ -70,7 +77,7 @@ class WelcomeScreen extends Component {
 
   render() {
 
-    const { title, description } = this.state
+    const { title, description, ready } = this.state
 
     return (
       <View style={welcomeViewStyle}>
@@ -81,10 +88,13 @@ class WelcomeScreen extends Component {
         <Title title={title}/>
         <Image source={require('../assets/resuelvo_explorando_logo.png')}/>
         <Description description={description}/>
-        <DefaultButton
-          onPress={() => this.props.navigation.navigate('Main')}
-          title='Comenzar'
-        />
+        {
+          ready &&
+          <DefaultButton
+            onPress={() => this.props.navigation.navigate('Main')}
+            title='Comenzar'
+          />
+        }
     </View>
     )
   }

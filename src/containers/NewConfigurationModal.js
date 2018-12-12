@@ -29,7 +29,7 @@ class NewConfigurationModal extends Component {
   setConfiguration(code){
     fetch(`https://${code}`).then(
       (result) => result.json().then(
-        (configuration) => this.setState((prevState) => {prevState.configuration = configuration; return prevState})
+        (configuration) => this.setState(() => ({configuration}))
       )
     )
   }
