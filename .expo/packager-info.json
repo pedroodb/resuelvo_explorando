@@ -1,9 +1,9 @@
 {
-  "packagerPort": 19001,
-  "packagerPid": 12423,
-  "expoServerPort": 19000,
-  "expoServerNgrokUrl": "https://tz-ht4.pedroodb.resuelvo-explorando.exp.direct",
-  "packagerNgrokUrl": "https://packager.tz-ht4.pedroodb.resuelvo-explorando.exp.direct",
-  "ngrokPid": 12471,
+  "packagerPort": null,
+  "packagerPid": null,
+  "expoServerPort": null,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null,
   "devToolsPort": 19002
 }
