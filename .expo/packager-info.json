@@ -1,9 +1,9 @@
 {
-  "packagerPort": 19001,
-  "packagerPid": 4819,
+  "packagerPort": 19003,
+  "packagerPid": 16527,
   "expoServerPort": 19000,
-  "expoServerNgrokUrl": "https://sm-8nw.pedroodb.resuelvo-explorando.exp.direct",
-  "packagerNgrokUrl": "https://packager.sm-8nw.pedroodb.resuelvo-explorando.exp.direct",
-  "ngrokPid": 4894,
+  "expoServerNgrokUrl": "https://sm-8nw.anonymous.resuelvo-explorando.exp.direct",
+  "packagerNgrokUrl": "https://packager.sm-8nw.anonymous.resuelvo-explorando.exp.direct",
+  "ngrokPid": 16577,
   "devToolsPort": 19002
 }
