@@ -23,7 +23,7 @@ class MainScreen extends Component {
       <View style={mainStyles.container}>
         <SectionList
           sections={[
-            {title: 'Tareas realizadas', data: cars},
+            {title: 'Tareas realizadas', data: []},
             {title: 'Tareas aún sin realizar', data: []},
           ]}
           renderItem={({item}) => <Text style={mainStyles.item} onPress={() => this.props.navigation.navigate('taskSelected')}>{item}</Text>}
@@ -31,9 +31,7 @@ class MainScreen extends Component {
           keyExtractor={(item, index) => index}
         />
         <Button
-          onPress={() => this.props.navigation.navigate('Task',{
-              itemId: cars, // le envía la información necesaria a la pantalla
-            })}
+          onPress={() => this.props.navigation.navigate('Task')}
           title="Leer tarea"
           color="#34495E"
         />
@@ -41,7 +39,5 @@ class MainScreen extends Component {
     )
   }
 }
-
-  var cars = ["Saab", "Volvo", "BMW"];
 
 export default MainScreen

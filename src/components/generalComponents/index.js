@@ -1,6 +1,6 @@
 //Componentes reusables en distintas partes de la aplicacion
-import DefaultButtonComponent from './DefaultButton/defaultButton'
-import DefaultButtonTaskBarComponent from './DefaultButtonTaskBar/defaultButtonTaskBar'
+import DefaultButtonComponent from './defaultButton'
+import DefaultButtonTaskBarComponent from './defaultButtonTaskBar'
 
 export const DefaultButton = DefaultButtonComponent
 export const DefaultButtonTaskBar = DefaultButtonTaskBarComponent

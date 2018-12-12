@@ -21,7 +21,7 @@ class WelcomeScreen extends Component {
 
     this.generateConfigFolder()
   }
-  
+
   static navigationOptions = ({ navigation }) => {
     return {
       headerRight: (
@@ -57,14 +57,14 @@ class WelcomeScreen extends Component {
       return (await Expo.FileSystem.getInfoAsync(`${Expo.FileSystem.documentDirectory}configuration`)).exists
     }
   }
-  
+
   //Devuelve una promesa con el contenido del archivo de configuracion
   async readConfigFile() {
     if (await hasReadWritePermission()) {
       return (await Expo.FileSystem.readAsStringAsync(`${Expo.FileSystem.documentDirectory}configuration`))
     }
   }
-  
+
   //Funcion de prueba, ELIMINAR
   async writeFileAsync() {
     if (await hasReadWritePermission()) {
@@ -75,7 +75,7 @@ class WelcomeScreen extends Component {
   render() {
 
     const { title, description } = this.state
-    
+
     return (
       <View style={welcomeViewStyle}>
         <NavigationEvents

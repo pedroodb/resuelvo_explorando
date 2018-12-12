@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import { Text } from 'react-native'
-import titleStyle from './titleStyle'
+import { StyleSheet } from 'react-native'
+
 
 class Title extends Component {
   render() {
@@ -11,5 +12,13 @@ class Title extends Component {
     )
   }
 }
+
+const titleStyle = StyleSheet.create({
+    //Estilo del titulo de bienvenida
+    titleWS: {
+      textAlign: 'center',
+      fontSize: 36,
+    }
+  });
 
 export default Title

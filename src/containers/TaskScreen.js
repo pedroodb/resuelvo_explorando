@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import { Text, View, Image, Button,SectionList, StyleSheet} from 'react-native'
 import {DefaultButton, DefaultButtonTaskBar} from '../components/generalComponents'
-import mainStyles from './styles/GeneralStyles'
+import mainStyles from '../components/styles/GeneralStyles'
 
 
 //Pantalla de vista de tarea
@@ -19,7 +19,7 @@ class TaskScreen extends Component {
     render() {
       // para recibir parametros de otra pantalla
     const { navigation } = this.props;
-    const cars = navigation.getParam('itemId',3);
+    const elementsList = navigation.getParam('ElementsList');
       return (
         <View style={{ flex:1}}>
           <View style={{flex:2}}>
@@ -31,8 +31,7 @@ class TaskScreen extends Component {
           <View style={{alignItems: 'center', flex:3,}}>
           <SectionList
             sections={[
-              {title: 'Tareas realizadas', data: cars},
-              {title: 'Tareas aún sin realizar', data: []},
+              {title: 'Elementos Recolectados', data:["Elemento1", "Elemento1", "Elemento1", "Elemento1", "Elemento1"]},
             ]}
             renderItem={({item}) => <Text style={mainStyles.item} onPress={() => this.props.navigation.navigate('taskSelected')}>{item}</Text>}
             renderSectionHeader={({section}) => <Text style={mainStyles.sectionHeader}>{section.title}</Text>}
@@ -57,6 +56,7 @@ class TaskScreen extends Component {
       )
     }
   }
+
 
 
 export default TaskScreen

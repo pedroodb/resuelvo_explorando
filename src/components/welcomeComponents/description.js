@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { Text } from 'react-native'
-import descriptionStyle from './descriptionStyle'
+import { StyleSheet } from 'react-native'
 
 class Description extends Component {
   render() {
@@ -11,5 +11,12 @@ class Description extends Component {
     )
   }
 }
+
+const descriptionStyle = StyleSheet.create({
+    //Estilo de la descripcion
+    descriptionWS: {
+      textAlign: 'center',
+    }
+  });
 
 export default Description

@@ -11,7 +11,7 @@ class DefaultButton extends React.PureComponent {
   render() {
     const { onPress, title } = this.props;
     return (
-      <TouchableHighlight onPress={onPress}>
+      <TouchableHighlight onPress={onPress} underlayColor="white">
         <View style={styles.button}>
             <Text style={styles.buttonText}>
               {title}
