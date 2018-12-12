@@ -1,6 +1,7 @@
 import React from 'react'
 import { Button, View, Text, FlatList } from 'react-native'
 import hasReadWritePermission from '../helpers/permissionAskers'
+import { DefaultButton } from '../components/generalComponents'
 
 class ModalScreen extends React.Component {
 
@@ -38,12 +39,12 @@ class ModalScreen extends React.Component {
         <FlatList
           data={this.state.files}
           renderItem={({item}) =>
-            <Button title={item.key}
+            <DefaultButton title={item.key}
               onPress={() => {this.setConfiguracion(item.key).then(
                 this.props.navigation.goBack()
             )}}/>}
         />
-        <Button
+        <DefaultButton
           onPress={() => this.props.navigation.goBack()}
           title="Cargar nueva"
         />

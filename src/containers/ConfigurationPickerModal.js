@@ -2,6 +2,7 @@ import React from 'react'
 import { Button, View, Text, FlatList } from 'react-native'
 import { NavigationEvents } from 'react-navigation'
 import hasReadWritePermission from '../helpers/permissionAskers'
+import {DefaultButton, DefaultButtonTaskBar} from '../components/generalComponents'
 
 class ModalScreen extends React.Component {
 
@@ -51,13 +52,13 @@ class ModalScreen extends React.Component {
         <Text style={{ fontSize: 30 }}>Elige una configuración entre las disponibles:</Text>
         <FlatList
           data={this.state.files}
-          renderItem={({item}) => 
-            <Button title={item.key} 
+          renderItem={({item}) =>
+            <DefaultButton title={item.key}
               onPress={() => {this.setConfiguracion(item.key).then(
                 this.props.navigation.goBack()
             )}}/>}
         />
-        <Button
+        <DefaultButton
           onPress={() => this.props.navigation.navigate('NewConfigurationModal')}
           title="Cargar nueva"
         />

@@ -1,9 +1,10 @@
 import React, {Component} from 'react'
-import { Image, View, Button } from 'react-native'
+import { Image, View } from 'react-native'
 import { welcomeViewStyle } from './styles/WelcomeStyles'
 import hasReadWritePermission from '../helpers/permissionAskers'
 import { Title, Description } from '../components/welcomeComponents'
 import { NavigationEvents } from 'react-navigation'
+import { DefaultButton, DefaultButtonTaskBar } from '../components/generalComponents'
 
 //Pantalla de bienvenida y carga de JSON
 class WelcomeScreen extends Component {
@@ -21,12 +22,12 @@ class WelcomeScreen extends Component {
 
     this.generateConfigFolder()
   }
-  
+
   //Agrega al header la opcion de cargar una nueva configuracion
   static navigationOptions = ({ navigation }) => {
     return {
       headerRight: (
-        <Button
+        <DefaultButtonTaskBar
           onPress={() => navigation.navigate('ConfigurationModal')}
           title="Cargar"
         />
@@ -59,7 +60,7 @@ class WelcomeScreen extends Component {
       return (await Expo.FileSystem.getInfoAsync(`${Expo.FileSystem.documentDirectory}configuration`)).exists
     }
   }
-  
+
   //Devuelve una promesa con el contenido del archivo de configuracion
   async readConfigFile() {
     if (await hasReadWritePermission()) {
@@ -70,7 +71,7 @@ class WelcomeScreen extends Component {
   render() {
 
     const { title, description } = this.state
-    
+
     return (
       <View style={welcomeViewStyle}>
         <NavigationEvents
@@ -80,7 +81,7 @@ class WelcomeScreen extends Component {
         <Title title={title}/>
         <Image source={require('../assets/resuelvo_explorando_logo.png')}/>
         <Description description={description}/>
-        <Button
+        <DefaultButton
           onPress={() => this.props.navigation.navigate('Main')}
           title='Comenzar'
         />

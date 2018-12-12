@@ -1,5 +1,5 @@
-import TitleComponent from './title/title'
-import DescriptionComponent from './description/description'
+import TitleComponent from './title'
+import DescriptionComponent from './description'
 
 export const Title = TitleComponent
 export const Description = DescriptionComponent

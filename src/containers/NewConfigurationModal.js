@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import { Text, View, Button, TextInput } from 'react-native'
 import hasReadWritePermission from '../helpers/permissionAskers'
+import {DefaultButton} from '../components/generalComponents'
 
 //Pantalla de carga de configuracion nueva
 class NewConfigurationModal extends Component {
@@ -33,19 +34,19 @@ class NewConfigurationModal extends Component {
     )
   }
 
-  
+
   render() {
     return (
       <View>
         <Text>Carga el codigo de una nueva configuracion:</Text>
         <TextInput onChangeText={(text) => this.setState((prevState) => {prevState.code = text; return prevState})}/>
-        <Button
+        <DefaultButton
           onPress={() => this.setConfiguration(this.state.code)}
           title="Cargar"
         />
         <Text>{this.state.configuration.title}</Text>
         <Text>{this.state.configuration.description}</Text>
-        <Button
+        <DefaultButton
           onPress={() => this.saveConfiguration()}
           title="Descargar"
         />
