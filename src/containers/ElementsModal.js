@@ -11,7 +11,7 @@ class ElementsModal extends Component {
       <View style={elementsStyles.container}>
         <SectionList
           sections={[
-            {title: 'Elementos recolectados', data:[]},
+            {title: 'Elementos recolectados', data:["Elemento1", "Elemento2", "Elemento3", "Elemento4", "Elemento5"]},
           ]}
           renderItem={({item}) => <Text style={elementsStyles.item}>{item}</Text>}
           renderSectionHeader={({section}) => <Text style={elementsStyles.sectionHeader}>{section.title}</Text>}

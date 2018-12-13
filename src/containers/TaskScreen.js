@@ -10,7 +10,7 @@ class TaskScreen extends Component {
   static navigationOptions = {
     headerRight: (
       <DefaultButtonTaskBar
-        onPress={() => alert('This is a button!')}
+        onPress={() => alert('Hola Ale')}
         title="AYUDA"
       />
     ),
@@ -25,13 +25,13 @@ class TaskScreen extends Component {
           <View style={{flex:2}}>
             <Text
              style={{fontSize:20, textAlign:'center'}}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad min
+              Deberan recolectar aquellos elementos que posean un alto contenido de azucar
             </Text>
           </View>
           <View style={{alignItems: 'center', flex:3,}}>
           <SectionList
             sections={[
-              {title: 'Elementos Recolectados', data:["Elemento1", "Elemento1", "Elemento1", "Elemento1", "Elemento1"]},
+              {title: 'Elementos Recolectados', data:["Elemento1", "Elemento2", "Elemento3", "Elemento4", "Elemento5"]},
             ]}
             renderItem={({item}) => <Text style={mainStyles.item} onPress={() => this.props.navigation.navigate('taskSelected')}>{item}</Text>}
             renderSectionHeader={({section}) => <Text style={mainStyles.sectionHeader}>{section.title}</Text>}

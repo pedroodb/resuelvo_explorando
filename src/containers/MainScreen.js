@@ -23,8 +23,8 @@ class MainScreen extends Component {
       <View style={mainStyles.container}>
         <SectionList
           sections={[
-            {title: 'Tareas realizadas', data: []},
-            {title: 'Tareas aún sin realizar', data: []},
+            {title: 'Tareas realizadas', data: ["Tarea 1"]},
+            {title: 'Tareas aún sin realizar', data: ["Tarea 2", "Tarea 3", "Tarea 4", "Tarea 5"]},
           ]}
           renderItem={({item}) => <Text style={mainStyles.item} onPress={() => this.props.navigation.navigate('taskSelected')}>{item}</Text>}
           renderSectionHeader={({section}) => <Text style={mainStyles.sectionHeader}>{section.title}</Text>}
