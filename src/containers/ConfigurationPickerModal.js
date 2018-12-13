@@ -1,8 +1,10 @@
 import React from 'react'
-import { Button, View, Text, FlatList } from 'react-native'
+import { View, Text, FlatList } from 'react-native'
 import { NavigationEvents } from 'react-navigation'
 import hasReadWritePermission from '../helpers/permissionAskers'
-import {DefaultButton, DefaultButtonTaskBar} from '../components/generalComponents'
+import { DefaultButton } from '../components/generalComponents'
+import generalStyles from '../components/styles/GeneralStyles'
+import cpStyles from './styles/ConfigurationPickerStyles'
 
 class ModalScreen extends React.Component {
 
@@ -44,19 +46,21 @@ class ModalScreen extends React.Component {
 
   render() {
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <View style={cpStyles.configurationPickerView}>
         <NavigationEvents
           //Me suscribo al evento 'onWillFocus' para actualizar el contenido luego de seleccionar una configuracion
           onWillFocus={this.handleFocusEvent}
         />
-        <Text style={{ fontSize: 30 }}>Elige una configuración entre las disponibles:</Text>
+        <Text style={cpStyles.configurationPickerMainText}>Configuraciones disponibles:</Text>
         <FlatList
           data={this.state.files}
           renderItem={({item}) =>
-            <DefaultButton title={item.key}
-              onPress={() => {this.setConfiguracion(item.key).then(
+            <Text style={generalStyles.item}
+            onPress={() => {this.setConfiguracion(item.key).then(
                 this.props.navigation.goBack()
-            )}}/>}
+            )}}>
+            {item.key}
+            </Text>}
         />
         <DefaultButton
           onPress={() => this.props.navigation.navigate('NewConfigurationModal')}
