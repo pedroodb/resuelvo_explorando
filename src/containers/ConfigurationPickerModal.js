@@ -4,7 +4,7 @@ import { NavigationEvents } from 'react-navigation'
 import hasReadWritePermission from '../helpers/permissionAskers'
 import { DefaultButton } from '../components/generalComponents'
 import generalStyles from '../components/styles/GeneralStyles'
-import cpStyles from './styles/ConfigurationPickerStyles'
+import { configurationPickerView, configurationPickerMainText } from './styles/ConfigurationPickerStyles'
 
 class ModalScreen extends React.Component {
 
@@ -46,12 +46,12 @@ class ModalScreen extends React.Component {
 
   render() {
     return (
-      <View style={cpStyles.configurationPickerView}>
+      <View style={configurationPickerView}>
         <NavigationEvents
           //Me suscribo al evento 'onWillFocus' para actualizar el contenido luego de seleccionar una configuracion
           onWillFocus={this.handleFocusEvent}
         />
-        <Text style={cpStyles.configurationPickerMainText}>Configuraciones disponibles:</Text>
+        <Text style={configurationPickerMainText}>Configuraciones disponibles:</Text>
         <FlatList
           data={this.state.files}
           renderItem={({item}) =>

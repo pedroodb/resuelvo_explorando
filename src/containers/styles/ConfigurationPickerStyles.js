@@ -7,7 +7,6 @@ const configurationPickerStyles = StyleSheet.create({
       backgroundColor: '#fff',
       alignItems: 'center',
       justifyContent: 'center',
-      marginBottom: 10,
     },
     configurationPickerMainText: {
       fontSize: 28,
@@ -15,4 +14,5 @@ const configurationPickerStyles = StyleSheet.create({
   });
 
 export const configurationPickerView = configurationPickerStyles.configurationPickerView
+export const configurationPickerMainText = configurationPickerStyles.configurationPickerMainText
 export default configurationPickerStyles
