@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { Text, View, Button, SectionList } from 'react-native'
+import { Text, View, SectionList } from 'react-native'
 import mainStyles from './styles/MainStyles'
 import {DefaultButton, DefaultButtonTaskBar} from '../components/generalComponents'
 

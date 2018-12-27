@@ -1,8 +1,7 @@
 import React, {Component} from 'react'
-import { Image, View, Alert } from 'react-native'
-import { welcomeViewStyle } from './styles/WelcomeStyles'
+import { Image, Text, View, Alert } from 'react-native'
+import { viewStyle, titleStyle, descriptionStyle } from './styles/WelcomeStyles'
 import hasReadWritePermission from '../helpers/permissionAskers'
-import { Title, Description } from '../components/welcomeComponents'
 import { NavigationEvents } from 'react-navigation'
 import { DefaultButton, DefaultButtonTaskBar } from '../components/generalComponents'
 
@@ -80,14 +79,14 @@ class WelcomeScreen extends Component {
     const { title, description, ready } = this.state
 
     return (
-      <View style={welcomeViewStyle}>
+      <View style={viewStyle}>
         <NavigationEvents
           //Me suscribo al evento 'onWillFocus' para actualizar el contenido luego de seleccionar una configuracion
           onWillFocus={this.handleFocusEvent}
         />
-        <Title title={title}/>
+        <Text style={titleStyle}>{title}</Text>
         <Image source={require('../assets/resuelvo_explorando_logo.png')}/>
-        <Description description={description}/>
+        <Text style={descriptionStyle}>{description}</Text>
         {
           ready &&
           <DefaultButton

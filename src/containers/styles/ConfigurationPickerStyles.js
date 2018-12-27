@@ -5,14 +5,9 @@ const configurationPickerStyles = StyleSheet.create({
     configurationPickerView: {
       flex: 1,
       backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    configurationPickerMainText: {
-      fontSize: 28,
+      justifyContent: 'space-evenly',
     }
   });
 
 export const configurationPickerView = configurationPickerStyles.configurationPickerView
-export const configurationPickerMainText = configurationPickerStyles.configurationPickerMainText
 export default configurationPickerStyles
