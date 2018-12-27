@@ -1,8 +1,8 @@
 import { StyleSheet } from 'react-native'
 
-const mainStyles = StyleSheet.create({
+const taskStyles = StyleSheet.create({
     //Estilo de la pantalla Main
-    viewMS: {
+    viewTS: {
       flex: 1,
       margin: 10,
       backgroundColor: '#fff',
@@ -10,5 +10,5 @@ const mainStyles = StyleSheet.create({
     },
   });
 
-export const viewStyle = mainStyles.viewMS
-export default mainStyles
+export const viewStyle = taskStyles.viewTS
+export default taskStyles
