@@ -29,12 +29,12 @@ class TaskScreen extends Component {
             keyExtractor={(item, index) => index}
           />
           <DefaultButton
-            onPress={() => this.props.navigation.goBack()}
+            onPress={() => this.props.navigation.navigate('Main')}
             title="Recolectar Elemento"
           />
           <DefaultButton
             title="Dejar Elemento"
-            onPress={() => this.props.navigation.goBack()}
+            onPress={() => this.props.navigation.navigate('Main')}
           />
         </View>
       )
