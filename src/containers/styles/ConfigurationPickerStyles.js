@@ -5,7 +5,8 @@ const configurationPickerStyles = StyleSheet.create({
     configurationPickerView: {
       flex: 1,
       backgroundColor: '#fff',
-      justifyContent: 'space-evenly',
+      justifyContent: 'center',
+      margin: 10,
     }
   });
 

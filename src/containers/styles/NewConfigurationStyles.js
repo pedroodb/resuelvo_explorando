@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native'
 
 const newConfigurationStyles = StyleSheet.create({
-    //Estilo de la pantalla de seleccion de configuracion
+    //Estilo de la pantalla de carga de nueva configuracion
     newConfigurationView: {
       flex: 1,
       backgroundColor: '#fff',

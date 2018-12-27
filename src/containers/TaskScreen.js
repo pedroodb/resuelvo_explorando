@@ -1,6 +1,6 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import { Text, View, SectionList} from 'react-native'
-import {DefaultButton, DefaultButtonTaskBar} from '../components'
+import { DefaultButton, DefaultButtonTaskBar } from '../components'
 import { sectionListHeader, sectionListItem } from '../components/styles/genericStyles'
 
 

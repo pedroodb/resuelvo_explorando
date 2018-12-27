@@ -1,5 +1,5 @@
 import { createStackNavigator } from 'react-navigation'
-import { MainScreen, ElementsModal } from '../containers'
+import { MainScreen } from '../containers'
 
 //Navegador de pantalla principal
 const MainNavigator = createStackNavigator(
@@ -9,9 +9,6 @@ const MainNavigator = createStackNavigator(
       navigationOptions: () => ({
         headerLeft: null,
       }),
-    },
-    Elements: {
-      screen: ElementsModal
     }
   },
   {
