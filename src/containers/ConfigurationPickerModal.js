@@ -2,8 +2,8 @@ import React from 'react'
 import { View, Text, SectionList } from 'react-native'
 import { NavigationEvents } from 'react-navigation'
 import hasReadWritePermission from '../helpers/permissionAskers'
-import { DefaultButton } from '../components/generalComponents'
-import { sectionListHeader, sectionListItem } from '../components/styles/GeneralStyles'
+import { DefaultButton } from '../components'
+import { sectionListHeader, sectionListItem } from '../components/styles/genericStyles'
 import { configurationPickerView } from './styles/ConfigurationPickerStyles'
 
 class ModalScreen extends React.Component {

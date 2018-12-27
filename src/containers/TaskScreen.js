@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
-import { Text, View, Image, Button,SectionList, StyleSheet} from 'react-native'
-import {DefaultButton, DefaultButtonTaskBar} from '../components/generalComponents'
-import mainStyles from '../components/styles/GeneralStyles'
+import { Text, View, SectionList} from 'react-native'
+import {DefaultButton, DefaultButtonTaskBar} from '../components'
+import { sectionListHeader, sectionListItem } from '../components/styles/genericStyles'
 
 
 //Pantalla de vista de tarea
@@ -33,8 +33,8 @@ class TaskScreen extends Component {
             sections={[
               {title: 'Elementos Recolectados', data:["Elemento1", "Elemento2", "Elemento3", "Elemento4", "Elemento5"]},
             ]}
-            renderItem={({item}) => <Text style={mainStyles.item} onPress={() => this.props.navigation.navigate('taskSelected')}>{item}</Text>}
-            renderSectionHeader={({section}) => <Text style={mainStyles.sectionHeader}>{section.title}</Text>}
+            renderItem={({item}) => <Text style={sectionListItem} onPress={() => this.props.navigation.navigate('taskSelected')}>{item}</Text>}
+            renderSectionHeader={({section}) => <Text style={sectionListHeader}>{section.title}</Text>}
             keyExtractor={(item, index) => index}
           />
           </View>

@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import { Text, View, Image, TextInput, Alert } from 'react-native'
 import hasReadWritePermission from '../helpers/permissionAskers'
-import { DefaultButton } from '../components/generalComponents'
+import { DefaultButton } from '../components'
 import { newConfigurationView } from './styles/NewConfigurationStyles'
 
 //Pantalla de carga de configuracion nueva

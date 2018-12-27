@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import { Text, View, SectionList } from 'react-native'
 import mainStyles from './styles/MainStyles'
-import {DefaultButton, DefaultButtonTaskBar} from '../components/generalComponents'
+import { DefaultButton, DefaultButtonTaskBar } from '../components'
 
 //Pantalla de vista de tarea
 class MainScreen extends Component {

@@ -3,7 +3,7 @@ import { Image, Text, View, Alert } from 'react-native'
 import { viewStyle, titleStyle, descriptionStyle } from './styles/WelcomeStyles'
 import hasReadWritePermission from '../helpers/permissionAskers'
 import { NavigationEvents } from 'react-navigation'
-import { DefaultButton, DefaultButtonTaskBar } from '../components/generalComponents'
+import { DefaultButton, DefaultButtonTaskBar } from '../components'
 
 //Pantalla de bienvenida y carga de JSON
 class WelcomeScreen extends Component {
