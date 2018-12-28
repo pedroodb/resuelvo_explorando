@@ -17,25 +17,19 @@ class TaskScreen extends Component {
   };
 
     render() {
+      const numT = this.props.navigation.getParam('num', 'NO-ID');
       return (
         <View style={viewStyle}>
-          <Text>Deberan recolectar aquellos elementos que posean un alto contenido de azucar</Text>
-          <SectionList
-            sections={[
-              {title: 'Elementos Recolectados', data:["Elemento1", "Elemento2", "Elemento3", "Elemento4", "Elemento5"]},
-            ]}
-            renderItem={({item}) => <Text style={sectionListItem} onPress={() => this.props.navigation.navigate('taskSelected')}>{item}</Text>}
-            renderSectionHeader={({section}) => <Text style={sectionListHeader}>{section.title}</Text>}
-            keyExtractor={(item, index) => index}
-          />
-          <DefaultButton
-            onPress={() => this.props.navigation.navigate('Main')}
-            title="Recolectar Elemento"
-          />
-          <DefaultButton
-            title="Dejar Elemento"
-            onPress={() => this.props.navigation.navigate('Main')}
-          />
+        <View style={{flex:2}}>
+          <Text style={{fontSize:30, textAlign:"center", }}>Tarea {numT}</Text>
+          </View>
+          <View style={{flex:3}}>
+          <Text style={{fontSize:20, textAlign:"center", }} >Descripción {numT}</Text> 
+          </View>
+          <View style={{flex:2}}>
+          <DefaultButton title="Resolver" onPress={() => this.props.navigation.navigate('Main',{res:numT})} >
+          </DefaultButton>
+          </View>
         </View>
       )
     }

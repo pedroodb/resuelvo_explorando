@@ -1,5 +1,5 @@
 import { createStackNavigator } from 'react-navigation'
-import { MainScreen } from '../containers'
+import { MainScreen, CameraModal } from '../containers'
 
 //Navegador de pantalla principal
 const MainNavigator = createStackNavigator(
@@ -9,6 +9,9 @@ const MainNavigator = createStackNavigator(
       navigationOptions: () => ({
         headerLeft: null,
       }),
+    },
+    Camera: {
+      screen: CameraModal,
     }
   },
   {

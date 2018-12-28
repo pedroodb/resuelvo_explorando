@@ -10,6 +10,9 @@ const TaskNavigator = createStackNavigator(
         headerLeft: null,
       }),
     }
+  },
+  {
+    initialRouteName: 'Task',
   }
 );
 
