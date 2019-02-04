@@ -1,8 +1,10 @@
 import React from 'react'
-import { Button, View, Text, FlatList } from 'react-native'
+import { View, Text, SectionList } from 'react-native'
 import { NavigationEvents } from 'react-navigation'
 import hasReadWritePermission from '../helpers/permissionAskers'
-import {DefaultButton, DefaultButtonTaskBar} from '../components/generalComponents'
+import { DefaultButton } from '../components'
+import { sectionListHeader, sectionListItem } from '../components/styles/genericStyles'
+import { configurationPickerView } from './styles/ConfigurationPickerStyles'
 
 class ModalScreen extends React.Component {
 
@@ -44,20 +46,22 @@ class ModalScreen extends React.Component {
 
   render() {
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <View style={configurationPickerView}>
         <NavigationEvents
           //Me suscribo al evento 'onWillFocus' para actualizar el contenido luego de seleccionar una configuracion
           onWillFocus={this.handleFocusEvent}
         />
-        <Text style={{ fontSize: 30 }}>Elige una configuración entre las disponibles:</Text>
-        <FlatList
-          data={this.state.files}
-          renderItem={({item}) =>
-            <DefaultButton title={item.key}
-              onPress={() => {this.setConfiguracion(item.key).then(
+        <SectionList
+            sections={[
+              {title: 'Configuraciones disponibles', data:this.state.files},
+            ]}
+            renderItem={({item}) => <Text style={sectionListItem} onPress={() => {
+              this.setConfiguracion(item.key).then(
                 this.props.navigation.goBack()
-            )}}/>}
-        />
+            )}}>{item.key}</Text>}
+            renderSectionHeader={({section}) => <Text style={sectionListHeader}>{section.title}</Text>}
+            keyExtractor={(item, index) => index}
+        />  
         <DefaultButton
           onPress={() => this.props.navigation.navigate('NewConfigurationModal')}
           title="Cargar nueva"

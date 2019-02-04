@@ -1,10 +1,9 @@
 import React, {Component} from 'react'
-import { Image, View } from 'react-native'
-import { welcomeViewStyle } from './styles/WelcomeStyles'
+import { Image, Text, View, Alert } from 'react-native'
+import { viewStyle, titleStyle, descriptionStyle } from './styles/WelcomeStyles'
 import hasReadWritePermission from '../helpers/permissionAskers'
-import { Title, Description } from '../components/welcomeComponents'
 import { NavigationEvents } from 'react-navigation'
-import { DefaultButton, DefaultButtonTaskBar } from '../components/generalComponents'
+import { DefaultButton, DefaultButtonTaskBar } from '../components'
 
 //Pantalla de bienvenida y carga de JSON
 class WelcomeScreen extends Component {
@@ -15,6 +14,7 @@ class WelcomeScreen extends Component {
     this.state = {
       title: 'Bienvenido a resuelvo explorando',
       description: 'Carga una actividad para comenzar!',
+      ready: false,
     }
 
     //Bindeo al this para referenciar al componente WelcomeScreen desde handleFocusEvent
@@ -38,9 +38,15 @@ class WelcomeScreen extends Component {
   //Actualizar contenido cuando se vuelve a la pantalla
   async handleFocusEvent() {
     if(await this.existsConfigFile()){
-      config = await this.readConfigFile()
-      config = JSON.parse(config)
-      this.setState(() => ({title: config.title, description: config.description}))
+      try {
+        config = JSON.parse(await this.readConfigFile())
+        this.setState(() => ({title: config.title, description: config.description, ready: true}))
+      } catch (error) {
+        Alert.alert(
+          'Error de actividad',
+          'El archivo de configuracion de la actividad seleccionada se encuentra corrupto o no tiene el formato correcto.'
+        )
+      }
     }
   }
 
@@ -70,21 +76,24 @@ class WelcomeScreen extends Component {
 
   render() {
 
-    const { title, description } = this.state
+    const { title, description, ready } = this.state
 
     return (
-      <View style={welcomeViewStyle}>
+      <View style={viewStyle}>
         <NavigationEvents
           //Me suscribo al evento 'onWillFocus' para actualizar el contenido luego de seleccionar una configuracion
           onWillFocus={this.handleFocusEvent}
         />
-        <Title title={title}/>
+        <Text style={titleStyle}>{title}</Text>
         <Image source={require('../assets/resuelvo_explorando_logo.png')}/>
-        <Description description={description}/>
-        <DefaultButton
-          onPress={() => this.props.navigation.navigate('Main')}
-          title='Comenzar'
-        />
+        <Text style={descriptionStyle}>{description}</Text>
+        {
+          ready &&
+          <DefaultButton
+            onPress={() => this.props.navigation.navigate('Main')}
+            title='Comenzar'
+          />
+        }
     </View>
     )
   }
