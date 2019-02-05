@@ -1,9 +1,14 @@
 import React, {Component} from 'react'
 import { Image, Text, View, Alert } from 'react-native'
-import { viewStyle, titleStyle, descriptionStyle } from './styles/WelcomeStyles'
-import hasReadWritePermission from '../helpers/permissionAskers'
 import { NavigationEvents } from 'react-navigation'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+
+import { viewStyle, titleStyle, descriptionStyle } from './styles/WelcomeStyles'
 import { DefaultButton, DefaultButtonTaskBar } from '../components'
+import hasReadWritePermission from '../helpers/permissionAskers'
+import { setConfiguration } from '../actions/globalActions'
+
 
 //Pantalla de bienvenida y carga de JSON
 class WelcomeScreen extends Component {
@@ -11,12 +16,7 @@ class WelcomeScreen extends Component {
   //Carga por defecto en caso de que no haya ninguna configuracion cargada
   constructor(props) {
     super(props)
-    this.state = {
-      title: 'Bienvenido a resuelvo explorando',
-      description: 'Carga una actividad para comenzar!',
-      ready: false,
-    }
-
+    
     //Bindeo al this para referenciar al componente WelcomeScreen desde handleFocusEvent
     this.handleFocusEvent = this.handleFocusEvent.bind(this)
 
@@ -40,7 +40,7 @@ class WelcomeScreen extends Component {
     if(await this.existsConfigFile()){
       try {
         config = JSON.parse(await this.readConfigFile())
-        this.setState(() => ({title: config.title, description: config.description, ready: true}))
+        this.props.actions.setConfiguration(config)
       } catch (error) {
         Alert.alert(
           'Error de actividad',
@@ -76,7 +76,7 @@ class WelcomeScreen extends Component {
 
   render() {
 
-    const { title, description, ready } = this.state
+    const { title, description, ready } = this.props
 
     return (
       <View style={viewStyle}>
@@ -99,4 +99,20 @@ class WelcomeScreen extends Component {
   }
 }
 
-export default WelcomeScreen
+function mapDispatchToProps(dispatch) {
+  return {
+    actions : bindActionCreators({
+      setConfiguration
+    }, dispatch) 
+  }
+}
+
+function mapStateToProps({ready,title,description}) {
+    return {
+      ready,
+      title,
+      description,
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(WelcomeScreen)
