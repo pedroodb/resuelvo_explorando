@@ -1,3 +1,5 @@
+import { CONFIGURATION_SET } from '../constants'
+
 const initialState = {
   ready:false,
   title:'Bienvenido a resuelvo explorando',
@@ -8,7 +10,7 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'configuration-set':
+    case CONFIGURATION_SET:
     {
       return {
         ...state,
