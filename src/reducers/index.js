@@ -1,10 +1,10 @@
 //Combina todos los reducers en uno
 import { combineReducers } from 'redux'
 
-import welcomeReducer from './WelcomeReducers'
+import activityReducer from './activityReducers'
 
 const AppReducer = combineReducers({
-  welcomeReducer
+  activityReducer
 });
 
 export default AppReducer;

@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import { Text, View, SectionList } from 'react-native'
 import { viewStyle } from './styles/MainStyles'
 import { DefaultButton } from '../components'

@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import { Image, Text, View, Alert } from 'react-native'
 import { NavigationEvents } from 'react-navigation'
 import { connect } from 'react-redux'
@@ -7,7 +7,7 @@ import { bindActionCreators } from 'redux'
 import { viewStyle, titleStyle, descriptionStyle } from './styles/WelcomeStyles'
 import { DefaultButton, DefaultButtonTaskBar } from '../components'
 import hasReadWritePermission from '../helpers/permissionAskers'
-import { setConfiguration } from '../actions/welcomeActions'
+import { setConfiguration } from '../actions/activityActions'
 
 
 //Pantalla de bienvenida y carga de JSON
@@ -102,7 +102,7 @@ class WelcomeScreen extends Component {
   }
 }
 
-//Funcion que mapea las acciones ('actions/welcomeActions') con las funciones que llamamos desde el componente
+//Funcion que mapea las acciones ('actions/activityActions') con las funciones que llamamos desde el componente
 function mapDispatchToProps(dispatch) {
   return {
     actions : bindActionCreators({
@@ -112,9 +112,9 @@ function mapDispatchToProps(dispatch) {
 }
 
 //Funcion que mapea el estado de la APLICACION (redux) con las props del componente
-function mapStateToProps({welcomeReducer}) {
+function mapStateToProps({activityReducer}) {
     return {
-      ...welcomeReducer
+      ...activityReducer
     }
 }
 
