@@ -8,7 +8,7 @@ const initialState = {
   finishedTasks:[]
 }
 
-const reducer = (state = initialState, action) => {
+const welcomeReducer = (state = initialState, action) => {
   switch (action.type) {
     case CONFIGURATION_SET:
     {
@@ -24,12 +24,4 @@ const reducer = (state = initialState, action) => {
   }
 }
 
-export default reducer
-
-/*import { combineReducers } from 'redux'
-
-const AppReducer = combineReducers({
-  reducer
-});
-
-export default AppReducer;*/
+export default welcomeReducer

@@ -75,8 +75,11 @@ class WelcomeScreen extends Component {
   }
 
   render() {
-
-    const { title, description, ready } = this.props
+    const {
+      title,
+      description,
+      ready
+    } = this.props
 
     return (
       <View style={viewStyle}>
@@ -109,11 +112,9 @@ function mapDispatchToProps(dispatch) {
 }
 
 //Funcion que mapea el estado de la APLICACION (redux) con las props del componente
-function mapStateToProps({ready,title,description}) {
+function mapStateToProps({welcomeReducer}) {
     return {
-      ready,
-      title,
-      description,
+      ...welcomeReducer
     }
 }
 
