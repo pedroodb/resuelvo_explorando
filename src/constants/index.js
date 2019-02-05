@@ -1,1 +1,1 @@
-export * from './welcomeConstants'
+export * from './activityConstants'

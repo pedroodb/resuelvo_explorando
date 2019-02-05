@@ -1,4 +1,4 @@
-import { CONFIGURATION_SET, TASK_SOLVED } from '../constants'
+import { ACTIVITY_SET } from '../constants'
 
 const initialState = {
   ready:false,
@@ -10,7 +10,7 @@ const initialState = {
 
 const activityReducer = (state = initialState, action) => {
   switch (action.type) {
-    case CONFIGURATION_SET:
+    case ACTIVITY_SET:
     {
       return {
         ...state,

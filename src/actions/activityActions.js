@@ -1,8 +1,8 @@
-import { CONFIGURATION_SET } from "../constants";
+import { ACTIVITY_SET } from "../constants";
 
 export function setConfiguration(configuration) {
   return {
-    type: CONFIGURATION_SET,
+    type: ACTIVITY_SET,
     payload: configuration,
   }
 }
