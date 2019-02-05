@@ -7,7 +7,7 @@ import { bindActionCreators } from 'redux'
 import { viewStyle, titleStyle, descriptionStyle } from './styles/WelcomeStyles'
 import { DefaultButton, DefaultButtonTaskBar } from '../components'
 import hasReadWritePermission from '../helpers/permissionAskers'
-import { setConfiguration } from '../actions/globalActions'
+import { setConfiguration } from '../actions/welcomeActions'
 
 
 //Pantalla de bienvenida y carga de JSON
