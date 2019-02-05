@@ -16,7 +16,7 @@ class WelcomeScreen extends Component {
   //Carga por defecto en caso de que no haya ninguna configuracion cargada
   constructor(props) {
     super(props)
-    
+
     //Bindeo al this para referenciar al componente WelcomeScreen desde handleFocusEvent
     this.handleFocusEvent = this.handleFocusEvent.bind(this)
 
@@ -40,7 +40,7 @@ class WelcomeScreen extends Component {
     if(await this.existsConfigFile()){
       try {
         config = JSON.parse(await this.readConfigFile())
-        this.props.actions.setConfiguration(config)
+        this.props.actions.setConfiguration({ready: true, ...config})
       } catch (error) {
         Alert.alert(
           'Error de actividad',
@@ -99,6 +99,7 @@ class WelcomeScreen extends Component {
   }
 }
 
+//Funcion que mapea las acciones ('actions/welcomeActions') con las funciones que llamamos desde el componente
 function mapDispatchToProps(dispatch) {
   return {
     actions : bindActionCreators({
@@ -107,6 +108,7 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
+//Funcion que mapea el estado de la APLICACION (redux) con las props del componente
 function mapStateToProps({ready,title,description}) {
     return {
       ready,
