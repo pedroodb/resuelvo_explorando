@@ -1,8 +1,13 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { BarCodeScanner, Permissions } from 'expo';
+import React, { Component } from 'react'
+import { StyleSheet, Text, View } from 'react-native'
+import { BarCodeScanner, Permissions } from 'expo'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 
-export default class BarcodeScannerExample extends React.Component {
+import { readTask } from '../actions/taskActions'
+
+class CameraModal extends Component {
+
   state = {
     hasCameraPermission: null,
   }
@@ -10,7 +15,7 @@ export default class BarcodeScannerExample extends React.Component {
   async componentDidMount() {
     const { status } = await Permissions.askAsync(Permissions.CAMERA);
     this.setState({ hasCameraPermission: status === 'granted' });
-    }
+  }
 
   render() {
 
@@ -42,7 +47,8 @@ export default class BarcodeScannerExample extends React.Component {
     const finishedTaskCodes = this.props.navigation.getParam('finishedTaskCodes', []);
 
     if (taskCodes.includes(data)) {
-      this.props.navigation.navigate('Task',{num:parseInt(data[1])})
+      this.props.actions.readTask(data)
+      this.props.navigation.goBack()
     } else {
       if (finishedTaskCodes.includes(data)) {
         alert('Tarea ya realizada')
@@ -53,3 +59,22 @@ export default class BarcodeScannerExample extends React.Component {
     }
   }
 }
+
+
+//Funcion que mapea las acciones ('actions/activityActions') con las funciones que llamamos desde el componente
+function mapDispatchToProps(dispatch) {
+  return {
+    actions : bindActionCreators({
+      readTask
+    }, dispatch) 
+  }
+}
+
+//Funcion que mapea el estado de la APLICACION (redux) con las props del componente
+function mapStateToProps({activityReducer}) {
+    return {
+      //No necesitamos nada del state 
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(CameraModal)

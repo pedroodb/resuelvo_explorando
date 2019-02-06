@@ -42,6 +42,7 @@ class WelcomeScreen extends Component {
         config = JSON.parse(await this.readConfigFile())
         this.props.actions.setConfiguration({ready: true, ...config})
       } catch (error) {
+        console.log(error)
         Alert.alert(
           'Error de actividad',
           'El archivo de configuracion de la actividad seleccionada se encuentra corrupto o no tiene el formato correcto.'

@@ -2,9 +2,11 @@
 import { combineReducers } from 'redux'
 
 import activityReducer from './activityReducers'
+import taskReducer from './taskReducers'
 
 const AppReducer = combineReducers({
-  activityReducer
+  activityReducer,
+  taskReducer
 });
 
 export default AppReducer;

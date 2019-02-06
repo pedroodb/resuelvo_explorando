@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-import { Text, View, SectionList } from 'react-native'
+import { Text, View, SectionList, Alert } from 'react-native'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import { viewStyle } from './styles/MainStyles'
 import { DefaultButton } from '../components'
 import { sectionListHeader, sectionListItem } from '../components/styles/genericStyles'
+import { setTask } from '../actions/taskActions'
 
 
 //Pantalla de vista de tarea
@@ -16,10 +17,15 @@ class MainScreen extends Component {
     //Las props se obtienen gracias a mapStateToProps que las mapea desde el state del reducer
     const {
       tasks,
-      finishedTasks
+      finishedTasks,
+      readenTaskReady,
+      readenTaskCode,
     } = this.props
-    
-    console.log(tasks)
+
+    if (readenTaskReady) {
+      this.handleReadenTask(tasks.find(task => (task.code == readenTaskCode)))
+    }
+
     return (
       <View style={viewStyle}>
         <SectionList
@@ -38,6 +44,29 @@ class MainScreen extends Component {
       </View>
     )
   }
+
+  //Funcion llamada cuando se leyo un codigo con la camara
+  handleReadenTask(task) {
+    Alert.alert(
+      `Se encontro la tarea ${task.name}`,
+      'Quiere comenzar la tarea?',
+      [
+        {
+          text: 'Cancel',
+          onPress: () => {},
+          style: 'cancel',
+        },
+        {
+          text: 'Comenzar',
+          onPress: () => {
+            this.props.actions.setTask(task)
+            this.props.navigation.navigate('Task')
+          }
+        },
+      ],
+    )
+  }
+
 }
 
 
@@ -45,15 +74,16 @@ class MainScreen extends Component {
 function mapDispatchToProps(dispatch) {
   return {
     actions : bindActionCreators({
-      //Aqui acciones que hubieramos importado y quisieramos utilizar
+      setTask
     }, dispatch)
   }
 }
 
 //Funcion que mapea el estado de la APLICACION (redux) con las props del componente
-function mapStateToProps({activityReducer}) {
+function mapStateToProps({activityReducer, taskReducer}) {
     return {
-      ...activityReducer
+      ...activityReducer,
+      ...taskReducer
     }
 }
 
