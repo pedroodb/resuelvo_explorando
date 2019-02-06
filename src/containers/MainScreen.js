@@ -19,6 +19,7 @@ class MainScreen extends Component {
       finishedTasks
     } = this.props
     
+    console.log(tasks)
     return (
       <View style={viewStyle}>
         <SectionList
@@ -31,7 +32,7 @@ class MainScreen extends Component {
           keyExtractor={(item, index) => index}
         />
         <DefaultButton
-          onPress={() => this.props.navigation.navigate('Camera')}
+          onPress={() => this.props.navigation.navigate('Camera',{taskCodes: tasks.map(task => task.code), finishedTaskCodes: finishedTasks.map(task => task.code)})}
           title="Leer tarea"
         />
       </View>

@@ -17,7 +17,7 @@ class TaskScreen extends Component {
   };
 
     render() {
-      const numT = this.props.navigation.getParam('num', 'NO-ID');
+      const numT = this.props.navigation.getParam('num', 'NO-ID')
       return (
         <View style={viewStyle}>
         <View style={{flex:2}}>
