@@ -12,6 +12,8 @@ import { sectionListHeader, sectionListItem } from '../components/styles/generic
 class MainScreen extends Component {
 
   render() {
+
+    //Las props se obtienen gracias a mapStateToProps que las mapea desde el state del reducer
     const {
       tasks,
       finishedTasks
