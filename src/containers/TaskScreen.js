@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import { Text, View, SectionList} from 'react-native'
+import { Text, View } from 'react-native'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+
 import { DefaultButton, DefaultButtonTaskBar } from '../components'
-import { sectionListHeader, sectionListItem } from '../components/styles/genericStyles'
-import { viewStyle } from './styles/TaskStyles'
 
 //Pantalla de vista de tarea
 class TaskScreen extends Component {
@@ -16,23 +17,35 @@ class TaskScreen extends Component {
     ),
   };
 
-    render() {
-      const numT = this.props.navigation.getParam('num', 'NO-ID')
-      return (
-        <View style={viewStyle}>
-        <View style={{flex:2}}>
-          <Text style={{fontSize:30, textAlign:"center", }}>Tarea {numT}</Text>
-          </View>
-          <View style={{flex:3}}>
-          <Text style={{fontSize:20, textAlign:"center", }} >Descripción {numT}</Text> 
-          </View>
-          <View style={{flex:2}}>
-          <DefaultButton title="Resolver" onPress={() => this.props.navigation.navigate('Main',{res:numT})} >
-          </DefaultButton>
-          </View>
-        </View>
-      )
-    }
-  }
+  render() {
 
-export default TaskScreen
+    const { currentTask } = this.props
+
+    return (
+      <View>
+        <Text>{currentTask.name}</Text>
+        <Text>{currentTask.code}</Text>
+        <DefaultButton title="Resolver" onPress={() => this.props.navigation.navigate('Main',{res:numT})}>
+        </DefaultButton>
+      </View>
+    )
+  }
+}
+
+//Funcion que mapea las acciones ('actions/activityActions') con las funciones que llamamos desde el componente
+function mapDispatchToProps(dispatch) {
+  return {
+    actions : bindActionCreators({
+      //Aqui van las actions (redux) que fuera a utilizar
+    }, dispatch)
+  }
+}
+
+//Funcion que mapea el estado de la APLICACION (redux) con las props del componente
+function mapStateToProps({taskReducer}) {
+  return {
+    ...taskReducer
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(TaskScreen)

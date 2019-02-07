@@ -81,10 +81,10 @@ function mapDispatchToProps(dispatch) {
 
 //Funcion que mapea el estado de la APLICACION (redux) con las props del componente
 function mapStateToProps({activityReducer, taskReducer}) {
-    return {
-      ...activityReducer,
-      ...taskReducer
-    }
+  return {
+    ...activityReducer,
+    ...taskReducer
+  }
 }
 
 export default connect(mapStateToProps,mapDispatchToProps)(MainScreen)
