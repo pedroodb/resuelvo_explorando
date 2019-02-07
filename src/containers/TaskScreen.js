@@ -3,33 +3,39 @@ import { Text, View } from 'react-native'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import { DefaultButton, DefaultButtonTaskBar } from '../components'
+import { DefaultButton } from '../components'
+import { MULTIPLE_CHOICE, FREE_ANSWER } from '../config'
 
 //Pantalla de vista de tarea
 class TaskScreen extends Component {
-
-  static navigationOptions = {
-    headerRight: (
-      <DefaultButtonTaskBar
-        onPress={() => alert('Hola Ale')}
-        title="AYUDA"
-      />
-    ),
-  };
 
   render() {
 
     const { currentTask } = this.props
 
-    return (
-      <View>
-        <Text>{currentTask.name}</Text>
-        <Text>{currentTask.code}</Text>
-        <DefaultButton title="Resolver" onPress={() => this.props.navigation.navigate('Main',{res:numT})}>
-        </DefaultButton>
-      </View>
-    )
+    switch (currentTask.type) {
+      case MULTIPLE_CHOICE:
+        
+        break
+
+      case FREE_ANSWER:
+
+        break
+      
+      default:
+        return (
+          <View>
+            <Text>Hubo un error en la carga de la tarea</Text>
+            <DefaultButton
+              title='Volver'
+              onPress={() => this.props.navigation.navigate('Main')}
+            />
+          </View>
+        )
+        break
+    }
   }
+
 }
 
 //Funcion que mapea las acciones ('actions/activityActions') con las funciones que llamamos desde el componente
