@@ -1,9 +1,9 @@
 {
   "packagerPort": 19003,
-  "packagerPid": 8836,
+  "packagerPid": 12906,
   "expoServerPort": 19000,
   "expoServerNgrokUrl": "https://fn-x2d.pedroodb.resuelvo-explorando.exp.direct",
   "packagerNgrokUrl": "https://packager.fn-x2d.pedroodb.resuelvo-explorando.exp.direct",
-  "ngrokPid": 8882,
+  "ngrokPid": 12954,
   "devToolsPort": 19002
 }
