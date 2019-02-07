@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux'
 
 import { DefaultButton } from '../components'
 import { MULTIPLE_CHOICE, FREE_ANSWER } from '../config'
+import { MultipleChoice } from '../components/taskComponents'
 
 //Pantalla de vista de tarea
 class TaskScreen extends Component {
@@ -15,7 +16,9 @@ class TaskScreen extends Component {
 
     switch (currentTask.type) {
       case MULTIPLE_CHOICE:
-        
+        return (
+          <MultipleChoice/>
+        )
         break
 
       case FREE_ANSWER:

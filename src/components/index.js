@@ -5,4 +5,4 @@ import DefaultButtonTaskBarComponent from './defaultButtonTaskBar'
 export const DefaultButton = DefaultButtonComponent
 export const DefaultButtonTaskBar = DefaultButtonTaskBarComponent
 
-export default {DefaultButton, DefaultButtonTaskBar}
+export default { DefaultButton, DefaultButtonTaskBar }
