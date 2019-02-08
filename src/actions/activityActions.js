@@ -1,4 +1,4 @@
-import { ACTIVITY_SET } from "../constants";
+import { ACTIVITY_SET, TASK_SOLVED } from "../constants";
 
 export function setConfiguration(configuration) {
   return {
@@ -7,6 +7,14 @@ export function setConfiguration(configuration) {
   }
 }
 
+export function solveTask(finishedTask) {
+  return {
+    type: TASK_SOLVED,
+    payload: finishedTask,
+  }
+}
+
 export default {
-  setConfiguration
+  setConfiguration,
+  solveTask,
 }

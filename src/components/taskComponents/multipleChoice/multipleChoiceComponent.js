@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button'
 
+import { solveTask } from '../../../actions/activityActions'
 import { DefaultButton } from '../../../components'
 import { viewStyle } from '../../styles/genericStyles'
 
@@ -36,8 +37,9 @@ class MutipleChoiceComponent extends Component {
           <DefaultButton
             title="Finalizar"
             onPress={() => {
-              //Falta setear la tarea como finalizada en el redux state de aplicacion
-              this.props.navigation.navigate('Review',({ finishedTask:this.finishTask(this.props.task, this.state.selected) }))
+              finishedTask = this.finishTask(this.props.task, this.state.selected)
+              this.props.actions.solveTask(finishedTask)
+              this.props.navigation.navigate('Review',({ finishedTask:finishedTask }))
             }}
           />
         }
@@ -70,6 +72,7 @@ class MutipleChoiceComponent extends Component {
     return (
       {
         answer:answer,
+        name:task.name,
         task:task
       }
     )
@@ -81,7 +84,7 @@ class MutipleChoiceComponent extends Component {
 function mapDispatchToProps(dispatch) {
   return {
     actions : bindActionCreators({
-      //Aqui van las actions (redux) que fuera a utilizar
+      solveTask
     }, dispatch)
   }
 }

@@ -1,4 +1,4 @@
-import { ACTIVITY_SET } from '../constants'
+import { ACTIVITY_SET, TASK_SOLVED } from '../constants'
 
 const initialState = {
   ready:false,
@@ -11,16 +11,18 @@ const initialState = {
 const activityReducer = (state = initialState, action) => {
   switch (action.type) {
     case ACTIVITY_SET:
-    {
       return {
         ...state,
         ...action.payload,
       }
-    }  
+    case TASK_SOLVED:
+      return {
+        ...state,
+        finishedTasks:[...state.finishedTasks, action.payload],
+        tasks:state.tasks.filter((task) => task.code != action.payload.task.code),
+      }
     default:
-    {
-      return state
-    }  
+      return state 
   }
 }
 
