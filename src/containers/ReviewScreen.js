@@ -15,11 +15,13 @@ class ReviewScreen extends Component {
         type:null
       }
     })
+    console.log(finishedTask)
 
-    switch (finishedTask.type) {
+    
+    switch (finishedTask.task.type) {
       case MULTIPLE_CHOICE:
         return (
-          <MultipleChoiceReview task={finishedTask}/>
+          <MultipleChoiceReview finishedTask={finishedTask} navigation={this.props.navigation}/>
         )
       
       default:

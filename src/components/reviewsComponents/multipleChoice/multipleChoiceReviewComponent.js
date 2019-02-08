@@ -12,12 +12,11 @@ class MutipleChoiceReviewComponent extends Component {
     const {
       task,
       answer
-    } = this.props.finshedTask
+    } = this.props.finishedTask
 
     return (
       <View style={viewStyle}>
         <Text>{task.name}</Text>
-        {this.options()}
         <DefaultButton
           title="Volver"
           onPress={() => this.props.navigation.navigate('Main')}

@@ -27,7 +27,7 @@ class MutipleChoiceComponent extends Component {
           title="Finalizar"
           onPress={() => {
             //Falta setear la tarea como finalizada en el redux state de aplicacion
-            this.props.navigation.navigate('Review',this.finishTask(this.props.task))
+            this.props.navigation.navigate('Review',({ finishedTask:this.finishTask(this.props.task, this.state.selected) }))
           }}
         />
       </View>
@@ -45,7 +45,7 @@ class MutipleChoiceComponent extends Component {
     return(
       <RadioForm
         radio_props={radio_props}
-        initial={0}
+        initial={-1}
         labelHorizontal={true}
         onPress={(option) => {this.setState({selected:option})}}
       />
