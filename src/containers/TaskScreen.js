@@ -17,7 +17,7 @@ class TaskScreen extends Component {
     switch (currentTask.type) {
       case MULTIPLE_CHOICE:
         return (
-          <MultipleChoice/>
+          <MultipleChoice task={currentTask}/>
         )
         break
 
