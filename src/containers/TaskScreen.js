@@ -19,8 +19,7 @@ class TaskScreen extends Component {
         return (
           <MultipleChoice task={currentTask}/>
         )
-        break
-
+      
       case FREE_ANSWER:
 
         break
@@ -35,7 +34,6 @@ class TaskScreen extends Component {
             />
           </View>
         )
-        break
     }
   }
 
