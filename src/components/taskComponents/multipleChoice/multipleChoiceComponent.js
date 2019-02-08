@@ -3,9 +3,10 @@ import { Text, View } from 'react-native'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button'
+
 import { DefaultButton } from '../../../components'
-import CheckBoxWText from './checkBoxWText'
 import { viewStyle } from '../../styles/genericStyles'
+
 
 //Componente que corresponde a una tarea del tipo multiple choice
 class MutipleChoiceComponent extends Component {
@@ -30,8 +31,7 @@ class MutipleChoiceComponent extends Component {
     )
   }
 
-
- generateOptions(options) {
+  generateOptions(options) {
     radio_props = options.map((option) => ({label:(option.value), value:(option.isCorrect)}))
     return(
       <View style={{ flexDirection: 'row' }}>
@@ -41,6 +41,16 @@ class MutipleChoiceComponent extends Component {
           labelHorizontal={false}
         />
       </View>
+    )
+  }
+
+  //Funcion que recibe una task y devuelve la finishedTask correspondiente
+  finishTask(task, answer){
+    return (
+      {
+        answer:answer,
+        task:task
+      }
     )
   }
 
