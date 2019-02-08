@@ -2,14 +2,14 @@ import React, { Component } from 'react'
 import { Text, View } from 'react-native'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-
+import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button'
 import { DefaultButton } from '../../../components'
 import CheckBoxWText from './checkBoxWText'
 import { viewStyle } from '../../styles/genericStyles'
 
 //Componente que corresponde a una tarea del tipo multiple choice
 class MutipleChoiceComponent extends Component {
-  
+
   render() {
 
     const {
@@ -21,7 +21,7 @@ class MutipleChoiceComponent extends Component {
     return (
       <View style={viewStyle}>
         <Text>{name}</Text>
-        {this.options()}
+        {this.options(options)}
         <DefaultButton
           title="Dejar Elemento"
           onPress={() => this.props.navigation.navigate('Main')}
@@ -31,10 +31,16 @@ class MutipleChoiceComponent extends Component {
   }
 
 
- options() {
-    tareas=["Option 1", "Option 2", "Option 3"]
-    t = tareas.map((element) => <CheckBoxWText title= {element}/>)
-    return t
+ options(options) {
+    radio_props = options.map((option) => ({label:(option.value), value:(option.isCorrect)}))
+    return(
+    <View style={{ flexDirection: 'row' }}>
+      <RadioForm
+      radio_props={radio_props}
+      initial={0}
+      labelHorizontal={false}
+      />
+    </View>)
   }
 
 }
