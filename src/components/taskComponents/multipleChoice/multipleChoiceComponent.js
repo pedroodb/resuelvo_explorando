@@ -34,13 +34,14 @@ class MutipleChoiceComponent extends Component {
   generateOptions(options) {
     radio_props = options.map((option) => ({label:(option.value), value:(option.isCorrect)}))
     return(
-      <View style={{ flexDirection: 'row' }}>
+      //<View style={{ flexDirection: 'row' }}>
         <RadioForm
           radio_props={radio_props}
           initial={0}
-          labelHorizontal={false}
+          labelHorizontal={true}
+          onPress={(value) => {this.setState({value:value})}}
         />
-      </View>
+      //</View>
     )
   }
 
