@@ -25,23 +25,30 @@ class MutipleChoiceComponent extends Component {
         {this.generateOptions(options)}
         <DefaultButton
           title="Finalizar"
-          onPress={() => this.props.navigation.navigate('Main')}
+          onPress={() => {
+            //Falta setear la tarea como finalizada en el redux state de aplicacion
+            this.props.navigation.navigate('Review',this.finishTask(this.props.task))
+          }}
         />
       </View>
     )
   }
 
+  //Funcion que genera los radio buttons de a las opciones
   generateOptions(options) {
-    radio_props = options.map((option) => ({label:(option.value), value:(option.isCorrect)}))
+    radio_props = options.map((option) => (
+      {
+        label:option.value, 
+        value:option
+      })
+    )
     return(
-      //<View style={{ flexDirection: 'row' }}>
-        <RadioForm
-          radio_props={radio_props}
-          initial={0}
-          labelHorizontal={true}
-          onPress={(value) => {this.setState({value:value})}}
-        />
-      //</View>
+      <RadioForm
+        radio_props={radio_props}
+        initial={0}
+        labelHorizontal={true}
+        onPress={(option) => {this.setState({selected:option})}}
+      />
     )
   }
 
