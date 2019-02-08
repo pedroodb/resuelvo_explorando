@@ -21,9 +21,9 @@ class MutipleChoiceComponent extends Component {
     return (
       <View style={viewStyle}>
         <Text>{name}</Text>
-        {this.options(options)}
+        {this.generateOptions(options)}
         <DefaultButton
-          title="Dejar Elemento"
+          title="Finalizar"
           onPress={() => this.props.navigation.navigate('Main')}
         />
       </View>
@@ -31,16 +31,17 @@ class MutipleChoiceComponent extends Component {
   }
 
 
- options(options) {
+ generateOptions(options) {
     radio_props = options.map((option) => ({label:(option.value), value:(option.isCorrect)}))
     return(
-    <View style={{ flexDirection: 'row' }}>
-      <RadioForm
-      radio_props={radio_props}
-      initial={0}
-      labelHorizontal={false}
-      />
-    </View>)
+      <View style={{ flexDirection: 'row' }}>
+        <RadioForm
+          radio_props={radio_props}
+          initial={0}
+          labelHorizontal={false}
+        />
+      </View>
+    )
   }
 
 }
