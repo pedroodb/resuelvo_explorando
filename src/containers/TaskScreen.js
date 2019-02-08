@@ -17,7 +17,7 @@ class TaskScreen extends Component {
     switch (currentTask.type) {
       case MULTIPLE_CHOICE:
         return (
-          <MultipleChoice task={currentTask}/>
+          <MultipleChoice task={currentTask} navigation={this.props.navigation}/>
         )
       
       case FREE_ANSWER:
