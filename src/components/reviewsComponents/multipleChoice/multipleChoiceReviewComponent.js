@@ -16,13 +16,17 @@ class MutipleChoiceReviewComponent extends Component {
 
     return (
       <View style={viewStyle}>
-        <Text>{task.name}</Text>
+        <Text>Seleccionaste la opcion {answer}, la correcta era {this.correctOption(task).value}</Text>
         <DefaultButton
           title="Volver"
           onPress={() => this.props.navigation.navigate('Main')}
         />
       </View>
     )
+  }
+
+  correctOption(task) {
+    return task.options.find(({isCorrect}) => isCorrect)
   }
 
 }

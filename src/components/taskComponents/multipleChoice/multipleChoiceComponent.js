@@ -11,6 +11,14 @@ import { viewStyle } from '../../styles/genericStyles'
 //Componente que corresponde a una tarea del tipo multiple choice
 class MutipleChoiceComponent extends Component {
 
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      ready:false
+    }
+  }
+
   render() {
 
     const {
@@ -18,28 +26,31 @@ class MutipleChoiceComponent extends Component {
       description,
       options
     } = this.props.task
-
+    
     return (
       <View style={viewStyle}>
         <Text>{name}</Text>
         {this.generateOptions(options)}
-        <DefaultButton
-          title="Finalizar"
-          onPress={() => {
-            //Falta setear la tarea como finalizada en el redux state de aplicacion
-            this.props.navigation.navigate('Review',({ finishedTask:this.finishTask(this.props.task, this.state.selected) }))
-          }}
-        />
+        {
+          this.state.ready &&
+          <DefaultButton
+            title="Finalizar"
+            onPress={() => {
+              //Falta setear la tarea como finalizada en el redux state de aplicacion
+              this.props.navigation.navigate('Review',({ finishedTask:this.finishTask(this.props.task, this.state.selected) }))
+            }}
+          />
+        }
       </View>
     )
   }
 
   //Funcion que genera los radio buttons de a las opciones
   generateOptions(options) {
-    radio_props = options.map((option) => (
+    radio_props = options.map(({ value }) => (
       {
-        label:option.value, 
-        value:option
+        label:value, 
+        value:value
       })
     )
     return(
@@ -47,7 +58,9 @@ class MutipleChoiceComponent extends Component {
         radio_props={radio_props}
         initial={-1}
         labelHorizontal={true}
-        onPress={(option) => {this.setState({selected:option})}}
+        onPress={(value) => {
+          this.setState(() => ({selected:value, ready:true}))
+        }}
       />
     )
   }
