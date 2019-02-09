@@ -4,7 +4,7 @@ import { Text, View } from 'react-native'
 import { DefaultButton } from '..'
 import { viewStyle } from '../styles/genericStyles'
 
-//Componente que corresponde a una tarea del tipo multiple choice
+//Componente que corresponde a la correccion de una tarea del tipo multiple choice
 class MutipleChoiceReviewComponent extends Component {
   
   render() {

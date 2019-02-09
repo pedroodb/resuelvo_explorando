@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
-import { Text, View } from 'react-native'
 
-import { DefaultButton } from '../components'
 import { MULTIPLE_CHOICE, FREE_ANSWER } from '../config'
-import { MultipleChoice } from '../components/taskComponents'
+import { MultipleChoice, TypeError } from '../components/taskComponents'
 
 //Pantalla de vista de tarea
 class TaskScreen extends Component {
@@ -24,13 +22,7 @@ class TaskScreen extends Component {
       
       default:
         return (
-          <View>
-            <Text>Hubo un error en la carga de la tarea</Text>
-            <DefaultButton
-              title='Volver'
-              onPress={() => this.props.navigation.navigate('Main')}
-            />
-          </View>
+          <TypeError/>
         )
     }
   }

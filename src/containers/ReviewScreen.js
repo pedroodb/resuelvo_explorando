@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
-import { Text, View } from 'react-native'
 
-import { DefaultButton } from '../components'
 import { MULTIPLE_CHOICE, FREE_ANSWER } from '../config'
-import { MultipleChoiceReview } from '../components/reviewsComponents'
+import { MultipleChoiceReview, TypeError } from '../components/reviewsComponents'
 
 //Pantalla de vista de correccion de tarea
 class ReviewScreen extends Component {
@@ -24,13 +22,7 @@ class ReviewScreen extends Component {
       
       default:
         return (
-          <View>
-            <Text>Hubo un error en la carga de la correccion de la tarea</Text>
-            <DefaultButton
-              title='Volver'
-              onPress={() => this.props.navigation.navigate('Main')}
-            />
-          </View>
+          <TypeError/>
         )
     }
   }
