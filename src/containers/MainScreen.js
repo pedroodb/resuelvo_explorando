@@ -23,7 +23,7 @@ class MainScreen extends Component {
     } = this.props
 
     if (readenTaskReady) {
-      this.handleReadenTask(tasks.find(task => (task.code == readenTaskCode)))
+      this.handleReadenCode(readenTaskCode)
     }
 
     return (
@@ -46,7 +46,27 @@ class MainScreen extends Component {
   }
 
   //Funcion llamada cuando se leyo un codigo con la camara
-  handleReadenTask(task) {
+  handleReadenCode(code) {
+
+    const {
+      tasks,
+      finishedTasks,
+    } = this.props
+    
+    if ((tasks.map(task => task.code)).includes(code)) {
+      this.launchTask(tasks.find(task => (task.code == code)))
+    } else {
+      if ((finishedTasks.map(({ task }) => task.code)).includes(code)) {
+        this.launchDoneTask(finishedTasks.find(({ task }) => (task.code == code)))
+      } 
+      else {
+        alert('Codigo de tarea invalido')
+      }
+    }
+  }
+
+  //Funcion llamada cuando se leyo una tarea a realizar
+  launchTask(task) {
     Alert.alert(
       `Se encontro la tarea ${task.name}`,
       'Quiere comenzar la tarea?',
@@ -65,6 +85,11 @@ class MainScreen extends Component {
         },
       ],
     )
+  }
+
+  //Funcion llamada cuando se leyo una tarea ya realizada (por ahora no se puede volver a realizar)
+  launchDoneTask(finishedTask) {
+    alert(`La tarea ${finishedTask.task.name} ya fue realizada`)
   }
 
 }

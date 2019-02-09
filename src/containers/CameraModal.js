@@ -42,21 +42,8 @@ class CameraModal extends Component {
   }
 
   handleBarCodeScanned = ({ type, data }) => {
-    
-    const taskCodes = this.props.navigation.getParam('taskCodes', []);
-    const finishedTaskCodes = this.props.navigation.getParam('finishedTaskCodes', []);
-
-    if (taskCodes.includes(data)) {
-      this.props.actions.readTask(data)
-      this.props.navigation.goBack()
-    } else {
-      if (finishedTaskCodes.includes(data)) {
-        alert('Tarea ya realizada')
-      } 
-      else {
-        alert('Codigo de tarea invalido')
-      }
-    }
+    this.props.actions.readTask(data)
+    this.props.navigation.goBack()
   }
 }
 
