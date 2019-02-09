@@ -1,4 +1,4 @@
-import MultipleChoiceReviewComponent from './multipleChoice/multipleChoiceReviewComponent'
+import MultipleChoiceReviewComponent from './multipleChoiceReviewComponent'
 
 export const MultipleChoiceReview = MultipleChoiceReviewComponent
 

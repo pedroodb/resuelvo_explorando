@@ -38,7 +38,7 @@ class MainScreen extends Component {
           keyExtractor={(item, index) => index}
         />
         <DefaultButton
-          onPress={() => this.props.navigation.navigate('Camera',{taskCodes: tasks.map(task => task.code), finishedTaskCodes: finishedTasks.map(task => task.code)})}
+          onPress={() => this.props.navigation.navigate('Camera')}
           title="Leer tarea"
         />
       </View>
@@ -47,7 +47,6 @@ class MainScreen extends Component {
 
   //Funcion llamada cuando se leyo un codigo con la camara
   handleReadenCode(code) {
-
     const {
       tasks,
       finishedTasks,
@@ -80,7 +79,7 @@ class MainScreen extends Component {
           text: 'Comenzar',
           onPress: () => {
             this.props.actions.setTask(task)
-            this.props.navigation.navigate('Task')
+            this.props.navigation.navigate('Task',{currentTask:task})
           }
         },
       ],

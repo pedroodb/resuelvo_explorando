@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Text, View } from 'react-native'
 
-import { DefaultButton } from '../../../components'
-import { viewStyle } from '../../styles/genericStyles'
+import { DefaultButton } from '..'
+import { viewStyle } from '../styles/genericStyles'
 
 //Componente que corresponde a una tarea del tipo multiple choice
 class MutipleChoiceReviewComponent extends Component {

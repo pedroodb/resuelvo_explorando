@@ -4,9 +4,9 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button'
 
-import { solveTask } from '../../../actions/activityActions'
-import { DefaultButton } from '../../../components'
-import { viewStyle } from '../../styles/genericStyles'
+import { solveTask } from '../../actions/activityActions'
+import { DefaultButton } from '..'
+import { viewStyle } from '../styles/genericStyles'
 
 
 //Componente que corresponde a una tarea del tipo multiple choice

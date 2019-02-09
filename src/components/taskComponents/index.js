@@ -1,4 +1,4 @@
-import MultipleChoiceComponent from './multipleChoice/multipleChoiceComponent'
+import MultipleChoiceComponent from './multipleChoiceComponent'
 //import FreeAnswerComponent from './freeAnswer/freeAnswerComponent'
 
 export const MultipleChoice = MultipleChoiceComponent

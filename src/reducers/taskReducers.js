@@ -3,7 +3,6 @@ import { TASK_SET, TASK_READ } from '../constants'
 const initialState = {
   readenTaskReady:false,
   readenTaskCode:'',
-  currentTask:null,
 }
 
 const taskReducer = (state = initialState, action) => {
@@ -20,7 +19,6 @@ const taskReducer = (state = initialState, action) => {
     {
       return {
         ...state,
-        currentTask:action.payload,
         readenTaskReady:false,
         readenTaskCode:''
       }
