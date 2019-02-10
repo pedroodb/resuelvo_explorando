@@ -1,10 +1,6 @@
 import React, { Component } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { BarCodeScanner, Permissions } from 'expo'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-
-import { readTask } from '../actions/taskActions'
 
 class CameraModal extends Component {
 
@@ -42,26 +38,8 @@ class CameraModal extends Component {
   }
 
   handleBarCodeScanned = ({ type, data }) => {
-    this.props.actions.readTask(data)
-    this.props.navigation.goBack()
+    this.props.navigation.navigate('Main',{ readenTaskCode:data })
   }
 }
 
-
-//Funcion que mapea las acciones ('actions/activityActions') con las funciones que llamamos desde el componente
-function mapDispatchToProps(dispatch) {
-  return {
-    actions : bindActionCreators({
-      readTask
-    }, dispatch) 
-  }
-}
-
-//Funcion que mapea el estado de la APLICACION (redux) con las props del componente
-function mapStateToProps({activityReducer}) {
-    return {
-      //No necesitamos nada del state 
-    }
-}
-
-export default connect(mapStateToProps,mapDispatchToProps)(CameraModal)
+export default CameraModal

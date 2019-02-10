@@ -1,12 +1,10 @@
-//Combina todos los reducers en uno
+//Combina todos los reducers en uno (de momento solo existe activityReducer)
 import { combineReducers } from 'redux'
 
 import activityReducer from './activityReducers'
-import taskReducer from './taskReducers'
 
 const AppReducer = combineReducers({
   activityReducer,
-  taskReducer
 });
 
 export default AppReducer;

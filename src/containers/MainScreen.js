@@ -1,16 +1,39 @@
 import React, { Component } from 'react'
 import { Text, View, SectionList, Alert } from 'react-native'
+import { NavigationEvents } from 'react-navigation'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import { viewStyle } from './styles/MainStyles'
 import { DefaultButton } from '../components'
 import { sectionListHeader, sectionListItem } from '../components/styles/genericStyles'
-import { setTask } from '../actions/taskActions'
+import { NO_CODE } from '../constants'
 
 
 //Pantalla de vista de tarea
 class MainScreen extends Component {
+
+  constructor(props) {
+    super(props)
+
+    //Bindeo al this para referenciar al componente MainScreen desde handleFocusEvent
+    this.handleFocusEvent = this.handleFocusEvent.bind(this)
+
+    this.state = {
+      readenTaskCode: NO_CODE
+    }
+  }
+
+  //Controlo que se reciba correctamente el codigo de tarea y lo limpio de los parametros para que solo lo tome una vez
+  handleFocusEvent() {
+    const readenTaskCode = this.props.navigation.getParam('readenTaskCode',NO_CODE)
+    console.log(readenTaskCode)
+
+    if (readenTaskCode != NO_CODE) {
+      this.props.navigation.setParams({readenTaskCode:NO_CODE})
+      this.handleReadenCode(readenTaskCode)
+    }
+  }
 
   render() {
 
@@ -18,16 +41,14 @@ class MainScreen extends Component {
     const {
       tasks,
       finishedTasks,
-      readenTaskReady,
-      readenTaskCode,
     } = this.props
-
-    if (readenTaskReady) {
-      this.handleReadenCode(readenTaskCode)
-    }
 
     return (
       <View style={viewStyle}>
+        <NavigationEvents
+          //Me suscribo al evento 'onWillFocus'
+          onWillFocus={this.handleFocusEvent}
+        />
         <SectionList
           sections={[
             {title: 'Tareas realizadas', data: finishedTasks},
@@ -78,7 +99,6 @@ class MainScreen extends Component {
         {
           text: 'Comenzar',
           onPress: () => {
-            this.props.actions.setTask(task)
             this.props.navigation.navigate('Task',{currentTask:task})
           }
         },
@@ -98,16 +118,15 @@ class MainScreen extends Component {
 function mapDispatchToProps(dispatch) {
   return {
     actions : bindActionCreators({
-      setTask
+      //Aqui colocar las actions a utilizar
     }, dispatch)
   }
 }
 
 //Funcion que mapea el estado de la APLICACION (redux) con las props del componente
-function mapStateToProps({activityReducer, taskReducer}) {
+function mapStateToProps({activityReducer}) {
   return {
     ...activityReducer,
-    ...taskReducer
   }
 }
 

@@ -1,2 +1,1 @@
-export const TASK_READ = 'task-read'
-export const TASK_SET = 'task-set'
+export const NO_CODE = 'no-code'
