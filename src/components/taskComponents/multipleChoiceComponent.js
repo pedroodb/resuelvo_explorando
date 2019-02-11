@@ -1,10 +1,7 @@
 import React, { Component } from 'react'
 import { Text, View } from 'react-native'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button'
 
-import { solveTask } from '../../actions/activityActions'
 import { DefaultButton } from '..'
 import { viewStyle } from '../styles/genericStyles'
 
@@ -38,7 +35,7 @@ class MutipleChoiceComponent extends Component {
             title="Finalizar"
             onPress={() => {
               finishedTask = this.finishTask(this.props.task, this.state.selected)
-              this.props.actions.solveTask(finishedTask)
+              this.props.solveTaskFunction(finishedTask)
               this.props.navigation.navigate('Review',({ finishedTask:finishedTask }))
             }}
           />
@@ -80,20 +77,4 @@ class MutipleChoiceComponent extends Component {
 
 }
 
-//Funcion que mapea las acciones ('actions/activityActions') con las funciones que llamamos desde el componente
-function mapDispatchToProps(dispatch) {
-  return {
-    actions : bindActionCreators({
-      solveTask
-    }, dispatch)
-  }
-}
-
-//Funcion que mapea el estado de la APLICACION (redux) con las props del componente
-function mapStateToProps({/*De necesitar un reducer especificar aqui*/}) {
-  return {
-    //Devolver los campos del reducer que se necesiten
-  }
-}
-
-export default connect(mapStateToProps,mapDispatchToProps)(MutipleChoiceComponent)
+export default MutipleChoiceComponent

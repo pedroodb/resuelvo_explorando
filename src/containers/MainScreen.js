@@ -27,7 +27,6 @@ class MainScreen extends Component {
   //Controlo que se reciba correctamente el codigo de tarea y lo limpio de los parametros para que solo lo tome una vez
   handleFocusEvent() {
     const readenTaskCode = this.props.navigation.getParam('readenTaskCode',NO_CODE)
-    console.log(readenTaskCode)
 
     if (readenTaskCode != NO_CODE) {
       this.props.navigation.setParams({readenTaskCode:NO_CODE})
