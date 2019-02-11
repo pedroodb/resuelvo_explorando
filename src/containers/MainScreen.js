@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, SectionList, Alert } from 'react-native'
+import { Text, View, SectionList, Alert, BackHandler } from 'react-native'
 import { NavigationEvents } from 'react-navigation'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -23,6 +23,20 @@ class MainScreen extends Component {
       readenTaskCode: NO_CODE
     }
   }
+
+  //Bloqueo el boton para volver atras una vez comenzada la actividad
+  componentDidMount() {
+    BackHandler.addEventListener('hardwareBackPress', this.handleBackButton);
+  }
+
+  componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', this.handleBackButton);
+  }
+
+  handleBackButton() {
+      return true;
+  }
+
 
   //Controlo que se reciba correctamente el codigo de tarea y lo limpio de los parametros para que solo lo tome una vez
   handleFocusEvent() {
