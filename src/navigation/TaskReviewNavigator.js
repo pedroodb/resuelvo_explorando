@@ -6,9 +6,6 @@ const TaskReviewNavigator = createStackNavigator(
   {
     Review: {
       screen: TaskReviewScreen,
-      navigationOptions: () => ({
-        headerLeft: null,
-      }),
     }
   },
   {

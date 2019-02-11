@@ -82,6 +82,10 @@ class MainScreen extends Component {
           onPress={() => this.props.navigation.navigate('Camera')}
           title="Leer tarea"
         />
+        <DefaultButton
+          onPress={() => this.props.navigation.navigate('FinalReview')}
+          title="Finalizar"
+        />
       </View>
     )
   }

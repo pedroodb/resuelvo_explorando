@@ -2,13 +2,14 @@ import { createStackNavigator } from 'react-navigation'
 import MainNavigator from './MainNavigator'
 import WelcomeNavigator from './WelcomeNavigator'
 import TaskNavigator from './TaskNavigator'
-import TaskReviewNavigator from './ReviewNavigator'
+import TaskReviewNavigator from './TaskReviewNavigator'
+import FinalReviewNavigator from './FinalReviewNavigator'
 
 //Navegador raiz del que cuelgan los navegadores de cada seccion con su respectiva logica de navegacion
 const RootNavigator = createStackNavigator(
   {
     Welcome: {
-      screen: WelcomeNavigator,
+      screen: WelcomeNavigator
     },
     Main: {
       screen: MainNavigator
@@ -18,6 +19,9 @@ const RootNavigator = createStackNavigator(
     },
     TaskReview: {
       screen: TaskReviewNavigator
+    },
+    FinalReview: {
+      screen: FinalReviewNavigator
     }
   },
   {
