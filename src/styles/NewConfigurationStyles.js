@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native'
 
 const newConfigurationStyles = StyleSheet.create({
     //Estilo de la pantalla de carga de nueva configuracion
-    newConfigurationView: {
+    viewNC: {
       flex: 1,
       backgroundColor: '#fff',
       alignItems: 'center',
@@ -10,5 +10,5 @@ const newConfigurationStyles = StyleSheet.create({
     },
   });
 
-export const newConfigurationView = newConfigurationStyles.newConfigurationView
+export const newConfigurationView = newConfigurationStyles.viewNC
 export default newConfigurationStyles

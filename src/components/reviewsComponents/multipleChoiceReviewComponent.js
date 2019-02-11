@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Text, View } from 'react-native'
 
 import { DefaultButton } from '..'
-import { viewStyle } from '../styles/genericStyles'
+import { viewStyle } from '../../styles/GenericComponentsStyles'
 
 //Componente que corresponde a la correccion de una tarea del tipo multiple choice
 class MutipleChoiceReviewComponent extends Component {

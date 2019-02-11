@@ -3,7 +3,7 @@ import { Text, View } from 'react-native'
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button'
 
 import { DefaultButton } from '..'
-import { viewStyle } from '../styles/genericStyles'
+import { viewStyle } from '../../styles/GenericComponentsStyles'
 
 
 //Componente que corresponde a una tarea del tipo multiple choice

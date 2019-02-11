@@ -4,9 +4,9 @@ import { NavigationEvents } from 'react-navigation'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import { viewStyle } from './styles/MainStyles'
+import { viewStyle } from '../styles/MainStyles'
 import { DefaultButton } from '../components'
-import { sectionListHeader, sectionListItem } from '../components/styles/genericStyles'
+import { sectionListHeader, sectionListItem } from '../styles/GenericComponentsStyles'
 import { NO_CODE } from '../constants'
 
 

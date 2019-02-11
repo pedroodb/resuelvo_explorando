@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native'
 
-const genericStyles = StyleSheet.create({
+const genericComponentsStyles = StyleSheet.create({
     //Estilos para componentes genericos
     sectionList: {
       flex: 1,
@@ -20,6 +20,6 @@ const genericStyles = StyleSheet.create({
     }
   });
 
-export const sectionListHeader = genericStyles.sectionListHeader
-export const sectionListItem = genericStyles.sectionListItem
-export default genericStyles
+export const sectionListHeader = genericComponentsStyles.sectionListHeader
+export const sectionListItem = genericComponentsStyles.sectionListItem
+export default genericComponentsStyles

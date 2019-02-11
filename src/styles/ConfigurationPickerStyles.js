@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native'
 
 const configurationPickerStyles = StyleSheet.create({
     //Estilo de la pantalla de seleccion de configuracion
-    configurationPickerView: {
+    viewCP: {
       flex: 1,
       backgroundColor: '#fff',
       justifyContent: 'center',
@@ -10,5 +10,5 @@ const configurationPickerStyles = StyleSheet.create({
     }
   });
 
-export const configurationPickerView = configurationPickerStyles.configurationPickerView
+export const configurationPickerView = configurationPickerStyles.viewCP
 export default configurationPickerStyles

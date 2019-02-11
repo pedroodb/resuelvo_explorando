@@ -1,5 +1,6 @@
 import React from 'react'
-import { Button, View, Text, FlatList } from 'react-native'
+import { View, Text, FlatList } from 'react-native'
+
 import hasReadWritePermission from '../helpers/permissionAskers'
 import { DefaultButton } from '../components/generalComponents'
 
