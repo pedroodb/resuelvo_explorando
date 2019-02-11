@@ -54,7 +54,7 @@ class MainScreen extends Component {
             {title: 'Tareas aún sin realizar', data: tasks},
           ]}
           renderItem={({item}) => {
-            if(item.task) {
+            if(item.answer) {
               return (<Text style={sectionListItem} onPress={() => this.props.navigation.navigate('Review',{finishedTask:item})}>{item.name}</Text>)
             }
             else {

@@ -10,13 +10,13 @@ class MutipleChoiceReviewComponent extends Component {
   render() {
 
     const {
-      task,
+      options,
       answer
     } = this.props.finishedTask
 
     return (
       <View style={viewStyle}>
-        <Text>Seleccionaste la opcion {answer}, la correcta era {this.correctOption(task).value}</Text>
+        <Text>Seleccionaste la opcion {answer}, la correcta era {this.correctOption(options).value}</Text>
         <DefaultButton
           title="Volver"
           onPress={() => this.props.navigation.navigate('Main')}
@@ -25,8 +25,8 @@ class MutipleChoiceReviewComponent extends Component {
     )
   }
 
-  correctOption(task) {
-    return task.options.find(({isCorrect}) => isCorrect)
+  correctOption(options) {
+    return options.find(({isCorrect}) => isCorrect)
   }
 
 }

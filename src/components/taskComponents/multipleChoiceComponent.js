@@ -4,6 +4,7 @@ import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-
 
 import { DefaultButton } from '..'
 import { viewStyle } from '../../styles/GenericComponentsStyles'
+import getFinishedTask from '../../helpers/getFinishedTask'
 
 
 //Componente que corresponde a una tarea del tipo multiple choice
@@ -35,7 +36,7 @@ class MutipleChoiceComponent extends Component {
           <DefaultButton
             title="Finalizar"
             onPress={() => {
-              const finishedTask = {task:this.props.task, name:name, code:code, answer:this.state.selected}
+              const finishedTask = getFinishedTask(this.props.task,this.state.selected)
               this.props.solveTaskFunction(finishedTask)
               this.props.navigation.navigate('Review',({ finishedTask:finishedTask }))
             }}

@@ -14,7 +14,7 @@ class ReviewScreen extends Component {
       }
     })
 
-    switch (finishedTask.task.type) {
+    switch (finishedTask.type) {
       case MULTIPLE_CHOICE:
         return (
           <MultipleChoiceReview finishedTask={finishedTask} navigation={this.props.navigation}/>
