@@ -21,6 +21,7 @@ class MutipleChoiceComponent extends Component {
 
     const {
       name,
+      code,
       description,
       options
     } = this.props.task
@@ -34,7 +35,7 @@ class MutipleChoiceComponent extends Component {
           <DefaultButton
             title="Finalizar"
             onPress={() => {
-              finishedTask = this.finishTask(this.props.task, this.state.selected)
+              const finishedTask = {task:this.props.task, name:name, code:code, answer:this.state.selected}
               this.props.solveTaskFunction(finishedTask)
               this.props.navigation.navigate('Review',({ finishedTask:finishedTask }))
             }}
@@ -61,17 +62,6 @@ class MutipleChoiceComponent extends Component {
           this.setState(() => ({selected:value, ready:true}))
         }}
       />
-    )
-  }
-
-  //Funcion que recibe una task y devuelve la finishedTask correspondiente
-  finishTask(task, answer){
-    return (
-      {
-        answer:answer,
-        name:task.name,
-        task:task
-      }
     )
   }
 

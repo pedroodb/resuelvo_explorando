@@ -19,7 +19,7 @@ const activityReducer = (state = initialState, action) => {
       return {
         ...state,
         finishedTasks:[...state.finishedTasks, action.payload],
-        tasks:state.tasks.filter((task) => task.code != action.payload.task.code),
+        tasks:state.tasks.filter((task) => task.code != action.payload.code),
       }
     default:
       return state 
