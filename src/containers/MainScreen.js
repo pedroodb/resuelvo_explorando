@@ -69,7 +69,7 @@ class MainScreen extends Component {
           ]}
           renderItem={({item}) => {
             if(item.answer) {
-              return (<Text style={sectionListItem} onPress={() => this.props.navigation.navigate('Review',{finishedTask:item})}>{item.name}</Text>)
+              return (<Text style={sectionListItem} onPress={() => this.props.navigation.navigate('TaskReview',{finishedTask:item})}>{item.name}</Text>)
             }
             else {
               return (<Text style={sectionListItem}>{item.name}</Text>)
@@ -96,8 +96,8 @@ class MainScreen extends Component {
     if ((tasks.map(task => task.code)).includes(code)) {
       this.launchTask(tasks.find(task => (task.code == code)))
     } else {
-      if ((finishedTasks.map(({ task }) => task.code)).includes(code)) {
-        this.launchDoneTask(finishedTasks.find(({ task }) => (task.code == code)))
+      if ((finishedTasks.map(task => task.code)).includes(code)) {
+        this.launchDoneTask(finishedTasks.find(task => (task.code == code)))
       } 
       else {
         alert('Codigo de tarea invalido')
@@ -128,7 +128,7 @@ class MainScreen extends Component {
 
   //Funcion llamada cuando se leyo una tarea ya realizada (por ahora no se puede volver a realizar)
   launchDoneTask(finishedTask) {
-    alert(`La tarea ${finishedTask.task.name} ya fue realizada`)
+    alert(`La tarea ${finishedTask.name} ya fue realizada`)
   }
 
 }

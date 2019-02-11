@@ -38,7 +38,7 @@ class MutipleChoiceComponent extends Component {
             onPress={() => {
               const finishedTask = getFinishedTask(this.props.task,this.state.selected)
               this.props.solveTaskFunction(finishedTask)
-              this.props.navigation.navigate('Review',({ finishedTask:finishedTask }))
+              this.props.navigation.navigate('TaskReview',({ finishedTask:finishedTask }))
             }}
           />
         }

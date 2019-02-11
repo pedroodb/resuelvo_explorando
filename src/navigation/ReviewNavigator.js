@@ -1,11 +1,11 @@
 import { createStackNavigator } from 'react-navigation'
-import { ReviewScreen } from '../containers'
+import { TaskReviewScreen } from '../containers'
 
 //Navegador de pantalla de correcciones
-const ReviewNavigator = createStackNavigator(
+const TaskReviewNavigator = createStackNavigator(
   {
     Review: {
-      screen: ReviewScreen,
+      screen: TaskReviewScreen,
       navigationOptions: () => ({
         headerLeft: null,
       }),
@@ -16,5 +16,5 @@ const ReviewNavigator = createStackNavigator(
   }
 );
 
-export default ReviewNavigator
+export default TaskReviewNavigator
   
