@@ -22,7 +22,7 @@ class ReviewScreen extends Component {
       
       default:
         return (
-          <TypeError/>
+          <TypeError navigation={this.props.navigation}/>
         )
     }
   }

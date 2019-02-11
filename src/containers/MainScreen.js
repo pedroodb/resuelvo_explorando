@@ -53,7 +53,14 @@ class MainScreen extends Component {
             {title: 'Tareas realizadas', data: finishedTasks},
             {title: 'Tareas aún sin realizar', data: tasks},
           ]}
-          renderItem={({item}) => <Text style={sectionListItem} onPress={() => this.props.navigation.navigate('taskSelected')}>{item.name}</Text>}
+          renderItem={({item}) => {
+            if(item.task) {
+              return (<Text style={sectionListItem} onPress={() => this.props.navigation.navigate('Review',{finishedTask:item})}>{item.name}</Text>)
+            }
+            else {
+              return (<Text style={sectionListItem}>{item.name}</Text>)
+            }
+          }}
           renderSectionHeader={({section}) => <Text style={sectionListHeader}>{section.title}</Text>}
           keyExtractor={(item, index) => index}
         />
