@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, Dimensions } from 'react-native'
 import { BarCodeScanner, Permissions } from 'expo'
 
 class CameraModal extends Component {
@@ -26,20 +26,57 @@ class CameraModal extends Component {
     }
 
     return (
-      <View style={{ flex: 1}}>
-        <View style={{ flex: 1, height: 300 }}>
-          <BarCodeScanner
-            onBarCodeScanned={this.handleBarCodeScanned}
-            style={StyleSheet.absoluteFill}
-          />
-        </View>
-        </View>
-    );
+      <BarCodeScanner
+              onBarCodeRead={this.handleBarCodeScanned}
+              style={[StyleSheet.absoluteFill, styles.container]}
+            >
+              <View style={styles.layerTop} />
+              <View style={styles.layerCenter}>
+                <View style={styles.layerLeft} />
+                <View style={styles.focused} />
+                <View style={styles.layerRight} />
+              </View>
+              <View style={styles.layerBottom} />
+            </BarCodeScanner>
+          );
+
   }
 
   handleBarCodeScanned = ({ type, data }) => {
     this.props.navigation.navigate('Main',{ readenTaskCode:data })
   }
+
 }
+const opacity = 'rgba(0, 0, 0, .6)';
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: 'column'
+  },
+  layerTop: {
+    flex: 1,
+    backgroundColor: opacity
+  },
+  layerCenter: {
+    flex: 1,
+    flexDirection: 'row'
+  },
+  layerLeft: {
+    flex:1 ,
+    backgroundColor: opacity
+  },
+  focused: {
+    flex: 3
+  },
+  layerRight: {
+    flex: 1,
+    backgroundColor: opacity
+  },
+  layerBottom: {
+    flex: 1,
+    backgroundColor: opacity
+  },
+});
+
 
 export default CameraModal

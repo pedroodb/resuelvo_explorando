@@ -2,8 +2,8 @@
   "expoServerPort": 19000,
   "expoServerNgrokUrl": "https://fv-zhd.anonymous.resuelvo-explorando.exp.direct",
   "packagerNgrokUrl": "https://packager.fv-zhd.anonymous.resuelvo-explorando.exp.direct",
-  "ngrokPid": 14111,
+  "ngrokPid": 26757,
   "devToolsPort": 19002,
   "packagerPort": 19001,
-  "packagerPid": 14033
+  "packagerPid": 26706
 }

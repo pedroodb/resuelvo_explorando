@@ -72,20 +72,6 @@ class MutipleChoiceComponent extends Component {
 }
 
 const styles = StyleSheet.create({
-  button: {
-        marginRight:10,
-        marginLeft:10,
-        marginTop:10,
-        marginBottom:10,
-        paddingTop:10,
-        paddingBottom:10,
-        backgroundColor:'#349AF4',
-        borderRadius:5,
-        borderWidth: 0,
-        borderColor: '#fff',
-        padding:10,
-        paddingHorizontal: 10
-  },
   title: {
     textAlign:'center',
     fontSize:20,
