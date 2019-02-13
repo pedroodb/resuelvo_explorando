@@ -1,12 +1,12 @@
 import { StyleSheet } from 'react-native'
 
-const mainStyles = StyleSheet.create({
+const multipleChoiceComponent = StyleSheet.create({
     //Estilo de la pantalla Main
-    viewMS: {
+    viewMCTS: {
       flex: 1,
       margin: 10,
       backgroundColor: '#fff',
-      justifyContent: 'space-between',
+      justifyContent: 'center',
     },
   });
 

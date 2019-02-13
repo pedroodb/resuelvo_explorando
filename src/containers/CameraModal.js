@@ -33,7 +33,7 @@ class CameraModal extends Component {
             style={StyleSheet.absoluteFill}
           />
         </View>
-      </View>
+        </View>
     );
   }
 

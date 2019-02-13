@@ -64,8 +64,8 @@ class MainScreen extends Component {
         />
         <SectionList
           sections={[
-            {title: 'Tareas realizadas', data: finishedTasks},
             {title: 'Tareas aún sin realizar', data: tasks},
+            {title: 'Tareas realizadas', data: finishedTasks},
           ]}
           renderItem={({item}) => {
             if(item.answer) {
@@ -96,13 +96,13 @@ class MainScreen extends Component {
       tasks,
       finishedTasks,
     } = this.props
-    
+
     if ((tasks.map(task => task.code)).includes(code)) {
       this.launchTask(tasks.find(task => (task.code == code)))
     } else {
       if ((finishedTasks.map(task => task.code)).includes(code)) {
         this.launchDoneTask(finishedTasks.find(task => (task.code == code)))
-      } 
+      }
       else {
         alert('Codigo de tarea invalido')
       }
