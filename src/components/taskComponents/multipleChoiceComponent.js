@@ -57,14 +57,41 @@ class MutipleChoiceComponent extends Component {
     return(
       <View style={{margin:10}}>
       <RadioForm
-        radio_props={radio_props}
-        initial={-1}
-        animation={false}
-        labelHorizontal={true}
-        onPress={(value) => {
-          this.setState(() => ({selected:value, ready:true}))
-        }}
+      radio_props={radio_props}
+      initial={-1}
+      animation={false}
+      labelHorizontal={true}
+      onPress={(value) => {
+        this.setState(() => ({selected:value, ready:true}))
+      }}
+      >
+  {/* To create radio buttons, loop through your array of options */}
+  {radio_props.map((obj, i) => {
+    <RadioButton labelHorizontal={true} key={i} >
+      {/*  You can set RadioButtonLabel before RadioButtonInput */}
+      <RadioButtonInput
+        obj={obj}
+        index={i}
+        isSelected={this.state.value3Index === i}
+        borderWidth={1}
+        buttonInnerColor={'#e94c3c'}
+        buttonOuterColor={this.state.value3Index === i ? '#2196f3' : '#000'}
+        buttonSize={1}
+        buttonOuterSize={2000}
+        buttonStyle={{size:100}}
+        buttonWrapStyle={{marginLeft: 10}}
       />
+      <RadioButtonLabel
+        obj={obj}
+        index={i}
+        labelHorizontal={true}
+        labelStyle={{fontSize: 20, color: '#2ecc71'}}
+        labelWrapStyle={{}}
+      />
+      </RadioButton>
+  })}
+
+</RadioForm>
       </View>
     )
   }
