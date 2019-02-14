@@ -6,7 +6,6 @@ const welcomeStyles = StyleSheet.create({
       flex: 1,
       margin:10,
       backgroundColor: '#fff',
-      alignItems: 'center',
       justifyContent: 'space-between',
     },
     descriptionWS: {

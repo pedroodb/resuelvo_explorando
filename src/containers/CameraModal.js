@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet, Text, View, Dimensions } from 'react-native'
+import { StyleSheet, Text, View, Dimensions, Image } from 'react-native'
 import { BarCodeScanner, Permissions } from 'expo'
 
 class CameraModal extends Component {
@@ -28,16 +28,18 @@ class CameraModal extends Component {
     return (
       <BarCodeScanner
               onBarCodeRead={this.handleBarCodeScanned}
-              style={[StyleSheet.absoluteFill, styles.container]}
-            >
-              <View style={styles.layerTop} />
-              <View style={styles.layerCenter}>
-                <View style={styles.layerLeft} />
-                <View style={styles.focused} />
-                <View style={styles.layerRight} />
-              </View>
-              <View style={styles.layerBottom} />
+              style={[StyleSheet.absoluteFill, styles.container]}>
+              <Image
+                style={styles.qr}
+                source={require('../assets/QR.png')}
+              />
+              <Text
+                onPress={() => this.props.navigation.pop()}
+                style={styles.cancel}>
+                Cancel
+              </Text>
             </BarCodeScanner>
+
           );
 
   }
@@ -47,35 +49,33 @@ class CameraModal extends Component {
   }
 
 }
-const opacity = 'rgba(0, 0, 0, .6)';
+
+const { width } = Dimensions.get('window')
+const qrSize = width * 0.7
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    flexDirection: 'column'
-  },
-  layerTop: {
-    flex: 1,
-    backgroundColor: opacity
-  },
-  layerCenter: {
-    flex: 1,
-    flexDirection: 'row'
-  },
-  layerLeft: {
-    flex:1 ,
-    backgroundColor: opacity
-  },
-  focused: {
-    flex: 3
-  },
-  layerRight: {
-    flex: 1,
-    backgroundColor: opacity
-  },
-  layerBottom: {
-    flex: 1,
-    backgroundColor: opacity
-  },
+      flex: 1,
+      alignItems: 'center',
+    },
+    qr: {
+      marginTop: '20%',
+      marginBottom: '20%',
+      width: qrSize,
+      height: qrSize,
+    },
+    description: {
+      fontSize: width * 0.09,
+      marginTop: '10%',
+      textAlign: 'center',
+      width: '70%',
+      color: 'white',
+    },
+    cancel: {
+      fontSize: width * 0.05,
+      textAlign: 'center',
+      width: '70%',
+      color: 'white',
+    },
 });
 
 
