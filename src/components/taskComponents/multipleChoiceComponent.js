@@ -4,7 +4,9 @@ import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-
 
 import { DefaultButton } from '..'
 import { viewStyle } from '../../styles/GenericComponentsStyles'
-import getFinishedTask from '../../helpers/getFinishedTask'
+import { 
+  getFinishedMultipleChoiceTaskFunction as getFinishedTask 
+} from '../../helpers/getFinishedTask'
 
 
 //Componente que corresponde a una tarea del tipo multiple choice
