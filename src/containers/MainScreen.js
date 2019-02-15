@@ -83,8 +83,8 @@ class MainScreen extends Component {
           title="Leer tarea"
         />
         <DefaultButton
-          onPress={() => this.props.navigation.navigate('FinalReview')}
-          title="Finalizar"
+          onPress={() => this.handleFinishActivity()}
+          title="Finalizar actividad"
         />
       </View>
     )
@@ -116,7 +116,7 @@ class MainScreen extends Component {
       'Quiere comenzar la tarea?',
       [
         {
-          text: 'Cancel',
+          text: 'Cancelar',
           onPress: () => {},
           style: 'cancel',
         },
@@ -133,6 +133,27 @@ class MainScreen extends Component {
   //Funcion llamada cuando se leyo una tarea ya realizada (por ahora no se puede volver a realizar)
   launchDoneTask(finishedTask) {
     alert(`La tarea ${finishedTask.name} ya fue realizada`)
+  }
+
+  //Funcion llamada cuando se selecciona finalizar actividad
+  handleFinishActivity() {
+    Alert.alert(
+      '¿Esta seguro que quiere finalizar la actividad?',
+      'Una vez finalizada no se puede retomar',
+      [
+        {
+          text: 'Cancelar',
+          onPress: () => {},
+          style: 'cancel',
+        },
+        {
+          text: 'Finalizar',
+          onPress: () => {
+            this.props.navigation.navigate('FinalReview')
+          }
+        },
+      ],
+    )
   }
 
 }
