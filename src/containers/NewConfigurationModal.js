@@ -20,6 +20,13 @@ class NewConfigurationModal extends Component {
     }
   }
 
+  //Agrega al header un titulo
+  static navigationOptions = ({ navigation }) => {
+    return {
+      headerTitle: 'Nueva configuración',
+    }
+  }
+
   //Guarda el archivo de configuracion en la carpeta configurations
   async saveConfiguration() {
     if (await hasReadWritePermission()) {

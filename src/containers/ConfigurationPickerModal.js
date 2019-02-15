@@ -19,6 +19,13 @@ class ModalScreen extends React.Component {
     this.handleFocusEvent = this.handleFocusEvent.bind(this)
   }
 
+  //Agrega al header un titulo
+  static navigationOptions = ({ navigation }) => {
+    return {
+      headerTitle: 'Carga de configuración',
+    }
+  }
+
   //Actualizo la lista cada vez que se hace foco (util para cuando vuelvo de cargar configuracion nueva)
   handleFocusEvent() {
     this.updateConfigList()
@@ -39,7 +46,7 @@ class ModalScreen extends React.Component {
   }
 
   //Carga el archivo de configuracion con la configuracion seleccionada
-  async setConfiguracion(configName) {
+  async setConfiguration(configName) {
     if(await hasReadWritePermission()) {
       Expo.FileSystem.copyAsync({from:`${Expo.FileSystem.documentDirectory}configurations/${configName}`, to:`${Expo.FileSystem.documentDirectory}configuration`})
     }
@@ -57,7 +64,7 @@ class ModalScreen extends React.Component {
               {title: 'Configuraciones disponibles', data:this.state.files},
             ]}
             renderItem={({item}) => <Text style={sectionListItem} onPress={() => {
-              this.setConfiguracion(item.key).then(
+              this.setConfiguration(item.key).then(
                 this.props.navigation.goBack()
             )}}>{item.key}</Text>}
             renderSectionHeader={({section}) => <Text style={sectionListHeader}>{section.title}</Text>}

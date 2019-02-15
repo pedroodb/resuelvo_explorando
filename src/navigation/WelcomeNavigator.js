@@ -10,10 +10,10 @@ const WelcomeNavigator = createStackNavigator(
       screen: WelcomeScreen,
     },
     ConfigurationModal: {
-      screen: ConfigurationPickerModal
+      screen: ConfigurationPickerModal,
     },
     NewConfigurationModal: {
-      screen: NewConfigurationModal
+      screen: NewConfigurationModal,
     },
   },
   {

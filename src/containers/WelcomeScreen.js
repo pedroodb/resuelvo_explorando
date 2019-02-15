@@ -23,17 +23,18 @@ class WelcomeScreen extends Component {
     this.generateConfigFolder()
   }
 
-  //Agrega al header la opcion de cargar una nueva configuracion
+  //Agrega al header la opcion de cargar una nueva configuracion y un titulo
   static navigationOptions = ({ navigation }) => {
     return {
+      headerTitle: 'Bienvenida',
       headerRight: (
         <DefaultButtonTaskBar
           onPress={() => navigation.navigate('ConfigurationModal')}
           title="Cargar"
         />
       ),
-    };
-  };
+    }
+  }
 
   //Actualizar contenido cuando se vuelve a la pantalla
   async handleFocusEvent() {

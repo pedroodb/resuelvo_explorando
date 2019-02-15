@@ -5,6 +5,13 @@ import { MultipleChoiceReview, TypeError } from '../components/taskReviewCompone
 
 //Pantalla de vista de correccion de tarea
 class ReviewScreen extends Component {
+  
+  //Agrega al header un titulo
+  static navigationOptions = ({ navigation }) => {
+    return {
+      headerTitle: 'Desempeño en tarea',
+    }
+  }
 
   render() {
 

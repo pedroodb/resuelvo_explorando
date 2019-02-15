@@ -6,9 +6,6 @@ const TaskNavigator = createStackNavigator(
   {
     Task: {
       screen: TaskScreen,
-      navigationOptions: () => ({
-        headerLeft: null,
-      }),
     }
   },
   {

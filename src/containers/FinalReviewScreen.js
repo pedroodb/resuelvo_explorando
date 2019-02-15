@@ -3,6 +3,16 @@ import { Text, View, Button } from 'react-native'
 
 class FinalReviewScreenComponent extends Component {
 
+  //Agrega al header un titulo y elimina el boton para volver
+  static navigationOptions = ({ navigation }) => {
+    return {
+      headerTitle: 'Desempeño final',
+      navigationOptions: () => ({
+        headerLeft: null,
+      }),
+    }
+  }
+
   render() {
 
     const {

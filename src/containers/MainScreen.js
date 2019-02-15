@@ -24,6 +24,17 @@ class MainScreen extends Component {
     }
   }
 
+  //Agrega al header un titulo y elimina el boton para volver
+  static navigationOptions = ({ navigation }) => {
+    return {
+      headerTitle: 'Tareas',
+      navigationOptions: () => ({
+        headerLeft: null,
+      }),
+    }
+  }
+
+
   //Bloqueo el boton para volver atras una vez comenzada la actividad
   componentDidMount() {
     BackHandler.addEventListener('hardwareBackPress', this.handleBackButton);

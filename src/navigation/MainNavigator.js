@@ -6,9 +6,6 @@ const MainNavigator = createStackNavigator(
   {
     Main: {
       screen: MainScreen,
-      navigationOptions: () => ({
-        headerLeft: null,
-      }),
     },
     Camera: {
       screen: CameraModal,

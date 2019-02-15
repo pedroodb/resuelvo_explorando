@@ -9,6 +9,16 @@ import { solveTask } from '../actions/activityActions'
 //Pantalla de vista de tarea
 class TaskScreen extends Component {
 
+  //Agrega al header un titulo y elimina el boton para volver
+  static navigationOptions = ({ navigation }) => {
+    return {
+      headerTitle: 'Tarea',
+      navigationOptions: () => ({
+        headerLeft: null,
+      }),
+    }
+  }
+
   render() {
 
     const currentTask = this.props.navigation.getParam('currentTask',null)
