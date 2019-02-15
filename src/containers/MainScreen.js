@@ -54,7 +54,7 @@ class MainScreen extends Component {
     const {
       tasks,
       finishedTasks,
-    } = this.props
+    } = this.props.educationalActivity
 
     return (
       <View style={viewStyle}>
@@ -95,7 +95,7 @@ class MainScreen extends Component {
     const {
       tasks,
       finishedTasks,
-    } = this.props
+    } = this.props.educationalActivity
     
     if ((tasks.map(task => task.code)).includes(code)) {
       this.launchTask(tasks.find(task => (task.code == code)))
@@ -149,7 +149,7 @@ class MainScreen extends Component {
         {
           text: 'Finalizar',
           onPress: () => {
-            this.props.navigation.navigate('FinalReview')
+            this.props.navigation.navigate('FinalReview',{educationalActivity:this.props.educationalActivity})
           }
         },
       ],
@@ -171,7 +171,9 @@ function mapDispatchToProps(dispatch) {
 //Funcion que mapea el estado de la APLICACION (redux) con las props del componente
 function mapStateToProps({activityReducer}) {
   return {
-    ...activityReducer,
+    educationalActivity:{
+      ...activityReducer
+    },
   }
 }
 
