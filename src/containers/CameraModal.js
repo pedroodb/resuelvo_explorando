@@ -31,13 +31,8 @@ class CameraModal extends Component {
               style={[StyleSheet.absoluteFill, styles.container]}>
               <Image
                 style={styles.qr}
-                source={require('../assets/QR.png')}
+                source={require('../assets/QRScanner.png')}
               />
-              <Text
-                onPress={() => this.props.navigation.pop()}
-                style={styles.cancel}>
-                Cancel
-              </Text>
             </BarCodeScanner>
 
           );
@@ -66,12 +61,6 @@ const styles = StyleSheet.create({
     description: {
       fontSize: width * 0.09,
       marginTop: '10%',
-      textAlign: 'center',
-      width: '70%',
-      color: 'white',
-    },
-    cancel: {
-      fontSize: width * 0.05,
       textAlign: 'center',
       width: '70%',
       color: 'white',
