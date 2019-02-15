@@ -4,6 +4,9 @@ import { Text, View, Button } from 'react-native'
 class FinalReviewScreenComponent extends Component {
 
   render() {
+
+    const educationalActivity = this.props.navigation.getParam('educationalActivity')
+    
     return (
       <View>
         <Text>Hola</Text>
