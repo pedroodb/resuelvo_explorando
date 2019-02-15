@@ -28,9 +28,14 @@ class MutipleChoiceComponent extends Component {
     } = this.props.task
 
     return (
-      <View style={viewStyle}>
+      <View style={styles.viewMultipleChoice}>
+      <View style={{flex:1,alignSelf:'center'}}>
         <Text style= {styles.title}>{name}</Text>
+      </View>
+      <View style={{flex:3}}>
         {this.generateOptions(options)}
+      </View>
+      <View style={{flex:1, marginTop:120,justifyContent:'space-around'}}>
         {
           this.state.ready &&
           <DefaultButton
@@ -42,6 +47,7 @@ class MutipleChoiceComponent extends Component {
             }}
           />
         }
+        </View>
       </View>
     )
   }
@@ -78,6 +84,10 @@ const styles = StyleSheet.create({
   title: {
     textAlign:'center',
     fontSize:30,
+  },
+  viewMultipleChoice:{
+    flex:1,
+    justifyContent:'space-between',
   },
 })
 

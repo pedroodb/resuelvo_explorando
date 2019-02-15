@@ -61,6 +61,7 @@ const styles = StyleSheet.create({
   viewMCRTC: {
     flex:1,
     justifyContent:'space-between',
+    margin:10,
   },
 })
 
