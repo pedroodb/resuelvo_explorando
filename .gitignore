@@ -1,5 +1,4 @@
 .expo
 .vscode
 node_modules
-assets
 !src/assets
