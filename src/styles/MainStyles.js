@@ -6,7 +6,7 @@ const mainStyles = StyleSheet.create({
       flex: 1,
       margin: 10,
       backgroundColor: '#fff',
-      justifyContent: 'center',
+      justifyContent: 'space-between',
     },
   });
 

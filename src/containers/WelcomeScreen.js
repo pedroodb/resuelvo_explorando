@@ -91,7 +91,9 @@ class WelcomeScreen extends Component {
           onWillFocus={this.handleFocusEvent}
         />
         <Text style={titleStyle}>{title}</Text>
+        <View style={{alignItems:'center'}}>
         <Image source={require('../assets/resuelvo_explorando_logo.png')}/>
+        </View>
         <Text style={descriptionStyle}>{description}</Text>
         {
           ready &&
@@ -110,7 +112,7 @@ function mapDispatchToProps(dispatch) {
   return {
     actions : bindActionCreators({
       setConfiguration
-    }, dispatch) 
+    }, dispatch)
   }
 }
 

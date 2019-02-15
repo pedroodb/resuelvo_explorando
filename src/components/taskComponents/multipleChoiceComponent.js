@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View } from 'react-native'
+import { Text, View, StyleSheet } from 'react-native'
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button'
 
 import { DefaultButton } from '..'
@@ -28,11 +28,16 @@ class MutipleChoiceComponent extends Component {
       description,
       options
     } = this.props.task
-    
+
     return (
-      <View style={viewStyle}>
-        <Text>{name}</Text>
+      <View style={styles.viewMultipleChoice}>
+      <View style={{flex:1,alignSelf:'center'}}>
+        <Text style= {styles.title}>{name}</Text>
+      </View>
+      <View style={{flex:3}}>
         {this.generateOptions(options)}
+      </View>
+      <View style={{flex:1, marginTop:120,justifyContent:'space-around'}}>
         {
           this.state.ready &&
           <DefaultButton
@@ -44,6 +49,7 @@ class MutipleChoiceComponent extends Component {
             }}
           />
         }
+        </View>
       </View>
     )
   }
@@ -52,22 +58,39 @@ class MutipleChoiceComponent extends Component {
   generateOptions(options) {
     radio_props = options.map(({ value }) => (
       {
-        label:value, 
+        label:value,
         value:value
       })
     )
     return(
+      <View style={{margin:10}}>
       <RadioForm
-        radio_props={radio_props}
-        initial={-1}
-        labelHorizontal={true}
-        onPress={(value) => {
-          this.setState(() => ({selected:value, ready:true}))
-        }}
-      />
+      radio_props={radio_props}
+      initial={-1}
+      animation={false}
+      buttonSize={20}
+      labelStyle={{fontSize:20}}
+      labelHorizontal={true}
+      onPress={(value) => {
+        this.setState(() => ({selected:value, ready:true}))
+      }}
+      >
+      </RadioForm>
+      </View>
     )
   }
 
 }
+
+const styles = StyleSheet.create({
+  title: {
+    textAlign:'center',
+    fontSize:30,
+  },
+  viewMultipleChoice:{
+    flex:1,
+    justifyContent:'space-between',
+  },
+})
 
 export default MutipleChoiceComponent
