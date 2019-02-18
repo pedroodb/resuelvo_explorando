@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import {StyleSheet,Text, View, Dimensions, Image } from 'react-native'
-import { qrStyle, containerStyle, descriptionStyle } from '../styles/cameraModalStyles'
+import { StyleSheet, Text, View, Dimensions, Image } from 'react-native'
 import { BarCodeScanner, Permissions } from 'expo'
+import { containerStyle, qrStyle, descriptionStyle } from '../styles/CameraModalStyles'
 
 class CameraModal extends Component {
 
@@ -45,9 +45,6 @@ class CameraModal extends Component {
   }
 
 }
-
-const { width } = Dimensions.get('window')
-const qrSize = width * 0.7
 
 
 export default CameraModal
