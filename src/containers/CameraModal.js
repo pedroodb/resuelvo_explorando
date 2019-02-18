@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
-import { StyleSheet, Text, View, Dimensions, Image } from 'react-native'
-import { BarCodeScanner, Permissions } from 'expo'
-import { containerStyle, qrStyle, descriptionStyle, cancelStyle } from '../styles/CameraModalStyles'
+import { StyleSheet, Text, Image } from 'react-native'
+import { BarCodeScanner } from 'expo'
+
+import { hasCameraPermissionFunction as hasCameraPermission } from '../helpers/permissionAskers'
+import { containerStyle, qrStyle, cancelStyle } from '../styles/CameraModalStyles'
 
 class CameraModal extends Component {
 
@@ -10,8 +12,8 @@ class CameraModal extends Component {
   }
 
   async componentDidMount() {
-    const { status } = await Permissions.askAsync(Permissions.CAMERA);
-    this.setState({ hasCameraPermission: status === 'granted' });
+    const cameraPermission = await hasCameraPermission()
+    this.setState({ hasCameraPermission: cameraPermission })
   }
 
   render() {

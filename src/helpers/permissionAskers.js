@@ -7,4 +7,14 @@ async function hasReadWritePermission() {
   return (status === 'granted')
 }
 
-export default hasReadWritePermission
+//Acceso a la camara
+async function hasCameraPermission() {
+  const { Permissions } = Expo
+  const { status } = await Permissions.askAsync(Permissions.CAMERA)
+  return (status === 'granted')
+}
+
+export const hasReadWritePermissionFunction = hasReadWritePermission
+export const hasCameraPermissionFunction = hasCameraPermission
+
+export default { hasReadWritePermission, hasCameraPermission }
