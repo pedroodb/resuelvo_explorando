@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux'
 
 import { viewStyle, titleStyle, descriptionStyle } from '../styles/WelcomeStyles'
 import { DefaultButton, DefaultButtonTaskBar } from '../components'
-import hasReadWritePermission from '../helpers/permissionAskers'
+import { hasReadWritePermissionFunction  as hasReadWritePermission } from '../helpers/permissionAskers'
 import { setConfiguration } from '../actions/activityActions'
 
 
