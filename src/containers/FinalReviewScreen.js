@@ -28,8 +28,8 @@ class FinalReviewScreenComponent extends Component {
       </View>
       <View style={{flex:3}}>
         <Text style={styles.result}>{`${tasks.length} tareas sin resolver`}</Text>
-        <Text style={styles.result}>{`${(finishedTasks.filter(task => task.isCorrect)).length} correctamente`}</Text>
-        <Text style={styles.result}>{`${(finishedTasks.filter(task => !task.isCorrect)).length} incorrectamente`}</Text>
+        <Text style={styles.result}>{`${(finishedTasks.filter(task => task.answer.isCorrect)).length} correctamente`}</Text>
+        <Text style={styles.result}>{`${(finishedTasks.filter(task => !task.answer.isCorrect)).length} incorrectamente`}</Text>
       </View>
       <DefaultButton title="Finalizar" onPress={() => this.props.navigation.popToTop()}/>
       </View>

@@ -14,10 +14,15 @@ class MutipleChoiceReviewComponent extends Component {
       answer
     } = this.props.finishedTask
 
+    const correctOption = this.correctOption(options)
+
+
     return (
       <View style={styles.viewMCRTC}>
-        <Text style={styles.title}>Seleccionaste la opcion: {this.checkAnswer(options, answer)}</Text>
-        <Text style={styles.answer}> La correcta era {this.correctOption(options).value}</Text>
+        <Text style={styles.title}>Seleccionaste la opcion: {this.checkAnswer(answer)}</Text>
+        <Text style={styles.title}>{answer.aditionalInformation}</Text>
+        <Text style={styles.answer}> La opcioón correcta era {correctOption.value}</Text>
+        <Text style={styles.answer}>{correctOption.aditionalInformation}</Text>
         <DefaultButton
           title="Volver"
           onPress={() => this.props.navigation.navigate('Main')}
@@ -30,12 +35,12 @@ class MutipleChoiceReviewComponent extends Component {
     return options.find(({isCorrect}) => isCorrect)
   }
 
-  checkAnswer(options, answer){
-    if(this.correctOption(options).value == answer){
-      return ( <Text style={styles.right}>{answer}</Text> )
+  checkAnswer(answer){
+    if(answer.isCorrect){
+      return ( <Text style={styles.right}>{answer.value}</Text> )
     }
     else {
-      return ( <Text style={styles.wrong}>{answer}</Text> )
+      return ( <Text style={styles.wrong}>{answer.value}</Text> )
     }
   }
 
@@ -50,7 +55,7 @@ const styles = StyleSheet.create({
   },
   answer: {
     textAlign:'center',
-    fontSize:15,
+    fontSize:20,
     margin:5,
   },
   title: {

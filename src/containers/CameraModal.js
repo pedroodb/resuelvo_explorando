@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { StyleSheet, Text, View, Dimensions, Image } from 'react-native'
 import { BarCodeScanner, Permissions } from 'expo'
+import { containerStyle, qrStyle, descriptionStyle, cancelStyle } from '../styles/CameraModalStyles'
 
 class CameraModal extends Component {
 
@@ -28,11 +29,16 @@ class CameraModal extends Component {
     return (
       <BarCodeScanner
               onBarCodeRead={this.handleBarCodeScanned}
-              style={[StyleSheet.absoluteFill, styles.container]}>
+              style={[StyleSheet.absoluteFill, containerStyle]}>
               <Image
-                style={styles.qr}
+                style={qrStyle}
                 source={require('../assets/QRScanner.png')}
               />
+              <Text
+              onPress={() => this.props.navigation.pop()}
+              style={cancelStyle}>
+              Cancel
+              </Text>
             </BarCodeScanner>
 
           );
@@ -44,28 +50,6 @@ class CameraModal extends Component {
   }
 
 }
-
-const { width } = Dimensions.get('window')
-const qrSize = width * 0.7
-const styles = StyleSheet.create({
-  container: {
-      flex: 1,
-      alignItems: 'center',
-    },
-    qr: {
-      marginTop: '20%',
-      marginBottom: '20%',
-      width: qrSize,
-      height: qrSize,
-    },
-    description: {
-      fontSize: width * 0.09,
-      marginTop: '10%',
-      textAlign: 'center',
-      width: '70%',
-      color: 'white',
-    },
-});
 
 
 export default CameraModal
