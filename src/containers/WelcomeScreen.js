@@ -17,10 +17,34 @@ class WelcomeScreen extends Component {
   constructor(props) {
     super(props)
 
+    this.state = {
+      hasReadWritePermission: null
+    }
+
     //Bindeo al this para referenciar al componente WelcomeScreen desde handleFocusEvent
     this.handleFocusEvent = this.handleFocusEvent.bind(this)
+  }
 
-    this.generateConfigFolder()
+  async componentDidMount() {
+    //Pido por el permiso para acceder al FileSystem
+    const readWritePermission = await hasReadWritePermission()
+    
+    if (readWritePermission) {
+      this.generateConfigFolder()
+    } else {
+      Alert.alert(
+        'Error de permisos',
+        'Se necesitan de permisos de almacenamiento para que la aplicación pueda funcionar'
+      )
+    }
+  }
+
+  //Genera carpeta para guardar las configuraciones
+  async generateConfigFolder() {
+    configFolderInfo = (await Expo.FileSystem.getInfoAsync(`${Expo.FileSystem.documentDirectory}configurations`))
+    if (!(configFolderInfo.exists && configFolderInfo.isDirectory)) {
+      Expo.FileSystem.makeDirectoryAsync(`${Expo.FileSystem.documentDirectory}configurations`)
+    }
   }
 
   //Agrega al header la opcion de cargar una nueva configuracion y un titulo
@@ -38,12 +62,12 @@ class WelcomeScreen extends Component {
 
   //Actualizar contenido cuando se vuelve a la pantalla
   async handleFocusEvent() {
+    console.log(this.state)
     if(await this.existsConfigFile()){
       try {
         config = JSON.parse(await this.readConfigFile())
         this.props.actions.setConfiguration({ready: true, ...config})
       } catch (error) {
-        console.log(error)
         Alert.alert(
           'Error de actividad',
           'El archivo de configuracion de la actividad seleccionada se encuentra corrupto o no tiene el formato correcto.'
@@ -52,28 +76,14 @@ class WelcomeScreen extends Component {
     }
   }
 
-  //Genera carpeta para guardar las configuraciones
-  async generateConfigFolder() {
-    if (await hasReadWritePermission()) {
-      configFolderInfo = (await Expo.FileSystem.getInfoAsync(`${Expo.FileSystem.documentDirectory}configurations`))
-      if (!(configFolderInfo.exists && configFolderInfo.isDirectory)) {
-        Expo.FileSystem.makeDirectoryAsync(`${Expo.FileSystem.documentDirectory}configurations`)
-      }
-    }
-  }
-
   //Devuelve una promesa con un booleano correspondiente a si existe el archivo de configuracion correspondiente
   async existsConfigFile() {
-    if (await hasReadWritePermission()) {
-      return (await Expo.FileSystem.getInfoAsync(`${Expo.FileSystem.documentDirectory}configuration`)).exists
-    }
+    return (await Expo.FileSystem.getInfoAsync(`${Expo.FileSystem.documentDirectory}configuration`)).exists
   }
 
   //Devuelve una promesa con el contenido del archivo de configuracion
   async readConfigFile() {
-    if (await hasReadWritePermission()) {
-      return (await Expo.FileSystem.readAsStringAsync(`${Expo.FileSystem.documentDirectory}configuration`))
-    }
+    return (await Expo.FileSystem.readAsStringAsync(`${Expo.FileSystem.documentDirectory}configuration`))
   }
 
   render() {
