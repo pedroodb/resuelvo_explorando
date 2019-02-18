@@ -7,8 +7,7 @@ function getFinishedTask(task,answer) {
 function getFinishedMultipleChoiceTask(task,answer) {
   return {
     ...task,
-    answer:answer,
-    isCorrect: (answer == (task.options.find((option) => option.isCorrect)).value)
+    answer: (task.options.find((option) => option.value == answer)),
   }
 }
 
