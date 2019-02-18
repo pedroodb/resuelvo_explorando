@@ -21,9 +21,16 @@ const cameraStyles = StyleSheet.create({
       width: '70%',
       color: 'white',
     },
+    cancel: {
+    fontSize: width * 0.05,
+    textAlign: 'center',
+    width: '70%',
+    color: 'white',
+  },
 });
 
 export const qrStyle = cameraStyles.qr
+export const cancelStyle = cameraStyles.cancel
 export const descriptionStyle = cameraStyles.description
 export const containerStyle = cameraStyles.container
 export default cameraStyles

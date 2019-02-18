@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { StyleSheet, Text, View, Dimensions, Image } from 'react-native'
 import { BarCodeScanner, Permissions } from 'expo'
-import { containerStyle, qrStyle, descriptionStyle } from '../styles/CameraModalStyles'
+import { containerStyle, qrStyle, descriptionStyle, cancelStyle } from '../styles/CameraModalStyles'
 
 class CameraModal extends Component {
 
@@ -34,6 +34,11 @@ class CameraModal extends Component {
                 style={qrStyle}
                 source={require('../assets/QRScanner.png')}
               />
+              <Text
+              onPress={() => this.props.navigation.pop()}
+              style={cancelStyle}>
+              Cancel
+              </Text>
             </BarCodeScanner>
 
           );
