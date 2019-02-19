@@ -1,15 +1,9 @@
 import React, { Component } from 'react'
-<<<<<<< HEAD
-import { StyleSheet, Text, View, Dimensions, Image } from 'react-native'
-import { BarCodeScanner, Permissions } from 'expo'
-import { containerStyle, qrStyle, descriptionStyle } from '../styles/CameraModalStyles'
-=======
 import { StyleSheet, Text, Image } from 'react-native'
 import { BarCodeScanner } from 'expo'
 
 import { hasCameraPermissionFunction as hasCameraPermission } from '../helpers/permissionAskers'
-import { containerStyle, qrStyle, cancelStyle } from '../styles/CameraModalStyles'
->>>>>>> 933031ec8021c132c3b303771538e02093e19902
+import { containerStyle, qrStyle } from '../styles/CameraModalStyles'
 
 class CameraModal extends Component {
 

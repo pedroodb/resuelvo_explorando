@@ -24,7 +24,6 @@ const cameraStyles = StyleSheet.create({
 });
 
 export const qrStyle = cameraStyles.qr
-export const cancelStyle = cameraStyles.cancel
 export const descriptionStyle = cameraStyles.description
 export const containerStyle = cameraStyles.container
 export default cameraStyles
