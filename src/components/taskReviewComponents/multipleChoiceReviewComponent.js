@@ -21,7 +21,7 @@ class MutipleChoiceReviewComponent extends Component {
       <View style={styles.viewMCRTC}>
         <Text style={styles.title}>Seleccionaste la opcion: {this.checkAnswer(answer)}</Text>
         <Text style={styles.title}>{answer.aditionalInformation}</Text>
-        <Text style={styles.answer}> La opcioón correcta era {correctOption.value}</Text>
+        <Text style={styles.answer}> La opción correcta era {correctOption.value}</Text>
         <Text style={styles.answer}>{correctOption.aditionalInformation}</Text>
         <DefaultButton
           title="Volver"
