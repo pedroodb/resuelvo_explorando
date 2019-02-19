@@ -2,7 +2,7 @@ import { ACTIVITY_SET, TASK_SOLVED } from '../constants'
 
 const initialState = {
   ready:false,
-  title:'Bienvenido a resuelvo explorando',
+  title:'Bienvenido a Resuelvo Explorando',
   description:'Carga una actividad para comenzar!',
   tasks:[],
   finishedTasks:[]
