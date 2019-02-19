@@ -62,7 +62,6 @@ class WelcomeScreen extends Component {
 
   //Actualizar contenido cuando se vuelve a la pantalla
   async handleFocusEvent() {
-    console.log(this.state)
     if(await this.existsConfigFile()){
       try {
         config = JSON.parse(await this.readConfigFile())

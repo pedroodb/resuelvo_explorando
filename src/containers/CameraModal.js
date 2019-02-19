@@ -18,7 +18,6 @@ class CameraModal extends Component {
 
   render() {
 
-    //Pide por permiso de la camara
     const { hasCameraPermission } = this.state;
 
     if (hasCameraPermission === null) {
