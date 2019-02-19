@@ -62,7 +62,11 @@ class NewConfigurationModal extends Component {
     return (
       <View style={newConfigurationView}>
         <Text>Carga el codigo de una nueva configuracion:</Text>
-        <TextInput placeholder="Ingrese un codigo de configuracion" onChangeText={(text) => this.setState(() => ({code:text}))}/>
+        <TextInput 
+          placeholder="Ingrese un codigo de configuracion" 
+          onChangeText={(text) => this.setState(() => ({code:text}))}
+          onSubmitEditing={() => this.setConfiguration(code)}  
+        />
         <DefaultButton
           onPress={() => this.setConfiguration(code)}
           title="Cargar"
