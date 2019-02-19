@@ -21,12 +21,6 @@ const cameraStyles = StyleSheet.create({
       width: '70%',
       color: 'white',
     },
-    cancel: {
-    fontSize: width * 0.05,
-    textAlign: 'center',
-    width: '70%',
-    color: 'white',
-  },
 });
 
 export const qrStyle = cameraStyles.qr
