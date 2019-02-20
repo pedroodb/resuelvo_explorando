@@ -51,6 +51,7 @@ const styles = StyleSheet.create({
   finalReviewScreen:{
     flex:1,
     justifyContent:'space-around',
+    margin:10
   },
 })
 
