@@ -10,7 +10,7 @@ class TypeErrorComponent extends Component {
 
     return (
       <View>
-        <Text>Hubo un error en la carga de la correccion de la tarea</Text>
+        <Text>Hubo un error en la carga de la correccion de la tarea o esta se encuentra corrupta</Text>
         <DefaultButton
           title='Volver'
           onPress={() => this.props.navigation.navigate('Main')}

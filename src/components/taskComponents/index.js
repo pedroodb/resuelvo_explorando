@@ -1,6 +1,6 @@
 import TypeErrorComponent from './typeErrorComponent'
-import MultipleChoiceComponent from './multipleChoiceComponent'
-//import FreeAnswerComponent from './freeAnswer/freeAnswerComponent'
+import MultipleChoiceComponent from './multipleChoiceComponent/multipleChoiceComponent'
+//import FreeAnswerComponent from './freeAnswer/freeAnswerComponent/freeAnswerComponent'
 
 export const TypeError = TypeErrorComponent
 export const MultipleChoice = MultipleChoiceComponent
