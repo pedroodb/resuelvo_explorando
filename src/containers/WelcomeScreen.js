@@ -4,7 +4,11 @@ import { NavigationEvents } from 'react-navigation'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import { viewStyle, titleStyle, descriptionStyle } from '../styles/WelcomeStyles'
+import { 
+  viewStyle,
+  titleStyle,
+  descriptionStyle
+} from '../styles/WelcomeStyles'
 import { DefaultButton, DefaultButtonTaskBar } from '../components'
 import { hasReadWritePermissionFunction  as hasReadWritePermission } from '../helpers/permissionAskers'
 import { setConfiguration } from '../actions/activityActions'

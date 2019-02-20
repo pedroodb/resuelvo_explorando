@@ -1,5 +1,11 @@
 import React, { Component } from 'react'
-import { Text, View, Button, StyleSheet } from 'react-native'
+import { Text, View } from 'react-native'
+
+import {
+  viewStyle,
+  resultStyle,
+  titleStyle,
+ } from '../styles/FinalReviewStyles'
 import { DefaultButton } from '../components'
 import { result, finalReviewScreen, title } from '../styles/FinalReviewScreenStyles'
 

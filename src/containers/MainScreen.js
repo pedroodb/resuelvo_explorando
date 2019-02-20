@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Text, View, SectionList, Alert, BackHandler } from 'react-native'
-import { NavigationEvents } from 'react-navigation'
+import { NavigationEvents, withNavigationFocus } from 'react-navigation'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
@@ -16,8 +16,9 @@ class MainScreen extends Component {
   constructor(props) {
     super(props)
 
-    //Bindeo al this para referenciar al componente MainScreen desde handleFocusEvent
+    //Bindeo al this para referenciar al componente MainScreen desde handleFocusEvent y desde handleBackButton
     this.handleFocusEvent = this.handleFocusEvent.bind(this)
+    this.handleBackButton = this.handleBackButton.bind(this)
 
     this.state = {
       readenTaskCode: NO_CODE
@@ -45,7 +46,8 @@ class MainScreen extends Component {
   }
 
   handleBackButton() {
-      return true;
+    //Devolver true anula la accion de volver atras
+    return this.props.isFocused ? true : false
   }
 
 
@@ -188,4 +190,5 @@ function mapStateToProps({activityReducer}) {
   }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(MainScreen)
+//withNavigationFocus me permite usar la prop isFocused (en handleBackButton)
+export default connect(mapStateToProps,mapDispatchToProps)(withNavigationFocus(MainScreen))
