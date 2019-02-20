@@ -20,8 +20,8 @@ class MutipleChoiceReviewComponent extends Component {
     return (
       <View style={styles.viewMCRTC}>
         <Text style={styles.title}>Seleccionaste la opcion: {this.checkAnswer(answer)}</Text>
-        <Text style={styles.title}>{answer.aditionalInformation}</Text>
-        <Text style={styles.answer}> La opción correcta era {correctOption.value}</Text>
+        <Text style={styles.answer}>{answer.aditionalInformation}</Text>
+        <Text style={styles.title}> La opción correcta era {correctOption.value}</Text>
         <Text style={styles.answer}>{correctOption.aditionalInformation}</Text>
         <DefaultButton
           title="Volver"
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
   },
   answer: {
     textAlign:'center',
-    fontSize:20,
+    fontSize:15,
     margin:5,
   },
   title: {
