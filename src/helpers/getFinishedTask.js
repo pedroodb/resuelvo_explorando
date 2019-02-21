@@ -14,4 +14,4 @@ function getFinishedMultipleChoiceTask(task,answer) {
 export const getFinishedTaskFunction = getFinishedTask
 export const getFinishedMultipleChoiceTaskFunction = getFinishedMultipleChoiceTask
 
-export default { getFinishedTaskFunction,getFinishedMultipleChoiceTaskFunction }
+export default { getFinishedTaskFunction, getFinishedMultipleChoiceTaskFunction }

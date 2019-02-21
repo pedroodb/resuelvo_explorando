@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import { Text, View, Image, TextInput, Alert } from 'react-native'
 
 import { hasReadWritePermissionFunction  as hasReadWritePermission } from '../helpers/permissionAskers'
+import checkActivityFormat from '../helpers/checkActivityFormat'
 import { DefaultButton } from '../components'
 import { newConfigurationView } from '../styles/NewConfigurationStyles'
 
@@ -13,10 +14,7 @@ class NewConfigurationModal extends Component {
     this.state = {
       status: 'unloaded',
       code: undefined,
-      configuration:{
-        title: '',
-        description: '',
-      },
+      configuration: null,
     }
   }
 
@@ -36,19 +34,26 @@ class NewConfigurationModal extends Component {
     }
   }
 
-  //Obtiene la configuracion y la utiliza como estado del componente
+  //Obtiene la configuracion, chequea que tenga los campos correspondientes y la utiliza como estado del componente
   setConfiguration(code){
     this.setState(() => ({status:'loading'}))
     fetch(`https://${code}`).then(
       (result) => result.json().then(
-        (configuration) => this.setState(() => ({configuration, status:'loaded'}))
+        (configuration) => 
+          {
+            if (checkActivityFormat(configuration)){
+              this.setState(() => ({configuration, status:'loaded'}))
+            } else {
+              throw new Error("Archivo de configuracion corrupto")
+            }
+          }
       )
     ).catch(
       (error) => {
         this.setState(() => ({status:'unloaded'}))
         Alert.alert(
           'Error en la carga de la configuracion',
-          'El codigo ingresado no corresponde a una actividad correcta.'
+          error.message
         )
       }
     )
