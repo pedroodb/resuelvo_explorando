@@ -11,9 +11,15 @@ const initialState = {
 const activityReducer = (state = initialState, action) => {
   switch (action.type) {
     case ACTIVITY_SET:
+      const {
+        tasks,
+        finishedTasks
+      } = action.payload
       return {
         ...state,
         ...action.payload,
+        tasks:(tasks == undefined) ? [] : tasks,
+        finishedTasks: (finishedTasks == undefined) ? [] : finishedTasks,
       }
     case TASK_SOLVED:
       return {
