@@ -9,7 +9,14 @@ import {
   titleStyle,
   descriptionStyle
 } from '../styles/WelcomeStyles'
-import { DefaultButton, DefaultButtonTaskBar } from '../components'
+import {
+  DefaultButton,
+  DefaultButtonTaskBar
+} from '../components'
+import {
+  isActivitySetFunction as isActivitySet,
+  getActiveActivityFunction as getActiveActivity,
+} from '../helpers/configurationsStorage'
 import { hasReadWritePermissionFunction  as hasReadWritePermission } from '../helpers/permissionAskers'
 import { setConfiguration } from '../actions/activityActions'
 
@@ -33,21 +40,11 @@ class WelcomeScreen extends Component {
     //Pido por el permiso para acceder al FileSystem
     const readWritePermission = await hasReadWritePermission()
     
-    if (readWritePermission) {
-      this.generateConfigFolder()
-    } else {
+    if (!readWritePermission) {
       Alert.alert(
         'Error de permisos',
         'Se necesitan de permisos de almacenamiento para que la aplicación pueda funcionar'
       )
-    }
-  }
-
-  //Genera carpeta para guardar las configuraciones
-  async generateConfigFolder() {
-    configFolderInfo = (await Expo.FileSystem.getInfoAsync(`${Expo.FileSystem.documentDirectory}configurations`))
-    if (!(configFolderInfo.exists && configFolderInfo.isDirectory)) {
-      Expo.FileSystem.makeDirectoryAsync(`${Expo.FileSystem.documentDirectory}configurations`)
     }
   }
 
@@ -66,27 +63,11 @@ class WelcomeScreen extends Component {
 
   //Actualizar contenido cuando se vuelve a la pantalla
   async handleFocusEvent() {
-    if(await this.existsConfigFile()){
-      try {
-        config = JSON.parse(await this.readConfigFile())
-        this.props.actions.setConfiguration({ready: true, ...config})
-      } catch (error) {
-        Alert.alert(
-          'Error de actividad',
-          'El archivo de configuracion de la actividad seleccionada se encuentra corrupto o no tiene el formato correcto.'
-        )
-      }
-    }
-  }
-
-  //Devuelve una promesa con un booleano correspondiente a si existe el archivo de configuracion correspondiente
-  async existsConfigFile() {
-    return (await Expo.FileSystem.getInfoAsync(`${Expo.FileSystem.documentDirectory}configuration`)).exists
-  }
-
-  //Devuelve una promesa con el contenido del archivo de configuracion
-  async readConfigFile() {
-    return (await Expo.FileSystem.readAsStringAsync(`${Expo.FileSystem.documentDirectory}configuration`))
+    isActivitySet().then(
+      (isSet) => isSet ? getActiveActivity().then(
+        (activity) => this.props.actions.setConfiguration({ready: true, ...activity})
+      ) : {}
+    )
   }
 
   render() {

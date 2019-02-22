@@ -6,13 +6,17 @@ import { hasReadWritePermissionFunction  as hasReadWritePermission } from '../he
 import { DefaultButton } from '../components'
 import { sectionListHeader, sectionListItem } from '../styles/GenericComponentsStyles'
 import { configurationPickerView } from '../styles/ConfigurationPickerStyles'
+import { 
+  getActivitiesFunction as getActivities,
+  setActiveActivityFunction as setActiveActivity
+} from '../helpers/configurationsStorage'
 
 class ModalScreen extends React.Component {
 
   constructor(props) {
     super(props)
     this.state = {
-      files: [],
+      activities: [],
     }
 
     //Bindeo al this para referenciar al componente desde handleFocusEvent
@@ -28,31 +32,15 @@ class ModalScreen extends React.Component {
 
   //Actualizo la lista cada vez que se hace foco (util para cuando vuelvo de cargar configuracion nueva)
   handleFocusEvent() {
-    this.updateConfigList()
-  }
-
-  //Actualiza el estado con los archivos de configuracion disponibles
-  async updateConfigList() {
-    this.getConfigurations().then(
-      (configurations) => this.setState(() => ({files: configurations}))
+    getActivities().then(
+      (configurations) => {
+        this.setState(() => ({activities: configurations}))
+      }
     )
   }
 
-  //Devuelve arreglo de objetos con los nombres de archivos de configuracion
-  async getConfigurations() {
-    if(await hasReadWritePermission()) {
-      return (await Expo.FileSystem.readDirectoryAsync(`${Expo.FileSystem.documentDirectory}configurations`)).map((elem) => ({key:elem}))
-    }
-  }
-
-  //Carga el archivo de configuracion con la configuracion seleccionada
-  async setConfiguration(configName) {
-    if(await hasReadWritePermission()) {
-      Expo.FileSystem.copyAsync({from:`${Expo.FileSystem.documentDirectory}configurations/${configName}`, to:`${Expo.FileSystem.documentDirectory}configuration`})
-    }
-  }
-
   render() {
+
     return (
       <View style={configurationPickerView}>
         <NavigationEvents
@@ -61,12 +49,14 @@ class ModalScreen extends React.Component {
         />
         <SectionList
             sections={[
-              {title: 'Configuraciones disponibles', data:this.state.files},
+              {title: 'Configuraciones disponibles', data:this.state.activities},
             ]}
-            renderItem={({item}) => <Text style={sectionListItem} onPress={() => {
-              this.setConfiguration(item.key).then(
-                this.props.navigation.goBack()
-            )}}>{item.key}</Text>}
+            renderItem={({item}) => 
+            <Text style={sectionListItem} 
+              onPress={() => {setActiveActivity(item).then(
+                  this.props.navigation.goBack()
+              )}}>{item.title}
+            </Text>}
             renderSectionHeader={({section}) => <Text style={sectionListHeader}>{section.title}</Text>}
             keyExtractor={(item, index) => index}
         />  

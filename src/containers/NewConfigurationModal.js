@@ -5,6 +5,7 @@ import { hasReadWritePermissionFunction  as hasReadWritePermission } from '../he
 import checkActivityFormat from '../helpers/checkActivityFormat'
 import { DefaultButton } from '../components'
 import { newConfigurationView } from '../styles/NewConfigurationStyles'
+import { storeActivityFunction as storeActivity } from '../helpers/configurationsStorage'
 
 //Pantalla de carga de configuracion nueva
 class NewConfigurationModal extends Component {
@@ -27,15 +28,12 @@ class NewConfigurationModal extends Component {
 
   //Guarda el archivo de configuracion en la carpeta configurations
   async saveConfiguration() {
-    if (await hasReadWritePermission()) {
-      Expo.FileSystem.writeAsStringAsync(`${Expo.FileSystem.documentDirectory}configurations/${this.state.configuration.title}`, JSON.stringify(this.state.configuration)).then(
-        this.props.navigation.goBack()
-      )
-    }
+    storeActivity(this.state.configuration)
+    this.props.navigation.goBack()
   }
 
   //Obtiene la configuracion, chequea que tenga los campos correspondientes y la utiliza como estado del componente
-  setConfiguration(code){
+  setConfigurationAsState(code){
     this.setState(() => ({status:'loading'}))
     fetch(`https://${code}`).then(
       (result) => result.json().then(
@@ -70,10 +68,10 @@ class NewConfigurationModal extends Component {
         <TextInput 
           placeholder="Ingrese un codigo de configuracion" 
           onChangeText={(text) => this.setState(() => ({code:text}))}
-          onSubmitEditing={() => this.setConfiguration(code)}  
+          onSubmitEditing={() => this.setConfigurationAsState(code)}  
         />
         <DefaultButton
-          onPress={() => this.setConfiguration(code)}
+          onPress={() => this.setConfigurationAsState(code)}
           title="Cargar"
         />
         {
