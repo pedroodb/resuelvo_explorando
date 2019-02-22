@@ -20,10 +20,9 @@ import {
 import { setConfiguration } from '../actions/activityActions'
 
 
-//Pantalla de bienvenida y carga de JSON
+//Pantalla de bienvenida
 class WelcomeScreen extends Component {
 
-  //Carga por defecto en caso de que no haya ninguna configuracion cargada
   constructor(props) {
     super(props)
 

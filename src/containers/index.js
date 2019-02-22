@@ -1,13 +1,13 @@
 import WelcomeScreenComponent from './WelcomeScreen'
 import MainScreenComponent from './MainScreen'
-import ConfigurationModalComponent from './ConfigurationPickerModal'
+import ConfigurationPickerModalComponent from './ConfigurationPickerModal'
 import TaskScreenComponent from './TaskScreen'
 import NewConfigurationModalComponent from './NewConfigurationModal'
 import CameraModalComponent from './CameraModal'
 import TaskReviewScreenComponent from './TaskReviewScreen'
 import FinalReviewScreenComponent from './FinalReviewScreen'
 
-export const ConfigurationPickerModal = ConfigurationModalComponent
+export const ConfigurationPickerModal = ConfigurationPickerModalComponent
 export const NewConfigurationModal = NewConfigurationModalComponent
 export const WelcomeScreen = WelcomeScreenComponent
 export const MainScreen = MainScreenComponent

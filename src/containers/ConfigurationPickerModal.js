@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { View, Text, SectionList } from 'react-native'
 import { NavigationEvents } from 'react-navigation'
 
@@ -10,7 +10,7 @@ import {
   setActiveActivityFunction as setActiveActivity
 } from '../helpers/configurationsStorage'
 
-class ModalScreen extends React.Component {
+class ConfigurationPickerModal extends Component {
 
   constructor(props) {
     super(props)
@@ -29,7 +29,7 @@ class ModalScreen extends React.Component {
     }
   }
 
-  //Actualizo la lista cada vez que se hace foco (util para cuando vuelvo de cargar configuracion nueva)
+  //Actualizo la lista cada vez que se hace foco (necesaria para cuando vuelvo de cargar configuracion nueva)
   handleFocusEvent() {
     getActivities().then(
       (configurations) => {
@@ -68,4 +68,4 @@ class ModalScreen extends React.Component {
   }
 }
 
-export default ModalScreen
+export default ConfigurationPickerModal

@@ -27,7 +27,7 @@ class NewConfigurationModal extends Component {
 
   //Guarda el archivo de configuracion en la carpeta configurations
   async saveConfiguration() {
-    storeActivity(this.state.configuration)
+    await storeActivity(this.state.configuration)
     this.props.navigation.goBack()
   }
 
