@@ -17,7 +17,6 @@ import {
   isActivitySetFunction as isActivitySet,
   getActiveActivityFunction as getActiveActivity,
 } from '../helpers/configurationsStorage'
-import { hasReadWritePermissionFunction  as hasReadWritePermission } from '../helpers/permissionAskers'
 import { setConfiguration } from '../actions/activityActions'
 
 
@@ -28,24 +27,8 @@ class WelcomeScreen extends Component {
   constructor(props) {
     super(props)
 
-    this.state = {
-      hasReadWritePermission: null
-    }
-
     //Bindeo al this para referenciar al componente WelcomeScreen desde handleFocusEvent
     this.handleFocusEvent = this.handleFocusEvent.bind(this)
-  }
-
-  async componentDidMount() {
-    //Pido por el permiso para acceder al FileSystem
-    const readWritePermission = await hasReadWritePermission()
-    
-    if (!readWritePermission) {
-      Alert.alert(
-        'Error de permisos',
-        'Se necesitan de permisos de almacenamiento para que la aplicación pueda funcionar'
-      )
-    }
   }
 
   //Agrega al header la opcion de cargar una nueva configuracion y un titulo

@@ -2,7 +2,6 @@ import React from 'react'
 import { View, Text, SectionList } from 'react-native'
 import { NavigationEvents } from 'react-navigation'
 
-import { hasReadWritePermissionFunction  as hasReadWritePermission } from '../helpers/permissionAskers'
 import { DefaultButton } from '../components'
 import { sectionListHeader, sectionListItem } from '../styles/GenericComponentsStyles'
 import { configurationPickerView } from '../styles/ConfigurationPickerStyles'

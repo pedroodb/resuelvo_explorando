@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import { Text, View, Image, TextInput, Alert } from 'react-native'
 
-import { hasReadWritePermissionFunction  as hasReadWritePermission } from '../helpers/permissionAskers'
 import checkActivityFormat from '../helpers/checkActivityFormat'
 import { DefaultButton } from '../components'
 import { newConfigurationView } from '../styles/NewConfigurationStyles'
