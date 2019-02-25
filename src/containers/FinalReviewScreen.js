@@ -1,13 +1,11 @@
 import React, { Component } from 'react'
 import { Text, View } from 'react-native'
-
 import {
   viewStyle,
   resultStyle,
   titleStyle,
  } from '../styles/FinalReviewStyles'
 import { DefaultButton } from '../components'
-import { result, finalReviewScreen, title } from '../styles/FinalReviewScreenStyles'
 
 class FinalReviewScreenComponent extends Component {
 

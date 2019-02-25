@@ -1,21 +1,22 @@
 import { StyleSheet } from 'react-native'
 
 const finalReviewStyles = StyleSheet.create({
-    //Estilo de la pantalla de Review Final
-    titleFR: {
-        textAlign:'center',
-        fontSize:40,
-      },
-      resultFR:{
-        fontSize:20,
-        marginLeft:20,
-        margin:10,
-      },
-      viewFR:{
-        flex:1,
-        justifyContent:'space-around',
-      },
-  });
+  //Estilo de la pantalla de Review Final
+  titleFR: {
+      textAlign:'center',
+      fontSize:40,
+    },
+    resultFR:{
+      fontSize:20,
+      marginLeft:20,
+      margin:10,
+    },
+    viewFR:{
+      flex:1,
+      justifyContent:'space-around',
+      margin:10
+    },
+})
 
 export const titleStyle = finalReviewStyles.titleFR
 export const resultStyle = finalReviewStyles.resultFR
