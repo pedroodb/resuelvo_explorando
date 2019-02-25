@@ -5,5 +5,6 @@ Requiere instalar:
     - Redux ('yarn add redux')
     - Redux ('yarn add react-redux')
     - Radio Button ('yarn add react-native-simple-radio-button')
+    - <Touchable> ('yarn add react-native-platform-touchable')
 
-Usar 'react-native link' para linkear dependencias siempre despues de instalar una nueva dependencia.
+Usar 'yarn' para instalar todo lo necesario y luego 'react-native link'
