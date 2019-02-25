@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, SectionList } from 'react-native'
+import { View, Text, SectionList, Alert } from 'react-native'
 import Touchable from 'react-native-platform-touchable'
 import { NavigationEvents } from 'react-navigation'
 
@@ -8,7 +8,8 @@ import { sectionListHeader, sectionListItem } from '../styles/GenericComponentsS
 import { configurationPickerView } from '../styles/ConfigurationPickerStyles'
 import { 
   getActivitiesFunction as getActivities,
-  setActiveActivityFunction as setActiveActivity
+  setActiveActivityFunction as setActiveActivity,
+  deleteActivityFunction as deleteActivity,
 } from '../helpers/configurationsStorage'
 
 class ConfigurationPickerModal extends Component {
@@ -51,11 +52,24 @@ class ConfigurationPickerModal extends Component {
             sections={[
               {title: 'Configuraciones disponibles', data:this.state.activities},
             ]}
-            renderItem={({item}) => 
+            renderItem={({item,index}) => 
             <Touchable
-              onPress={() => {setActiveActivity(item).then(
+              onPress={() => {
+                setActiveActivity(item).then(
                   this.props.navigation.goBack()
-              )}}>
+                )
+              }}
+              onLongPress={() => {
+                Alert.alert(
+                  'Eliminar actividad',
+                  'Seguro que desea eliminar esta actividad?',
+                  [
+                    {text: 'Cancelar', style: 'cancel'},
+                    {text: 'Eliminar', onPress: () => deleteActivity(index).then(() => this.handleFocusEvent())},
+                  ]
+                )
+              }}
+              >
               <Text style={sectionListItem}>{item.title}</Text>
             </Touchable>}
             renderSectionHeader={({section}) => <Text style={sectionListHeader}>{section.title}</Text>}

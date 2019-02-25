@@ -5,9 +5,13 @@ async function getActivities() {
   return (activities == null ? [] : JSON.parse(activities))
 }
 
+async function setActivities(activities) {
+  await AsyncStorage.setItem('activities', JSON.stringify(activities))
+}
+
 async function storeActivity(activity) {
   activities = await getActivities()
-  await AsyncStorage.setItem('activities', JSON.stringify([...activities, activity]))
+  await setActivities([...activities, activity])
 }
 
 async function getActiveActivity() {
@@ -22,10 +26,17 @@ async function isActivitySet() {
   return (await getActiveActivity() !== null)
 }
 
+async function deleteActivity(index) {
+  activities = (await getActivities())
+  activities.splice(index,1)
+  await setActivities(activities)
+}
+
 export const getActivitiesFunction = getActivities
 export const storeActivityFunction = storeActivity
 export const getActiveActivityFunction = getActiveActivity
 export const setActiveActivityFunction = setActiveActivity
 export const isActivitySetFunction = isActivitySet
+export const deleteActivityFunction = deleteActivity
 
 export default { getActivitiesFunction, storeActivityFunction, getActiveActivityFunction, setActiveActivityFunction, isActivitySetFunction }
