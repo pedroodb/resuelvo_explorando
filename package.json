@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "expo": "^31.0.2",
-    "expo-cli": "^2.11.1",
+    "expo-cli": "^2.11.2",
     "global": "^4.3.2",
     "jest": "^23.6.0",
     "react": "16.5.0",
