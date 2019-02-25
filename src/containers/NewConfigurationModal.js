@@ -3,7 +3,7 @@ import { Text, View, Image, TextInput, Alert, KeyboardAvoidingView } from 'react
 
 import checkActivityFormat from '../helpers/checkActivityFormat'
 import { DefaultButton } from '../components'
-import { newConfigurationView } from '../styles/NewConfigurationStyles'
+import { newConfigurationView,newConfigurationTittle,newConfigurationKeyboard, newConfigurationtextInput } from '../styles/NewConfigurationStyles'
 import { storeActivityFunction as storeActivity } from '../helpers/configurationsStorage'
 
 //Pantalla de carga de configuracion nueva
@@ -36,7 +36,7 @@ class NewConfigurationModal extends Component {
     this.setState(() => ({status:'loading'}))
     fetch(`https://${code}`).then(
       (result) => result.json().then(
-        (configuration) => 
+        (configuration) =>
           {
             if (checkActivityFormat(configuration)){
               this.setState(() => ({configuration, status:'loaded'}))
@@ -62,35 +62,38 @@ class NewConfigurationModal extends Component {
     const { configuration, status, code } = this.state
 
     return (
-      <KeyboardAvoidingView style={newConfigurationView} behavior="padding">
-        <Text>Carga el codigo de una nueva configuracion:</Text>
-        <TextInput 
-          placeholder="Ingrese un codigo de configuracion" 
-          autoFocus={true}
-          autoCapitalize='none'
-          onChangeText={(text) => this.setState(() => ({code:text}))}
-          onSubmitEditing={() => this.setConfigurationAsState(code)}  
-        />
-        <DefaultButton
-          onPress={() => this.setConfigurationAsState(code)}
-          title="Cargar"
-        />
-        {
-          (status == 'loading') && 
-          <Image source={require('../assets/loading.gif')}/>
-        }
-        {
-          (status == 'loaded') &&
-          <View>
-            <Text>{configuration.title}</Text>
-            <Text>{configuration.description}</Text>
-            <DefaultButton
-              onPress={() => this.saveConfiguration()}
-              title="Descargar"
-            />
-          </View>
-        }
-      </KeyboardAvoidingView>
+      <View style={newConfigurationView}>
+        <Text style={newConfigurationTittle}>Carga el codigo de una nueva configuracion:</Text>
+        <KeyboardAvoidingView style={newConfigurationKeyboard} behavior="padding">
+          <TextInput
+            placeholder="Ingrese un codigo de configuracion"
+            autoFocus={true}
+            autoCapitalize='none'
+            onChangeText={(text) => this.setState(() => ({code:text}))}
+            onSubmitEditing={() => this.setConfigurationAsState(code)}
+            style={newConfigurationtextInput}
+          />
+          <DefaultButton
+            onPress={() => this.setConfigurationAsState(code)}
+            title="Cargar"
+          />
+          {
+            (status == 'loading') &&
+            <Image source={require('../assets/loading.gif')}/>
+          }
+          {
+            (status == 'loaded') &&
+            <View>
+              <Text>{configuration.title}</Text>
+              <Text>{configuration.description}</Text>
+              <DefaultButton
+                onPress={() => this.saveConfiguration()}
+                title="Descargar"
+              />
+            </View>
+          }
+        </KeyboardAvoidingView>
+      </View>
     )
   }
 }
