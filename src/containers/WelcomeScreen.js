@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Image, Text, View, Alert } from 'react-native'
+import { Image, Text, View } from 'react-native'
 import { NavigationEvents } from 'react-navigation'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'

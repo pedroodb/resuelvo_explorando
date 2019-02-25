@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text, SectionList } from 'react-native'
+import Touchable from 'react-native-platform-touchable'
 import { NavigationEvents } from 'react-navigation'
 
 import { DefaultButton } from '../components'
@@ -51,11 +52,12 @@ class ConfigurationPickerModal extends Component {
               {title: 'Configuraciones disponibles', data:this.state.activities},
             ]}
             renderItem={({item}) => 
-            <Text style={sectionListItem} 
+            <Touchable
               onPress={() => {setActiveActivity(item).then(
                   this.props.navigation.goBack()
-              )}}>{item.title}
-            </Text>}
+              )}}>
+              <Text style={sectionListItem}>{item.title}</Text>
+            </Touchable>}
             renderSectionHeader={({section}) => <Text style={sectionListHeader}>{section.title}</Text>}
             keyExtractor={(item, index) => index}
         />  
