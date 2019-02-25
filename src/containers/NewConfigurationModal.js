@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { Text, View, Image, TextInput, Alert } from 'react-native'
+import { Text, View, Image, TextInput, Alert, KeyboardAvoidingView } from 'react-native'
 
 import checkActivityFormat from '../helpers/checkActivityFormat'
 import { DefaultButton } from '../components'
@@ -62,10 +62,12 @@ class NewConfigurationModal extends Component {
     const { configuration, status, code } = this.state
 
     return (
-      <View style={newConfigurationView}>
+      <KeyboardAvoidingView style={newConfigurationView} behavior="padding">
         <Text>Carga el codigo de una nueva configuracion:</Text>
         <TextInput 
           placeholder="Ingrese un codigo de configuracion" 
+          autoFocus={true}
+          autoCapitalize='none'
           onChangeText={(text) => this.setState(() => ({code:text}))}
           onSubmitEditing={() => this.setConfigurationAsState(code)}  
         />
@@ -88,7 +90,7 @@ class NewConfigurationModal extends Component {
             />
           </View>
         }
-      </View>
+      </KeyboardAvoidingView>
     )
   }
 }
