@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native'
 
 const stylesMCRC = StyleSheet.create({
-  viewStyleMCRTC: {
+  viewStyleMCRC: {
       flex:1,
       justifyContent:'space-between',
       margin:10,
