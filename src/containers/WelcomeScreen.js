@@ -4,14 +4,14 @@ import { NavigationEvents } from 'react-navigation'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import { 
+import {
   viewStyle,
   titleStyle,
   descriptionStyle
 } from '../styles/WelcomeStyles'
 import {
   DefaultButton,
-  DefaultButtonTaskBar
+  IconButtonTaskBar
 } from '../components'
 import {
   isActivitySetFunction as isActivitySet,
@@ -35,9 +35,9 @@ class WelcomeScreen extends Component {
     return {
       headerTitle: 'Bienvenida',
       headerRight: (
-        <DefaultButtonTaskBar
+        <IconButtonTaskBar
           onPress={() => navigation.navigate('ConfigurationModal')}
-          title="Cargar"
+          image={require('../assets/downloadIcon.png')}
         />
       ),
     }
