@@ -37,7 +37,7 @@ class WelcomeScreen extends Component {
       headerRight: (
         <IconButtonTaskBar
           onPress={() => navigation.navigate('ConfigurationModal')}
-          image={require('../assets/downloadIcon.png')}
+          image={require('../assets/downloadIcon_black.png')}
         />
       ),
     }
