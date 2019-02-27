@@ -40,6 +40,14 @@ class NewConfigurationModal extends Component {
           {
             if (checkActivityFormat(configuration)){
               this.setState(() => ({configuration, status:'loaded'}))
+              Alert.alert(
+                configuration.title,
+                configuration.description,
+                [
+                  {text: 'Cancelar', style: 'cancel', onPress: () => this.setState({status:'unloaded'})},
+                  {text: 'Descargar', onPress: () => this.saveConfiguration()},
+                ]
+              )
             } else {
               throw new Error("Archivo de configuracion corrupto")
             }
@@ -65,30 +73,24 @@ class NewConfigurationModal extends Component {
       <View style={newConfigurationView}>
         <Text style={newConfigurationTittle}>Carga el codigo de una nueva configuracion:</Text>
         <KeyboardAvoidingView style={newConfigurationKeyboard} behavior="padding">
-          <TextInput
-            placeholder="Ingrese un codigo de configuracion"
-            autoFocus={true}
-            autoCapitalize='none'
-            onChangeText={(text) => this.setState(() => ({code:text}))}
-            onSubmitEditing={() => this.setConfigurationAsState(code)}
-            style={newConfigurationtextInput}
-          />
-          <DefaultButton
-            onPress={() => this.setConfigurationAsState(code)}
-            title="Cargar"
-          />
           {
             (status == 'loading') &&
             <Image source={require('../assets/loading.gif')}/>
           }
           {
-            (status == 'loaded') &&
+            (status == 'unloaded') &&
             <View>
-              <Text>{configuration.title}</Text>
-              <Text>{configuration.description}</Text>
+              <TextInput
+              placeholder="Ingrese un codigo de configuracion"
+              autoFocus={true}
+              autoCapitalize='none'
+              onChangeText={(text) => this.setState(() => ({code:text}))}
+              onSubmitEditing={() => this.setConfigurationAsState(code)}
+              style={newConfigurationtextInput}
+              />
               <DefaultButton
-                onPress={() => this.saveConfiguration()}
-                title="Descargar"
+              onPress={() => this.setConfigurationAsState(code)}
+              title="Cargar"
               />
             </View>
           }

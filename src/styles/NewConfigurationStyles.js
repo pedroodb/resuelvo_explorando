@@ -6,6 +6,7 @@ const newConfigurationStyles = StyleSheet.create({
       flex: 1,
       backgroundColor: '#fff',
       justifyContent: 'center',
+      alignItems: 'center',
     },
     titleNC: {
       textAlign: 'center',
