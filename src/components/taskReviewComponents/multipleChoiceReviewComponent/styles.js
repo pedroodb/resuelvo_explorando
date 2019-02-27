@@ -13,8 +13,9 @@ const stylesMCRC = StyleSheet.create({
   },
   answerStyleMCRC: {
       textAlign:'center',
-      fontSize:20,
+      fontSize:15,
       margin:5,
+      marginHorizontal:5,
   },
   rightStyleMCRC: {
       color:'green',
