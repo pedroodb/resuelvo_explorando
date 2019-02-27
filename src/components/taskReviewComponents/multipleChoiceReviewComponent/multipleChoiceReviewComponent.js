@@ -27,10 +27,10 @@ class MutipleChoiceReviewComponent extends Component {
             <Text style={titleStyle}> La opción correcta era {correctOption.value}</Text>
             <Text style={answerStyle}>{correctOption.aditionalInformation}</Text>
           </View>
-            <DefaultButton
-              title="Volver"
-              onPress={() => this.props.navigation.navigate('Main')}
-            />
+          <DefaultButton
+            title="Volver"
+            onPress={() => this.props.navigation.navigate('Main')}
+          />
       </View>
     )
   }
