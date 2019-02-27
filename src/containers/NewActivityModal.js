@@ -9,7 +9,7 @@ import {
   newActivityKeyboard,
   newActivitytextInput
 } from '../styles/NewActivityStyles'
-import { storeActivityFunction as storeActivity } from '../helpers/configurationsStorage'
+import { storeActivityFunction as storeActivity } from '../helpers/activitiesStorage'
 
 //Pantalla de carga de nueva actividad
 class NewActivityModal extends Component {

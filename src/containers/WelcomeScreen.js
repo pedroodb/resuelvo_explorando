@@ -16,7 +16,7 @@ import {
 import {
   isActivitySetFunction as isActivitySet,
   getActiveActivityFunction as getActiveActivity,
-} from '../helpers/configurationsStorage'
+} from '../helpers/activitiesStorage'
 import { setConfiguration } from '../actions/activityActions'
 
 

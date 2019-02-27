@@ -10,7 +10,7 @@ import {
   getActivitiesFunction as getActivities,
   setActiveActivityFunction as setActiveActivity,
   deleteActivityFunction as deleteActivity,
-} from '../helpers/configurationsStorage'
+} from '../helpers/activitiesStorage'
 
 class ConfigurationPickerModal extends Component {
 
