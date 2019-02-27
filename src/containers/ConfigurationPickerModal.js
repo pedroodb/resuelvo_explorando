@@ -27,7 +27,7 @@ class ConfigurationPickerModal extends Component {
   //Agrega al header un titulo
   static navigationOptions = ({ navigation }) => {
     return {
-      headerTitle: 'Carga de configuración',
+      headerTitle: 'Carga de actividad',
     }
   }
 
@@ -50,7 +50,7 @@ class ConfigurationPickerModal extends Component {
         />
         <SectionList
             sections={[
-              {title: 'Configuraciones disponibles', data:this.state.activities},
+              {title: 'Actividades disponibles', data:this.state.activities},
             ]}
             renderItem={({item,index}) => 
             <Touchable
@@ -76,8 +76,8 @@ class ConfigurationPickerModal extends Component {
             keyExtractor={(item, index) => index}
         />  
         <DefaultButton
-          onPress={() => this.props.navigation.navigate('NewConfigurationModal')}
-          title="Cargar nueva"
+          onPress={() => this.props.navigation.navigate('NewActivityModal')}
+          title="Cargar nueva actividad"
         />
       </View>
     );

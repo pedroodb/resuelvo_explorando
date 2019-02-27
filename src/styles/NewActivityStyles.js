@@ -1,32 +1,32 @@
 import { StyleSheet } from 'react-native'
 
-const newConfigurationStyles = StyleSheet.create({
+const newActivityStyles = StyleSheet.create({
     //Estilo de la pantalla de carga de nueva configuracion
-    viewKeyboard: {
+    keyboardViewNA: {
       flex: 1,
       backgroundColor: '#fff',
       justifyContent: 'center',
       alignItems: 'center',
     },
-    titleNC: {
+    titleNA: {
       textAlign: 'center',
       fontSize: 28,
     },
-    viewNC: {
+    viewNA: {
       flex: 1,
       backgroundColor: '#fff',
       justifyContent: 'space-between',
       margin:10,
     },
-    textInputStyle:{
+    textInputNA:{
       textAlign:'center',
       fontSize:20,
       marginBottom:10,
     }
   });
 
-export const newConfigurationtextInput = newConfigurationStyles.textInputStyle
-export const newConfigurationKeyboard = newConfigurationStyles.viewKeyboard
-export const newConfigurationTittle = newConfigurationStyles.titleNC
-export const newConfigurationView = newConfigurationStyles.viewNC
-export default newConfigurationStyles
+export const newActivitytextInput = newActivityStyles.textInputNA
+export const newActivityKeyboard = newActivityStyles.keyboardViewNA
+export const newActivityTittle = newActivityStyles.titleNA
+export const newActivityView = newActivityStyles.viewNA
+export default newActivityStyles
