@@ -13,7 +13,7 @@ class IconButtonTaskBar extends React.PureComponent {
       //cambiar el color por el que pertenezca al taskBar
       <TouchableHighlight onPress={onPress} underlayColor="white">
         <View style={styles.button}>
-          <Image source={image}/>
+          <Image style={styles.imageSize} source={image}/>
         </View>
       </TouchableHighlight>
     )
@@ -23,17 +23,18 @@ class IconButtonTaskBar extends React.PureComponent {
 //Configurar para cambiar el texto de los botones y del botón
 const styles = StyleSheet.create({
   button: {
-    marginRight:3,
+    marginRight:5,
     backgroundColor:'#fff',
     borderRadius:0,
     borderWidth: 0,
-    borderColor: '#fff',
-    paddingHorizontal: 10
+    borderColor:'#fff',
+    paddingHorizontal:10,
+    alignSelf:'center'
   },
-  buttonText: {
-    alignItems: 'center',
-    color: '#68a0cf',
-  },
+  imageSize:{
+    maxWidth:30,
+    maxHeight:30,
+  }
 })
 
 export default IconButtonTaskBar
