@@ -5,14 +5,14 @@ import { NavigationEvents } from 'react-navigation'
 
 import { DefaultButton } from '../components'
 import { sectionListHeader, sectionListItem } from '../styles/GenericComponentsStyles'
-import { configurationPickerView } from '../styles/ConfigurationPickerStyles'
+import { activityPickerView } from '../styles/ActivityPickerStyles'
 import { 
   getActivitiesFunction as getActivities,
   setActiveActivityFunction as setActiveActivity,
   deleteActivityFunction as deleteActivity,
 } from '../helpers/activitiesStorage'
 
-class ConfigurationPickerModal extends Component {
+class ActivityPickerModal extends Component {
 
   constructor(props) {
     super(props)
@@ -31,11 +31,11 @@ class ConfigurationPickerModal extends Component {
     }
   }
 
-  //Actualizo la lista cada vez que se hace foco (necesaria para cuando vuelvo de cargar configuracion nueva)
+  //Actualizo la lista cada vez que se hace foco (necesaria para cuando vuelvo de cargar actividad nueva)
   handleFocusEvent() {
     getActivities().then(
-      (configurations) => {
-        this.setState(() => ({activities: configurations}))
+      (activities) => {
+        this.setState(() => ({activities: activities}))
       }
     )
   }
@@ -43,9 +43,9 @@ class ConfigurationPickerModal extends Component {
   render() {
 
     return (
-      <View style={configurationPickerView}>
+      <View style={activityPickerView}>
         <NavigationEvents
-          //Me suscribo al evento 'onWillFocus' para actualizar el contenido luego de seleccionar una configuracion
+          //Me suscribo al evento 'onWillFocus' para actualizar el contenido cuando se hace foco en el modal
           onWillFocus={this.handleFocusEvent}
         />
         <SectionList
@@ -84,4 +84,4 @@ class ConfigurationPickerModal extends Component {
   }
 }
 
-export default ConfigurationPickerModal
+export default ActivityPickerModal

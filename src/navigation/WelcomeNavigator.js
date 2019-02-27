@@ -1,5 +1,9 @@
 import { createStackNavigator } from 'react-navigation'
-import { WelcomeScreen, ConfigurationPickerModal, NewActivityModal } from '../containers'
+import {
+  WelcomeScreen,
+  ActivityPickerModal,
+  NewActivityModal
+} from '../containers'
 
 //Navegador de pantalla de bienvenida
 const WelcomeNavigator = createStackNavigator(
@@ -7,8 +11,8 @@ const WelcomeNavigator = createStackNavigator(
     Welcome: {
       screen: WelcomeScreen,
     },
-    ConfigurationModal: {
-      screen: ConfigurationPickerModal,
+    ActivityPickerModal: {
+      screen: ActivityPickerModal,
     },
     NewActivityModal: {
       screen: NewActivityModal,
