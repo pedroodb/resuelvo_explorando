@@ -1,4 +1,7 @@
-import { ACTIVITY_SET, TASK_SOLVED } from "../constants";
+import {
+  ACTIVITY_SET,
+  TASK_SOLVED
+} from '../constants'
 
 export function setConfiguration(configuration) {
   return {
