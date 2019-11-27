@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "expo": "^35.0.0",
+    "expo-barcode-scanner": "^7.0.0",
     "expo-cli": "3.9.0",
     "global": "^4.3.2",
     "jest": "^24.9.0",

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { StyleSheet, Text, Image } from 'react-native'
-import { BarCodeScanner } from 'expo'
+import { BarCodeScanner } from 'expo-barcode-scanner'
 
 import { hasCameraPermissionFunction as hasCameraPermission } from '../helpers/permissionAskers'
 import { containerStyle, qrStyle } from '../styles/CameraModalStyles'
@@ -29,16 +29,14 @@ class CameraModal extends Component {
 
     return (
       <BarCodeScanner
-              onBarCodeRead={this.handleBarCodeScanned}
-              style={[StyleSheet.absoluteFill, containerStyle]}>
-              <Image
-                style={qrStyle}
-                source={require('../assets/QRScanner.png')}
-              />
-            </BarCodeScanner>
-
-          );
-
+        onBarCodeScanned={this.handleBarCodeScanned}
+        style={[StyleSheet.absoluteFill, containerStyle]}>
+        <Image
+          style={qrStyle}
+          source={require('../assets/QRScanner.png')}
+        />
+      </BarCodeScanner>
+    )
   }
 
   handleBarCodeScanned = ({ type, data }) => {
