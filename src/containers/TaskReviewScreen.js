@@ -1,7 +1,13 @@
 import React, { Component } from 'react'
 
-import { MULTIPLE_CHOICE, FREE_ANSWER } from '../config'
-import { MultipleChoiceReview, TypeError } from '../components/taskReviewComponents'
+import {
+  MULTIPLE_CHOICE,
+  FREE_ANSWER
+} from '../constants/taskTypeConstants'
+import {
+  MultipleChoiceReview,
+  TypeError
+} from '../components/taskReviewComponents'
 
 //Pantalla de vista de correccion de tarea
 class ReviewScreen extends Component {

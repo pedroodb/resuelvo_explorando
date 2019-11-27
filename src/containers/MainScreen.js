@@ -7,7 +7,7 @@ import { bindActionCreators } from 'redux'
 import { viewStyle } from '../styles/MainStyles'
 import { DefaultButton } from '../components'
 import { sectionListHeader, sectionListItem } from '../styles/GenericComponentsStyles'
-import { NO_CODE } from '../constants'
+import { NO_CODE } from '../constants/genericConstants'
 
 
 //Pantalla de vista de tarea

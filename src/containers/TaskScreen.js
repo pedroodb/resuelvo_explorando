@@ -2,8 +2,12 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import { MULTIPLE_CHOICE, FREE_ANSWER } from '../config'
-import { MultipleChoice, TypeError } from '../components/taskComponents'
+import { MULTIPLE_CHOICE, FREE_ANSWER } from '../constants/taskTypeConstants'
+import {
+  TypeError,
+  MultipleChoice,
+  FreeAnswer,
+} from '../components/taskComponents'
 import { solveTask } from '../actions/activityActions'
 
 //Pantalla de vista de tarea
@@ -21,18 +25,25 @@ class TaskScreen extends Component {
 
   render() {
 
-    const currentTask = this.props.navigation.getParam('currentTask',null)
+    const currentTask = this.props.task
 
     switch (currentTask.type) {
       case MULTIPLE_CHOICE:
         return (
-          <MultipleChoice task={currentTask} navigation={this.props.navigation} solveTaskFunction={this.props.actions.solveTask}/>
+          <MultipleChoice
+            task={currentTask}
+            navigation={this.props.navigation}
+            solveTaskFunction={this.props.actions.solveTask}
+          />
         )
-      
       case FREE_ANSWER:
-
-        break
-      
+        return (
+          <FreeAnswer
+            task={currentTask}
+            navigation={this.props.navigation}
+            solveTaskFunction={this.props.actions.solveTask}
+          />
+        )
       default:
         return (
           <TypeError navigation={this.props.navigation}/>
@@ -52,9 +63,9 @@ function mapDispatchToProps(dispatch) {
 }
 
 //Funcion que mapea el estado de la APLICACION (redux) con las props del componente
-function mapStateToProps({/*De necesitar un reducer especificar aqui*/}) {
+function mapStateToProps({currentTaskReducer}) {
   return {
-    //Devolver los campos del reducer que se necesiten
+    task:currentTaskReducer
   }
 }
 

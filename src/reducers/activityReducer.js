@@ -1,4 +1,4 @@
-import { ACTIVITY_SET, TASK_SOLVED } from '../constants'
+import { ACTIVITY_SET, TASK_SOLVED } from '../constants/activityConstants'
 
 const initialState = {
   ready:false,
