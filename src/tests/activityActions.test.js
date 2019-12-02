@@ -9,8 +9,8 @@ import {
 
 describe('actions', () => {
 
-  it('should create an action to set activity', () => {
-    const config = {
+  it('Deberia crear una action para setear una actividad', () => {
+    const activity = {
       ready:false,
       title:'Bienvenido a Resuelvo Explorando',
       description:'Carga una actividad para comenzar!',
@@ -19,23 +19,26 @@ describe('actions', () => {
     }
     const expectedAction = {
       type: ACTIVITY_SET,
-      payload: config,
+      payload: activity,
     }
-    expect(setConfiguration(config)).toEqual(expectedAction)
+    expect(setConfiguration(activity)).toEqual(expectedAction)
   },
   
   it('should create an action to solve a task', () => {
     const task = {
-      name: 'A task',
+      name: 'Tarea',
       payload: {
         option: '1',
       }
     }
     const expectedAction = {
       type: TASK_SOLVED,
-      payload: task,
+      payload: {
+        task,
+        answer: 'Una respuesta',
+      }
     }
-    expect(solveTask(task)).toEqual(expectedAction)
+    expect(solveTask(task,'Una respuesta')).toEqual(expectedAction)
   })
   )
 })
