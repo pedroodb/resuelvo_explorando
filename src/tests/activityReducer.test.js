@@ -12,6 +12,49 @@ const initialState = {
   finishedTasks:[]
 }
 
+const activity = {
+  title:'Actividad nueva',
+  description:'Descripcion nueva',
+  tasks:[
+    {
+      name:'Tarea 1',
+      description:'Descripcion de la tarea 1',
+      code:'t1'
+    },
+    {
+      name:'Tarea 2',
+      description:'Descripcion de la tarea 2',
+      code:'t2'
+    }
+  ]
+}
+
+const stateActivity = {
+  ready:true,
+  title:'Actividad nueva',
+  description:'Descripcion nueva',
+  tasks:[
+    {
+      name:'Tarea 1',
+      description:'Descripcion de la tarea 1',
+      code:'t1'
+    },
+    {
+      name:'Tarea 2',
+      description:'Descripcion de la tarea 2',
+      code:'t2'
+    }
+  ],
+  finishedTasks:[]
+}
+
+const solvedTask = {
+  name:'Tarea',
+  description:'Descripcion de la tarea',
+  code:'t1',
+  answer: 'Una respuesta'
+}
+
 describe('Activity reducer', () => {
 
   it('Deberia devolver el estado inicial', () => {
@@ -22,30 +65,35 @@ describe('Activity reducer', () => {
     expect(
       reducer(initialState, {
         type: ACTIVITY_SET,
-        payload: {
-          title:'Tarea nueva',
-          description:'Descripcion nueva',
-          tasks:[
-            {
-              name:'Tarea',
-              description:'Descripcion de la tarea'
-            }
-          ]
-        }
+        payload: activity,
       })
-    ).toEqual({
-      ready:true,
-      title:'Tarea nueva',
-      description:'Descripcion nueva',
-      tasks:[
-        {
-          name:'Tarea',
-          description:'Descripcion de la tarea'
-        }
-      ],
-      finishedTasks:[]
-    })
+    ).toEqual(stateActivity)
   })
 
+  it('Deberia mover una tarea a resuelta', () => {
+    expect(
+      reducer(stateActivity, {
+        type: TASK_SOLVED,
+        payload: solvedTask,
+      })
+    ).toEqual({
+      ...stateActivity,
+      tasks:[
+        {
+          name:'Tarea 2',
+          description:'Descripcion de la tarea 2',
+          code:'t2'
+        }
+      ],
+      finishedTasks: [
+        {
+          name:'Tarea',
+          description:'Descripcion de la tarea',
+          code:'t1',
+          answer: 'Una respuesta'
+        }
+      ]
+    })
+  })
 
 })
