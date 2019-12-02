@@ -34,7 +34,7 @@ describe('Activity reducer', () => {
         }
       })
     ).toEqual({
-      ready:false,
+      ready:true,
       title:'Tarea nueva',
       description:'Descripcion nueva',
       tasks:[
@@ -46,32 +46,6 @@ describe('Activity reducer', () => {
       finishedTasks:[]
     })
   })
-    /*
-    expect(
-      reducer(
-        [
-          {
-            text: 'Use Redux',
-            completed: false,
-            id: 0
-          }
-        ],
-        {
-          type: types.ADD_TODO,
-          text: 'Run the tests'
-        }
-      )
-    ).toEqual([
-      {
-        text: 'Run the tests',
-        completed: false,
-        id: 1
-      },
-      {
-        text: 'Use Redux',
-        completed: false,
-        id: 0
-      }
-    ])
-  })*/
+
+
 })

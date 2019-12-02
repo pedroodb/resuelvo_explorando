@@ -46,8 +46,8 @@ class WelcomeScreen extends Component {
   //Actualizar contenido cuando se vuelve a la pantalla
   async handleFocusEvent() {
     isActivitySet().then(
-      (isSet) => isSet ? getActiveActivity().then(
-        (activity) => this.props.actions.setConfiguration({ready: true, ...activity})
+      isSet => isSet ? getActiveActivity().then(
+        activity => this.props.actions.setConfiguration({...activity})
       ) : {}
     )
   }

@@ -14,6 +14,7 @@ const activityReducer = (state = initialState, action) => {
       return {
         ...state,
         ...action.payload,
+        ready:true,
         finishedTasks:[]
       }
     case TASK_SOLVED:
