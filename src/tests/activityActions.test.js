@@ -1,11 +1,11 @@
 import {
   ACTIVITY_SET,
   TASK_SOLVED,
-} from '../../constants/activityConstants'
+} from '../constants/activityConstants'
 import {
   setConfiguration,
   solveTask,
-} from '../../actions/activityActions'
+} from '../actions/activityActions'
 
 describe('actions', () => {
 

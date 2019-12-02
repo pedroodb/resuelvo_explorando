@@ -1,8 +1,8 @@
-import reducer from '../../reducers/activityReducers'
+import reducer from '../reducers/activityReducer'
 import {
   ACTIVITY_SET,
   TASK_SOLVED,
-} from '../../constants/activityConstants'
+} from '../constants/activityConstants'
 
 const initialState = {
   ready:false,
@@ -12,13 +12,13 @@ const initialState = {
   finishedTasks:[]
 }
 
-describe('activity reducer', () => {
+describe('Activity reducer', () => {
 
-  it('should return the initial state', () => {
+  it('Deberia devolver el estado inicial', () => {
     expect(reducer(undefined, {})).toEqual(initialState)
   }),
 
-  it('should handle ADD_TODO', () => {
+  it('Deberia setear una actividad en el estado', () => {
     expect(
       reducer(initialState, {
         type: ACTIVITY_SET,
