@@ -3,6 +3,8 @@ import React, { Component } from 'react'
 import {
   TextInput,
   Button,
+  View,
+  Text,
 } from 'react-native'
 
 class FreeAnswerComponent extends Component {
@@ -14,7 +16,7 @@ class FreeAnswerComponent extends Component {
     }
   }
 
-  updateAnswer = answer => this.setState(() => {answer})
+  updateAnswer = answer => this.setState({answer})
 
   submitTask = (task, answer) => {
     this.props.solveTaskAction(task, answer)
@@ -44,7 +46,10 @@ class FreeAnswerComponent extends Component {
           answer ?
             <Button
               title='Guardar'
-              onPress={this.props.solveTaskAction(this.props.task,this.state.answer)}
+              onPress={() => {
+                this.props.solveTask(this.props.task,this.state.answer)
+                this.props.navigation.navigate('TaskReview')
+              }}
             />
           : null
         }

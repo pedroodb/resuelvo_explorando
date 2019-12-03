@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Text, View } from 'react-native'
 
+import { UNSET } from '../../../constants/genericConstants'
 import { DefaultButton } from '../..'
 import { viewStyle, titleStyle } from './styles'
 import CustomRadioFormComponent from './customRadioFormComponent'
@@ -13,17 +14,24 @@ class MutipleChoiceComponent extends Component {
     super(props)
 
     this.state = {
-      selected:null,
+      selected: UNSET,
     }
   }
 
   render() {
 
     const {
-      name,
-      description,
-      options
-    } = this.props.task
+      task:{
+        name,
+        description,
+        payload: {
+          options,
+        },
+      },
+      navigation,
+      solveTask,
+      setFinishedTask,
+    } = this.props
 
     return (
       <View style={viewStyle}>
@@ -43,12 +51,12 @@ class MutipleChoiceComponent extends Component {
         </View>
         <View style={{flex:1, marginTop:120,justifyContent:'space-around'}}>
           {
-            this.state.ready &&
+            (this.state.selected !== UNSET) &&
             <DefaultButton
               title="Finalizar"
               onPress={() => {
-                this.props.solveTaskAction(this.props.task, this.state.selected)
-                this.props.navigation.navigate('TaskReview',({ finishedTask:finishedTask }))
+                solveTask(this.props.task, this.state.selected)
+                navigation.navigate('TaskReview')
               }}
             />
           }

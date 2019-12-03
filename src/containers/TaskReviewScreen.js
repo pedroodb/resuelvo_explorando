@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
 import {
   MULTIPLE_CHOICE,
@@ -21,13 +22,9 @@ class ReviewScreen extends Component {
 
   render() {
 
-    const finishedTask = this.props.navigation.getParam('finishedTask',{
-      task:{
-        type:null
-      }
-    })
+    const finishedTask = this.props.task
 
-    switch (finishedTask.type) {
+    switch (finishedTask.task.type) {
       case MULTIPLE_CHOICE:
         return (
           <MultipleChoiceReview finishedTask={finishedTask} navigation={this.props.navigation}/>
@@ -42,4 +39,11 @@ class ReviewScreen extends Component {
 
 }
 
-export default ReviewScreen
+//Funcion que mapea el estado de la APLICACION (redux) con las props del componente
+function mapStateToProps({taskReducer}) {
+  return {
+    task:taskReducer.finished
+  }
+}
+
+export default connect(mapStateToProps,null)(ReviewScreen)

@@ -9,6 +9,7 @@ import {
   FreeAnswer,
 } from '../components/taskComponents'
 import { solveTask } from '../actions/activityActions'
+import { setFinishedTask } from '../actions/taskActions'
 
 //Pantalla de vista de tarea
 class TaskScreen extends Component {
@@ -25,28 +26,35 @@ class TaskScreen extends Component {
 
   render() {
 
-    const currentTask = this.props.task
+    const {
+      task,
+      navigation,
+      actions: {
+        solveTask,
+        setFinishedTask,
+      }
+    } = this.props
 
-    switch (currentTask.type) {
+    switch (task.type) {
       case MULTIPLE_CHOICE:
         return (
           <MultipleChoice
-            task={currentTask}
-            navigation={this.props.navigation}
-            solveTaskFunction={this.props.actions.solveTask}
+            task={task}
+            navigation={navigation}
+            solveTask={solveTask}
           />
         )
       case FREE_ANSWER:
         return (
           <FreeAnswer
-            task={currentTask}
-            navigation={this.props.navigation}
-            solveTaskFunction={this.props.actions.solveTask}
+            task={task}
+            navigation={navigation}
+            solveTask={solveTask}
           />
         )
       default:
         return (
-          <TypeError navigation={this.props.navigation}/>
+          <TypeError navigation={navigation}/>
         )
     }
   }
@@ -57,15 +65,16 @@ class TaskScreen extends Component {
 function mapDispatchToProps(dispatch) {
   return {
     actions : bindActionCreators({
-      solveTask
+      solveTask,
+      setFinishedTask,
     }, dispatch)
   }
 }
 
 //Funcion que mapea el estado de la APLICACION (redux) con las props del componente
-function mapStateToProps({currentTaskReducer}) {
+function mapStateToProps({taskReducer}) {
   return {
-    task:currentTaskReducer
+    task: taskReducer.current
   }
 }
 

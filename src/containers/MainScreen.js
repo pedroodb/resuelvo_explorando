@@ -4,10 +4,12 @@ import { NavigationEvents, withNavigationFocus } from 'react-navigation'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
+import { NO_CODE } from '../constants/genericConstants'
+import { setTask } from '../actions/taskActions'
+
 import { viewStyle } from '../styles/MainStyles'
 import { DefaultButton } from '../components'
 import { sectionListHeader, sectionListItem } from '../styles/GenericComponentsStyles'
-import { NO_CODE } from '../constants/genericConstants'
 
 
 //Pantalla de vista de tarea
@@ -56,7 +58,8 @@ class MainScreen extends Component {
     const readenTaskCode = this.props.navigation.getParam('readenTaskCode',NO_CODE)
 
     if (readenTaskCode != NO_CODE) {
-      this.props.navigation.setParams({readenTaskCode:NO_CODE})
+      //No funciona set params y no se por que
+      this.props.navigation.actions.setParams({readenTaskCode:NO_CODE})
       this.handleReadenCode(readenTaskCode)
     }
   }
@@ -136,7 +139,8 @@ class MainScreen extends Component {
         {
           text: 'Comenzar',
           onPress: () => {
-            this.props.navigation.navigate('Task',{currentTask:task})
+            this.props.actions.setTask(task)
+            this.props.navigation.navigate('Task')
           }
         },
       ],
@@ -176,7 +180,7 @@ class MainScreen extends Component {
 function mapDispatchToProps(dispatch) {
   return {
     actions : bindActionCreators({
-      //Aqui colocar las actions a utilizar
+      setTask
     }, dispatch)
   }
 }

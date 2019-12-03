@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet } from 'react-native'
+import { Text, View } from 'react-native'
+import { StyleSheet } from 'react-native'
 
 import { DefaultButton } from '..'
-import { viewStyle } from '../../styles/GenericComponentsStyles'
 
 //Componente que corresponde a la correccion de una tarea del tipo multiple choice
 class MutipleChoiceReviewComponent extends Component {
@@ -10,27 +10,31 @@ class MutipleChoiceReviewComponent extends Component {
   render() {
 
     const {
-      options,
+      task: {
+        payload:{
+          options,
+        },
+      },
       answer
     } = this.props.finishedTask
+    
 
     const correctOption = this.correctOption(options)
 
-
     return (
-      <View style={styles.viewMCRTC}>
-        <View>
-        <Text style={styles.title}>Seleccionaste la opcion: {this.checkAnswer(answer)}</Text>
-        <Text style={styles.answer}>{answer.aditionalInformation}</Text>
-        <Text style={styles.title}> La opción correcta era {correctOption.value}</Text>
-        <Text style={styles.answer}>{correctOption.aditionalInformation}</Text>
-        </View>
-        <View>
-        <DefaultButton
-          title="Volver"
-          onPress={() => this.props.navigation.navigate('Main')}
-        />
-        </View>
+      <View style={styles.viewStyle}>
+          <View>
+            <Text style={styles.titleStyle}>Seleccionaste la opcion: {this.checkAnswer(answer)}</Text>
+            <Text style={styles.answerStyle}>{answer.aditionalInformation}</Text>
+          </View>
+          <View>
+            <Text style={styles.titleStyle}> La opción correcta era {correctOption.value}</Text>
+            <Text style={styles.answerStyle}>{correctOption.aditionalInformation}</Text>
+          </View>
+          <DefaultButton
+            title="Volver"
+            onPress={() => this.props.navigation.navigate('Main')}
+          />
       </View>
     )
   }
@@ -40,38 +44,36 @@ class MutipleChoiceReviewComponent extends Component {
   }
 
   checkAnswer(answer){
-    if(answer.isCorrect){
-      return ( <Text style={styles.right}>{answer.value}</Text> )
-    }
-    else {
-      return ( <Text style={styles.wrong}>{answer.value}</Text> )
-    }
+    return (
+      <Text style={answer.isCorrect? styles.rightStyle : styles.wrongStyle}>{answer.value}</Text> )
   }
 
 }
 
+export default MutipleChoiceReviewComponent
+
+
 const styles = StyleSheet.create({
-  right: {
-    color:'green',
+  viewStyle: {
+      flex:1,
+      justifyContent:'space-between',
+      margin:10,
   },
-  wrong:{
-    color:'red',
+  titleStyle: {
+      textAlign:'center',
+      fontSize:20,
+      margin:5,
   },
-  answer: {
-    textAlign:'center',
-    fontSize:15,
-    marginBottom:10,
+  answerStyle: {
+      textAlign:'center',
+      fontSize:15,
+      margin:5,
+      marginHorizontal:5,
   },
-  title: {
-    textAlign:'center',
-    fontSize:20,
-    marginTop:5,
+  rightStyle: {
+      color:'green',
   },
-  viewMCRTC: {
-    flex:1,
-    margin:15,
-    justifyContent:'space-between',
+  wrongStyle:{
+      color:'red',
   },
 })
-
-export default MutipleChoiceReviewComponent

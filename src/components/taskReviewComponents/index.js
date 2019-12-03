@@ -1,4 +1,4 @@
-import MultipleChoiceReviewComponent from './multipleChoiceReviewComponent/multipleChoiceReviewComponent'
+import MultipleChoiceReviewComponent from './multipleChoiceReviewComponent'
 import TypeErrorComponent from './typeErrorComponent'
 
 export const MultipleChoiceReview = MultipleChoiceReviewComponent
