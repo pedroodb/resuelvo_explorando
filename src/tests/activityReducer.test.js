@@ -3,6 +3,10 @@ import {
   ACTIVITY_SET,
   TASK_SOLVED,
 } from '../constants/activityConstants'
+import {
+  solveTask,
+  setConfiguration,
+} from '../actions/activityActions'
 
 const initialState = {
   ready:false,
@@ -48,13 +52,10 @@ const stateActivity = {
   finishedTasks:[]
 }
 
-const solvedTask = {
-  task: {
-    name:'Tarea',
-    description:'Descripcion de la tarea',
-    code:'t1',
-  },
-  answer: 'Una respuesta'
+const task = {
+  name:'Tarea',
+  description:'Descripcion de la tarea',
+  code:'t1',
 }
 
 describe('Activity reducer', () => {
@@ -65,19 +66,13 @@ describe('Activity reducer', () => {
 
   it('Deberia setear una actividad en el estado', () => {
     expect(
-      reducer(initialState, {
-        type: ACTIVITY_SET,
-        payload: activity,
-      })
+      reducer(initialState, setConfiguration(activity))
     ).toEqual(stateActivity)
   })
 
   it('Deberia mover una tarea a resuelta', () => {
     expect(
-      reducer(stateActivity, {
-        type: TASK_SOLVED,
-        payload: solvedTask,
-      })
+      reducer(stateActivity, solveTask(task, 'Una respuesta'))
     ).toEqual({
       ...stateActivity,
       tasks:[

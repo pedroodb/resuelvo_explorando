@@ -7,7 +7,7 @@ import {
   solveTask,
 } from '../actions/activityActions'
 
-describe('actions', () => {
+describe('Activity actions', () => {
 
   it('Deberia crear una action para setear una actividad', () => {
     const activity = {
@@ -24,7 +24,7 @@ describe('actions', () => {
     expect(setConfiguration(activity)).toEqual(expectedAction)
   },
   
-  it('should create an action to solve a task', () => {
+  it('Deberia crear una action para resolver una tarea', () => {
     const task = {
       name: 'Tarea',
       payload: {

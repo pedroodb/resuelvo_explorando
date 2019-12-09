@@ -1,10 +1,4 @@
 import reducer from '../reducers/taskReducer'
-import {
-  CODE_SET,
-  CODE_RESET,
-  TASK_SET,
-  FINISHED_TASK_SET,
-} from '../constants/taskConstants'
 import { NO_CODE, UNSET } from '../constants/genericConstants'
 
 import {
