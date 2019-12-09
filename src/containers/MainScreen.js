@@ -81,7 +81,7 @@ class MainScreen extends Component {
         <SectionList
           sections={[
             {title: 'Tareas aún sin realizar', data: tasks},
-            {title: 'Tareas realizadas', data: finishedTasks},
+            {title: 'Tareas realizadas', data: finishedTasks.map(finishedTask => finishedTask.task)},
           ]}
           renderItem={({item}) => {
             if(item.answer) {

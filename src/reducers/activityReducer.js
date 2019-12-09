@@ -18,10 +18,11 @@ const activityReducer = (state = initialState, action) => {
         finishedTasks:[]
       }
     case TASK_SOLVED:
+      console.log(state)
       return {
         ...state,
         finishedTasks:[...state.finishedTasks, action.payload],
-        tasks:state.tasks.filter((task) => task.code != action.payload.code),
+        tasks:state.tasks.filter((task) => task.code != action.payload.task.code),
       }
     default:
       return state 

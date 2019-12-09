@@ -20,8 +20,8 @@ class FreeAnswerComponent extends Component {
   updateAnswer = answer => this.setState({answer})
 
   submitTask = (task, answer) => {
-    this.props.solveTaskAction(task, answer)
-    this.props.navigation.navigate('TaskReview',({ finishedTask:finishedTask }))
+    this.props.solveTask(task, answer)
+    this.props.navigation.navigate('TaskReview')
   }
   
   render() {

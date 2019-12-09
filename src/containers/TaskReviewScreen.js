@@ -3,10 +3,11 @@ import { connect } from 'react-redux'
 
 import {
   MULTIPLE_CHOICE,
-  FREE_ANSWER
+  FREE_ANSWER,
 } from '../constants/taskTypeConstants'
 import {
   MultipleChoiceReview,
+  FreeAnswerReview,
   TypeError
 } from '../components/taskReviewComponents'
 
@@ -29,7 +30,10 @@ class ReviewScreen extends Component {
         return (
           <MultipleChoiceReview finishedTask={finishedTask} navigation={this.props.navigation}/>
         )
-      
+      case FREE_ANSWER:
+        return (
+          <FreeAnswerReview finishedTask={finishedTask} navigation={this.props.navigation}/>
+        )
       default:
         return (
           <TypeError navigation={this.props.navigation}/>
