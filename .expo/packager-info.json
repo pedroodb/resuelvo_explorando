@@ -4,6 +4,6 @@
   "packagerNgrokUrl": "https://packager.4r-3x9.pedroodb.resuelvo-explorando.exp.direct",
   "ngrokPid": 14280,
   "devToolsPort": 19002,
-  "packagerPort": 19001,
-  "packagerPid": 14251
+  "packagerPort": null,
+  "packagerPid": null
 }

@@ -23,10 +23,12 @@ const initialState = {
     code: UNSET,
   },
   finished: {
-    name: UNSET,
-    description: UNSET,
-    type: UNSET,
-    code: UNSET,
+    task: {
+      name: UNSET,
+      description: UNSET,
+      type: UNSET,
+      code: UNSET,
+    },
     answer: UNSET,
   },
 }

@@ -49,9 +49,11 @@ const stateActivity = {
 }
 
 const solvedTask = {
-  name:'Tarea',
-  description:'Descripcion de la tarea',
-  code:'t1',
+  task: {
+    name:'Tarea',
+    description:'Descripcion de la tarea',
+    code:'t1',
+  },
   answer: 'Una respuesta'
 }
 
@@ -87,10 +89,12 @@ describe('Activity reducer', () => {
       ],
       finishedTasks: [
         {
-          name:'Tarea',
-          description:'Descripcion de la tarea',
-          code:'t1',
-          answer: 'Una respuesta'
+          answer: 'Una respuesta',
+          task: {
+            name:'Tarea',
+            description:'Descripcion de la tarea',
+            code:'t1',
+          }
         }
       ]
     })
