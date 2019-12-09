@@ -1,4 +1,6 @@
 import {
+  CODE_SET,
+  CODE_RESET,
   TASK_SET,
   FINISHED_TASK_SET,
 } from '../constants/taskConstants'
@@ -9,9 +11,11 @@ import {
 
 import {
   UNSET,
+  NO_CODE,
 } from '../constants/genericConstants'
 
 const initialState = {
+  read: NO_CODE,
   current: {
     name: UNSET,
     description: UNSET,
@@ -29,6 +33,16 @@ const initialState = {
 
 const activityReducer = (state = initialState, action) => {
   switch (action.type) {
+    case CODE_SET:
+      return {
+        ...state,
+        read: action.payload
+      }
+    case CODE_RESET:
+      return {
+        ...state,
+        read: NO_CODE,
+      }
     case TASK_SET:
       return {
         ...state,
