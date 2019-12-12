@@ -1,9 +1,5 @@
 import reducer from '../reducers/activityReducer'
 import {
-  ACTIVITY_SET,
-  TASK_SOLVED,
-} from '../constants/activityConstants'
-import {
   solveTask,
   setConfiguration,
 } from '../actions/activityActions'
