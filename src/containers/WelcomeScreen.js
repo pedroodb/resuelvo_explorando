@@ -17,7 +17,7 @@ import {
   isActivitySetFunction as isActivitySet,
   getActiveActivityFunction as getActiveActivity,
 } from '../helpers/activitiesStorage'
-import { setConfiguration } from '../actions/activityActions'
+import { setActivity } from '../actions/activityActions'
 
 
 //Pantalla de bienvenida
@@ -47,7 +47,7 @@ class WelcomeScreen extends Component {
   async handleFocusEvent() {
     isActivitySet().then(
       isSet => isSet ? getActiveActivity().then(
-        activity => this.props.actions.setConfiguration({...activity})
+        activity => this.props.actions.setActivity(activity)
       ) : {}
     )
   }
@@ -88,7 +88,7 @@ class WelcomeScreen extends Component {
 function mapDispatchToProps(dispatch) {
   return {
     actions : bindActionCreators({
-      setConfiguration
+      setActivity
     }, dispatch)
   }
 }

@@ -1,7 +1,7 @@
 import reducer from '../reducers/activityReducer'
 import {
   solveTask,
-  setConfiguration,
+  setActivity,
 } from '../actions/activityActions'
 
 const initialState = {
@@ -62,7 +62,7 @@ describe('Activity reducer', () => {
 
   it('Deberia setear una actividad en el estado', () => {
     expect(
-      reducer(initialState, setConfiguration(activity))
+      reducer(initialState, setActivity(activity))
     ).toEqual(stateActivity)
   })
 

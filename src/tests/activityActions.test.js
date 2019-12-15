@@ -3,7 +3,7 @@ import {
   TASK_SOLVED,
 } from '../constants/activityConstants'
 import {
-  setConfiguration,
+  setActivity,
   solveTask,
 } from '../actions/activityActions'
 
@@ -21,7 +21,7 @@ describe('Activity actions', () => {
       type: ACTIVITY_SET,
       payload: activity,
     }
-    expect(setConfiguration(activity)).toEqual(expectedAction)
+    expect(setActivity(activity)).toEqual(expectedAction)
   },
   
   it('Deberia crear una action para resolver una tarea', () => {

@@ -3,9 +3,9 @@ import {
   TASK_SOLVED,
 } from '../constants/activityConstants'
 
-export const setConfiguration = (configuration) => ({
+export const setActivity = activity => ({
   type: ACTIVITY_SET,
-  payload: configuration,
+  payload: activity,
 })
 
 export const solveTask = (task, answer) => ({
@@ -17,6 +17,6 @@ export const solveTask = (task, answer) => ({
 })
 
 export default {
-  setConfiguration,
+  setActivity,
   solveTask,
 }
