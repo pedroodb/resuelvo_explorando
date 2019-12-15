@@ -51,19 +51,23 @@ class NewActivityModal extends Component {
   //Obtiene la actividad, chequea que tenga los campos correspondientes y la utiliza como estado del componente
   loadActivity(code){
     this.setState(() => ({status:'loading'}))
-    fetch(`https://${code}`).then(
-      (result) => result.json().then(
-        (activity) =>
+    fetch(`http://192.168.10.154:3001/api/Activities/${code}`).then(
+      result => result.json().then(
+        activity => 
           {
             if (checkActivityFormat(activity)){
-              this.handleLoadedActivity(activity)
+              fetch((`http://192.168.10.154:3001/api/Activities/${code}/Tasks`)).then(
+                result => result.json().then(
+                  tasks => this.handleLoadedActivity({...activity,tasks})
+                  )
+              )
             } else {
               throw new Error("Archivo de actividad corrupto")
             }
           }
       )
     ).catch(
-      (error) => {
+      error => {
         this.setState(() => ({status:'unloaded'}))
         Alert.alert(
           'Error en la carga de la actividad',

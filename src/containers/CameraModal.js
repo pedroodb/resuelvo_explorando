@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import { StyleSheet, Text, Image } from 'react-native'
-import { BarCodeScanner } from 'expo'
+import { BarCodeScanner } from 'expo-barcode-scanner'
 
 import { hasCameraPermissionFunction as hasCameraPermission } from '../helpers/permissionAskers'
 import { containerStyle, qrStyle } from '../styles/CameraModalStyles'
+import { setCode } from '../actions/taskActions'
 
 class CameraModal extends Component {
 
@@ -29,23 +32,30 @@ class CameraModal extends Component {
 
     return (
       <BarCodeScanner
-              onBarCodeRead={this.handleBarCodeScanned}
-              style={[StyleSheet.absoluteFill, containerStyle]}>
-              <Image
-                style={qrStyle}
-                source={require('../assets/QRScanner.png')}
-              />
-            </BarCodeScanner>
-
-          );
-
+        onBarCodeScanned={this.handleBarCodeScanned}
+        style={[StyleSheet.absoluteFill, containerStyle]}>
+        <Image
+          style={qrStyle}
+          source={require('../assets/QRScanner.png')}
+        />
+      </BarCodeScanner>
+    )
   }
 
   handleBarCodeScanned = ({ type, data }) => {
-    this.props.navigation.navigate('Main',{ readenTaskCode:data })
+    this.props.actions.setCode(data)
+    this.props.navigation.navigate('Main')
   }
 
 }
 
+//Funcion que mapea las acciones ('actions/activityActions') con las funciones que llamamos desde el componente
+function mapDispatchToProps(dispatch) {
+  return {
+    actions : bindActionCreators({
+      setCode,
+    }, dispatch)
+  }
+}
 
-export default CameraModal
+export default connect(null,mapDispatchToProps)(CameraModal)

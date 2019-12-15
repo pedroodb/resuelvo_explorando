@@ -4,10 +4,15 @@ import { NavigationEvents, withNavigationFocus } from 'react-navigation'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
+import { NO_CODE } from '../constants/genericConstants'
+import {
+  setTask,
+  resetCode,
+} from '../actions/taskActions'
+
 import { viewStyle } from '../styles/MainStyles'
 import { DefaultButton } from '../components'
 import { sectionListHeader, sectionListItem } from '../styles/GenericComponentsStyles'
-import { NO_CODE } from '../constants'
 
 
 //Pantalla de vista de tarea
@@ -17,7 +22,6 @@ class MainScreen extends Component {
     super(props)
 
     //Bindeo al this para referenciar al componente MainScreen desde handleFocusEvent y desde handleBackButton
-    this.handleFocusEvent = this.handleFocusEvent.bind(this)
     this.handleBackButton = this.handleBackButton.bind(this)
 
     this.state = {
@@ -38,11 +42,18 @@ class MainScreen extends Component {
 
   //Bloqueo el boton para volver atras una vez comenzada la actividad
   componentDidMount() {
-    BackHandler.addEventListener('hardwareBackPress', this.handleBackButton);
+    BackHandler.addEventListener('hardwareBackPress', this.handleBackButton)
   }
 
   componentWillUnmount() {
-    BackHandler.removeEventListener('hardwareBackPress', this.handleBackButton);
+    BackHandler.removeEventListener('hardwareBackPress', this.handleBackButton)
+  }
+
+  componentDidUpdate() {
+    if (this.props.readenCode != NO_CODE) {
+      this.handleReadenCode(this.props.readenCode)
+      this.props.actions.resetCode()
+    }
   }
 
   handleBackButton() {
@@ -50,35 +61,23 @@ class MainScreen extends Component {
     return this.props.isFocused ? true : false
   }
 
-
-  //Controlo que se reciba correctamente el codigo de tarea y lo limpio de los parametros para que solo lo tome una vez
-  handleFocusEvent() {
-    const readenTaskCode = this.props.navigation.getParam('readenTaskCode',NO_CODE)
-
-    if (readenTaskCode != NO_CODE) {
-      this.props.navigation.setParams({readenTaskCode:NO_CODE})
-      this.handleReadenCode(readenTaskCode)
-    }
-  }
-
   render() {
 
     //Las props se obtienen gracias a mapStateToProps que las mapea desde el state del reducer
     const {
-      tasks,
-      finishedTasks,
-    } = this.props.educationalActivity
+      educationalActivity: {
+        finishedTasks,
+        tasks,
+      },
+      readenCode
+    } = this.props
 
     return (
       <View style={viewStyle}>
-        <NavigationEvents
-          //Me suscribo al evento 'onWillFocus'
-          onWillFocus={this.handleFocusEvent}
-        />
         <SectionList
           sections={[
             {title: 'Tareas aún sin realizar', data: tasks},
-            {title: 'Tareas realizadas', data: finishedTasks},
+            {title: 'Tareas realizadas', data: finishedTasks.map(finishedTask => finishedTask.task)},
           ]}
           renderItem={({item}) => {
             if(item.answer) {
@@ -136,7 +135,8 @@ class MainScreen extends Component {
         {
           text: 'Comenzar',
           onPress: () => {
-            this.props.navigation.navigate('Task',{currentTask:task})
+            this.props.actions.setTask(task)
+            this.props.navigation.navigate('Task')
           }
         },
       ],
@@ -171,19 +171,20 @@ class MainScreen extends Component {
 
 }
 
-
 //Funcion que mapea las acciones ('actions/activityActions') con las funciones que llamamos desde el componente
 function mapDispatchToProps(dispatch) {
   return {
     actions : bindActionCreators({
-      //Aqui colocar las actions a utilizar
+      setTask,
+      resetCode,
     }, dispatch)
   }
 }
 
 //Funcion que mapea el estado de la APLICACION (redux) con las props del componente
-function mapStateToProps({activityReducer}) {
+function mapStateToProps({activityReducer, taskReducer}) {
   return {
+    readenCode: taskReducer.read,
     educationalActivity:{
       ...activityReducer
     },

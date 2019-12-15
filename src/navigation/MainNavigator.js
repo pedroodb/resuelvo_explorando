@@ -1,4 +1,4 @@
-import { createStackNavigator } from 'react-navigation'
+import { createStackNavigator } from 'react-navigation-stack'
 import { MainScreen, CameraModal } from '../containers'
 
 //Navegador de pantalla principal

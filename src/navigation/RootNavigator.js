@@ -1,4 +1,4 @@
-import { createStackNavigator } from 'react-navigation'
+import { createStackNavigator } from 'react-navigation-stack'
 import MainNavigator from './MainNavigator'
 import WelcomeNavigator from './WelcomeNavigator'
 import TaskNavigator from './TaskNavigator'

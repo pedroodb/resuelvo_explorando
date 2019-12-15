@@ -2,8 +2,7 @@
 function checkActivityFormat(activity) {
   return (
     activity.hasOwnProperty('title') &&
-    activity.hasOwnProperty('description') &&
-    activity.hasOwnProperty('tasks'))
+    activity.hasOwnProperty('description'))
 }
 
 export default checkActivityFormat

@@ -1,21 +1,20 @@
 import {
   ACTIVITY_SET,
-  TASK_SOLVED
-} from '../constants'
+  TASK_SOLVED,
+} from '../constants/activityConstants'
 
-export function setConfiguration(configuration) {
-  return {
-    type: ACTIVITY_SET,
-    payload: configuration,
-  }
-}
+export const setConfiguration = (configuration) => ({
+  type: ACTIVITY_SET,
+  payload: configuration,
+})
 
-export function solveTask(finishedTask) {
-  return {
-    type: TASK_SOLVED,
-    payload: finishedTask,
-  }
-}
+export const solveTask = (task, answer) => ({
+  type: TASK_SOLVED,
+  payload: {
+    task,
+    answer,
+  },
+})
 
 export default {
   setConfiguration,

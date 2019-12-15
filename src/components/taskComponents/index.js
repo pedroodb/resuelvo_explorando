@@ -1,9 +1,13 @@
 import TypeErrorComponent from './typeErrorComponent'
 import MultipleChoiceComponent from './multipleChoiceComponent/multipleChoiceComponent'
-//import FreeAnswerComponent from './freeAnswer/freeAnswerComponent/freeAnswerComponent'
+import FreeAnswerComponent from './freeAnswerComponent'
 
 export const TypeError = TypeErrorComponent
 export const MultipleChoice = MultipleChoiceComponent
-//export const FreeAnswer = FreeAnswerComponent
+export const FreeAnswer = FreeAnswerComponent
 
-export default { MultipleChoice, TypeError }
+export default {
+  TypeError,
+  MultipleChoice,
+  FreeAnswer,
+}
