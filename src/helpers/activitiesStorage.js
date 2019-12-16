@@ -39,4 +39,10 @@ export const setActiveActivityFunction = setActiveActivity
 export const isActivitySetFunction = isActivitySet
 export const deleteActivityFunction = deleteActivity
 
-export default { getActivitiesFunction, storeActivityFunction, getActiveActivityFunction, setActiveActivityFunction, isActivitySetFunction }
+export default {
+  getActivitiesFunction,
+  storeActivityFunction,
+  getActiveActivityFunction,
+  setActiveActivityFunction,
+  isActivitySetFunction
+}

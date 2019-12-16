@@ -1,4 +1,4 @@
-//Combina todos los reducers en uno (de momento solo existe activityReducer)
+//Combina todos los reducers en uno
 import { combineReducers } from 'redux'
 
 import activityReducer from './activityReducer'

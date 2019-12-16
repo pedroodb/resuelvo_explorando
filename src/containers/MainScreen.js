@@ -7,6 +7,7 @@ import { bindActionCreators } from 'redux'
 import { NO_CODE } from '../constants/genericConstants'
 import {
   setTask,
+  setFinishedTask,
   resetCode,
 } from '../actions/taskActions'
 
@@ -57,8 +58,8 @@ class MainScreen extends Component {
   }
 
   handleBackButton() {
-    //Devolver true anula la accion de volver atras
-    return this.props.isFocused ? true : false
+    //Si el valor es true anula la accion de volver atras
+    return this.props.isFocused
   }
 
   render() {
@@ -69,7 +70,9 @@ class MainScreen extends Component {
         finishedTasks,
         tasks,
       },
-      readenCode
+      actions: {
+        setFinishedTask,
+      }
     } = this.props
 
     return (
@@ -77,11 +80,16 @@ class MainScreen extends Component {
         <SectionList
           sections={[
             {title: 'Tareas aún sin realizar', data: tasks},
-            {title: 'Tareas realizadas', data: finishedTasks.map(finishedTask => finishedTask.task)},
+            {title: 'Tareas realizadas', data: finishedTasks},
           ]}
           renderItem={({item}) => {
             if(item.answer) {
-              return (<Text style={sectionListItem} onPress={() => this.props.navigation.navigate('TaskReview',{finishedTask:item})}>{item.name}</Text>)
+              return (
+                <Text style={sectionListItem} onPress={() => {
+                  setFinishedTask(item)
+                  this.props.navigation.navigate('TaskReview')}
+                }>{item.task.name}</Text>
+              )
             }
             else {
               return (<Text style={sectionListItem}>{item.name}</Text>)
@@ -176,6 +184,7 @@ function mapDispatchToProps(dispatch) {
   return {
     actions : bindActionCreators({
       setTask,
+      setFinishedTask,
       resetCode,
     }, dispatch)
   }

@@ -9,7 +9,6 @@ import {
   FreeAnswer,
 } from '../components/taskComponents'
 import { solveTask } from '../actions/activityActions'
-import { setFinishedTask } from '../actions/taskActions'
 
 //Pantalla de vista de tarea
 class TaskScreen extends Component {
@@ -31,7 +30,6 @@ class TaskScreen extends Component {
       navigation,
       actions: {
         solveTask,
-        setFinishedTask,
       }
     } = this.props
 
@@ -66,7 +64,6 @@ function mapDispatchToProps(dispatch) {
   return {
     actions : bindActionCreators({
       solveTask,
-      setFinishedTask,
     }, dispatch)
   }
 }
