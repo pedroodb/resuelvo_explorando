@@ -33,7 +33,8 @@
         "READ_EXTERNAL_STORAGE",
         "VIBRATE",
         "WRITE_EXTERNAL_STORAGE"
-      ]
+      ],
+      "package": "com.lifia.resuelvo_explorando"
     }
   }
 }
