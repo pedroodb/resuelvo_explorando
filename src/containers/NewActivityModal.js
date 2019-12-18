@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import { Text, View, Image, TextInput, Alert, KeyboardAvoidingView } from 'react-native'
 
-import checkActivityFormat from '../helpers/checkActivityFormat'
+import getActivity from '../helpers/apiConnection'
 import { DefaultButton } from '../components'
 import { 
   newActivityView,
@@ -49,23 +49,10 @@ class NewActivityModal extends Component {
   }
 
   //Obtiene la actividad, chequea que tenga los campos correspondientes y la utiliza como estado del componente
-  loadActivity(code){
+  loadActivity(id){
     this.setState(() => ({status:'loading'}))
-    fetch(`http://192.168.10.154:3001/api/Activities/${code}`).then(
-      result => result.json().then(
-        activity => 
-          {
-            if (checkActivityFormat(activity)){
-              fetch((`http://192.168.10.154:3001/api/Activities/${code}/Tasks`)).then(
-                result => result.json().then(
-                  tasks => this.handleLoadedActivity({...activity,tasks})
-                  )
-              )
-            } else {
-              throw new Error("Archivo de actividad corrupto")
-            }
-          }
-      )
+    getActivity(id).then(
+      activity => this.handleLoadedActivity(activity)
     ).catch(
       error => {
         this.setState(() => ({status:'unloaded'}))
